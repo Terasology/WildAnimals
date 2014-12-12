@@ -1,0 +1,9 @@
+{
+    "id" : "WildAnimals",
+    "version" : "0.1.0",
+    "author" : "",
+    "displayName" : "WildAnimals",
+    "description" : "",
+    "dependencies" : [],
+    "isServerSideOnly" : false
+}
