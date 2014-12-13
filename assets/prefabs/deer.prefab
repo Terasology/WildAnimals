@@ -44,7 +44,7 @@
     "MinionMove" : {},
     "Health" : {},
     "BoxShape" : {
-        "extents" : [0.5, 0.5, 0.5]
+        "extents" : [1.5, 1.5, 1.5]
     },
     "Trigger" : {
         "detectGroups" : ["engine:debris", "engine:sensor"]
