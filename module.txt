@@ -1,9 +1,9 @@
 {
     "id" : "WildAnimals",
     "version" : "0.1.0",
-    "author" : "",
+    "author" : "glasz, flo",
     "displayName" : "WildAnimals",
-    "description" : "",
+    "description" : "Contains so far only a deer. Can be spawned with spawnPrefab deer",
     "dependencies" : [{
             "id" : "Core",
             "minVersion" : "0.1.0"
