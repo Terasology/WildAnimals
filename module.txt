@@ -4,6 +4,15 @@
     "author" : "",
     "displayName" : "WildAnimals",
     "description" : "",
-    "dependencies" : [],
+    "dependencies" : [{
+            "id" : "Core",
+            "minVersion" : "0.1.0"
+        },{
+            "id" : "Pathfinding",
+            "minVersion" : "0.1.0"
+        },{
+            "id" : "NameGenerator",
+            "minVersion" : "0.3.0"
+        }],
     "isServerSideOnly" : false
 }
