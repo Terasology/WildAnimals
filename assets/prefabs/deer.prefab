@@ -41,6 +41,7 @@
         "footstepSounds" : ["FootGrass1", "FootGrass2", "FootGrass3", "FootGrass4", "FootGrass5"],
         "footstepVolume" : 0.03
     },
+    "Network" :{},
     "MinionMove" : {},
     "Health" : {},
     "BoxShape" : {
