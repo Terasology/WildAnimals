@@ -10,7 +10,14 @@
         "tree" : "stray"
     },
     "Stand" :{
-        "animationPool": ["deerIdle"]
+        "animationPool": [
+            "deerIdle",
+            "deerIdle",
+            "deerIdle",
+            "deerIdleLookLeft",
+            "deerIdleLookRight",
+            "deerIdleMoveLegs"
+            ]
     },
     "Walk" :{
         "animationPool": ["deerWalk"]
