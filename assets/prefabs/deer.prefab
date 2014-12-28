@@ -9,16 +9,11 @@
     "Behavior" : {
         "tree" : "stray"
     },
-    "Animation" : {
-        "walkAnim" = "deerWalk",
-        "idleAnim" = "deerIdle",
-        "attackAnim" = "deerIdle",
-        "dieAnim" = "deerIdle",
-        "fadeInAnim" = "deerIdle",
-        "fadeOutAnim" = "deerIdle",
-        "workAnim" = "deerIdle",
-        "terraformAnim" = "deerIdle",
-        "randomAnim" : ["deerIdle", "deerIdle"]
+    "Stand" :{
+        "animationPool": ["deerIdle"]
+    },
+    "Walk" :{
+        "animationPool": ["deerWalk"]
     },
     "persisted" : true,
     "location" : {},
