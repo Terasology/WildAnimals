@@ -6,13 +6,13 @@
     "description" : "Contains so far only a deer. Can be spawned with spawnPrefab deer",
     "dependencies" : [{
             "id" : "Core",
-            "minVersion" : "0.1.0"
+            "minVersion" : "0.53.1"
         },{
             "id" : "Pathfinding",
             "minVersion" : "0.1.0"
         },{
             "id" : "NameGenerator",
-            "minVersion" : "0.3.0"
+            "minVersion" : "0.4.0"
         }],
     "isServerSideOnly" : false
 }
