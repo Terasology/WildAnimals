@@ -45,13 +45,13 @@
     },
     "Network" :{},
     "MinionMove" : {},
-    "Health" : {},
+    "Health" : {
+        "destroyEntityOnNoHealth" : true
+    },
     "BoxShape" : {
         "extents" : [1.5, 1.5, 1.5]
     },
     "Trigger" : {
         "detectGroups" : ["engine:debris", "engine:sensor"]
     }
-
 }
-
