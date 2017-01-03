@@ -62,9 +62,8 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     
     
     /**
-     * Readies the spawning system by defining blocks for identification and obtaining prefabs of animals
+     * Readies the spawning system by defining blocks for identification and obtaining prefabs of animals.
      */
-    
     @Override
     public void initialise() {
         grassBlock = blockManager.getBlock("core:Grass");
@@ -74,7 +73,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     
     /**
      * Runs upon a chunk being generated. If the SPAWN_CHANCE_IN_PERCENT is above a random value
-     * ( < 100), then it'll try to spawn deer on the chunk
+     * ( < 100), then it'll try to spawn deer on the chunk.
      *
      * @param event         The event which the method will run upon receiving
      * @param worldEntity   The world that the chunk is in
@@ -88,9 +87,10 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         Vector3i chunkPos = event.getChunkPos();
         tryDeerSpawn(chunkPos);
     }
+    
     /**
      * Attempts to spawn deer on the specified chunk. The number of deers spawned will depend on four
-     * 'private static final int' values defined earlier
+     * 'private static final int' values defined earlier.
      *
      * @param chunkPos   The chunk which the game will try to spawn deers on
      */
@@ -116,7 +116,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     
     /**
      * Checks each block of the chunk specified if it's a valid spawning point for deer. If it is, 
-     * stores it in a List, which is returned after all blocks are checked
+     * stores it in a List, which is returned after all blocks are checked.
      *
      * @param chunkPos  The chunk that is being checked for valid spawnpoints
      * @return a list of positions of potential deer spawnpoints
@@ -140,7 +140,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     }
     
     /**
-     * Spawns the deer at the location specified by the parameter
+     * Spawns the deer at the location specified by the parameter.
      *
      * @param location   The location where the deer is to be spawned
      */
@@ -154,7 +154,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
 
     /**
      * Checks the block below the position, and if the block is either a grass, air, or a penetrable
-     * block, then it returns false, signifying that the block is not valid for spawning
+     * block, then it returns false, signifying that the block is not valid for spawning.
      *
      * @param pos   The block to be checked if it's a valid spot for spawning
      * @return A boolean with the value of true if the block is a valid spot for spawing
