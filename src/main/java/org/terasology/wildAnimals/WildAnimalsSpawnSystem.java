@@ -72,7 +72,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     }
     
     /**
-     * Runs upon a chunk being generated and will attempt to spawn deer on the chunk
+     * Runs upon a chunk being generated to see whether a deer should be spawned
      *
      * @param event         The event which the method will run upon receiving
      * @param worldEntity   The world that the chunk is in
