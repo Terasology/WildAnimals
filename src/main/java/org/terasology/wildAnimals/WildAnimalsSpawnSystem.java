@@ -72,8 +72,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     }
     
     /**
-     * Runs upon a chunk being generated. If the SPAWN_CHANCE_IN_PERCENT is above a randomly chosen value
-     * (0-100), then it'll try to spawn deer on the chunk.
+     * Runs upon a chunk being generated and will attempt to spawn deer on the chunk
      *
      * @param event         The event which the method will run upon receiving
      * @param worldEntity   The world that the chunk is in
@@ -115,8 +114,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     }
     
     /**
-     * Checks each block of the chunk specified if it's a valid spawning point for deer. If it is, 
-     * stores it in a List, which is returned after all blocks are checked.
+     * Checks each block of the chunk specified for valid spawning spawnings point for deer.
      *
      * @param chunkPos  The chunk that is being checked for valid spawnpoints
      * @return a list of positions of potential deer spawnpoints
@@ -153,8 +151,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     }
 
     /**
-     * Checks the block below and above the position. Returns true if block below is a grass block 
-     * and block above is an airblock. Otherwise, then it returns false.
+     * Checks the block below and above a position and check if it's a valid spawning spot
      *
      * @param pos   The block to be checked if it's a valid spot for spawning
      * @return A boolean with the value of true if the block is a valid spot for spawing
