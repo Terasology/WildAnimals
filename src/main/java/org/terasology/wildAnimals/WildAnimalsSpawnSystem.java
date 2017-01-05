@@ -59,14 +59,24 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     private Block airBlock;
 
     private Prefab deerPrefab;
-
+    
+    
+    /**
+     * Readies the spawning system by defining blocks for identification and obtaining prefabs of animals.
+     */
     @Override
     public void initialise() {
         grassBlock = blockManager.getBlock("core:Grass");
         airBlock = blockManager.getBlock(BlockManager.AIR_ID);
         deerPrefab = Assets.getPrefab("WildAnimals:Deer").get();
     }
-
+    
+    /**
+     * Runs upon a chunk being generated to see whether a deer should be spawned
+     *
+     * @param event         The event which the method will run upon receiving
+     * @param worldEntity   The world that the chunk is in
+     */
     @ReceiveEvent
     public void onChunkGenerated(OnChunkGenerated event, EntityRef worldEntity) {
         boolean trySpawn = SPAWN_CHANCE_IN_PERCENT > random.nextInt(100);
@@ -76,7 +86,13 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         Vector3i chunkPos = event.getChunkPos();
         tryDeerSpawn(chunkPos);
     }
-
+    
+    /**
+     * Attempts to spawn deer on the specified chunk. The number of deers spawned will depend on probabiliy
+     * configurations defined earlier.
+     *
+     * @param chunkPos   The chunk which the game will try to spawn deers on
+     */
     private void tryDeerSpawn(Vector3i chunkPos) {
         List<Vector3i> foundPositions = findDeerSpawnPositions(chunkPos);
 
@@ -96,7 +112,13 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
             spawnDeer(randomSpawnPosition);
         }
     }
-
+    
+    /**
+     * Checks each block of the chunk specified for valid spawning spawnings point for deer.
+     *
+     * @param chunkPos  The chunk that is being checked for valid spawnpoints
+     * @return a list of positions of potential deer spawnpoints
+     */
     private List<Vector3i> findDeerSpawnPositions(Vector3i chunkPos) {
         Vector3i worldPos = new Vector3i(chunkPos);
         worldPos.mul(ChunkConstants.SIZE_X, ChunkConstants.SIZE_Y, ChunkConstants.SIZE_Z);
@@ -114,7 +136,12 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         }
         return foundPositions;
     }
-
+    
+    /**
+     * Spawns the deer at the location specified by the parameter.
+     *
+     * @param location   The location where the deer is to be spawned
+     */
     private void spawnDeer(Vector3i location) {
         Vector3f floatVectorLocation = location.toVector3f();
         Vector3f yAxis = new Vector3f(0, 1, 0);
@@ -123,7 +150,12 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         entityManager.create(deerPrefab, floatVectorLocation, rotation);
     }
 
-
+    /**
+     * Check blocks at and around the target position and check if it's a valid spawning spot
+     *
+     * @param pos   The block to be checked if it's a valid spot for spawning
+     * @return A boolean with the value of true if the block is a valid spot for spawing
+     */
     private boolean isValidSpawnPosition(Vector3i pos) {
         Vector3i below = new Vector3i(pos.x, pos.y-1, pos.z);
         Block blockBelow= worldProvider.getBlock(below);
