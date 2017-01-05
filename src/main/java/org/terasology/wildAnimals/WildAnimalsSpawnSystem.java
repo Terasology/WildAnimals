@@ -151,7 +151,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     }
 
     /**
-     * Checks the block below and above a position and check if it's a valid spawning spot
+     * Check blocks at and around the target position and check if it's a valid spawning spot
      *
      * @param pos   The block to be checked if it's a valid spot for spawning
      * @return A boolean with the value of true if the block is a valid spot for spawing
