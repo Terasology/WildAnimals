@@ -48,8 +48,16 @@
                               "node": {}
                             },
                             {
-                              "nodeType": "engine:LookupNode",
+                              "nodeType": "engine:SetAnimationNode",
                               "nodeId": 9,
+                              "node": {
+                                "play": "engine:Walk.animationPool",
+                                "loop": "engine:Walk.animationPool"
+                              }
+                            },
+                            {
+                              "nodeType": "engine:LookupNode",
+                              "nodeId": 10,
                               "node": {
                                 "tree": "Pathfinding:doRandomMove"
                               }
@@ -59,20 +67,20 @@
                       },
                       {
                         "nodeType": "engine:SequenceNode",
-                        "nodeId": 10,
+                        "nodeId": 11,
                         "node": {
                           "children": [
                             {
                               "nodeType": "engine:SetAnimationNode",
-                              "nodeId": 11,
+                              "nodeId": 12,
                               "node": {
                                 "play": "WildAnimals:Die.animationPool",
                                 "loop": "WildAnimals:Die.animationPool"
                               }
                             },
                             {
-                              "nodeType": "wildAnimals:InfiniteLoopNode",
-                              "nodeId": 12,
+                              "nodeType": "WildAnimals:InfiniteLoopNode",
+                              "nodeId": 13,
                               "node": {}
                             }
                           ]
