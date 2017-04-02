@@ -1,0 +1,11 @@
+{
+  "BehaviorNode" : {
+    "type"      : "checkDamageNode",
+    "name"      : "Check Damage",
+    "category"  : "moving",
+    "shape"     : "rect",
+    "color"     : [180, 180, 180, 255],
+    "description": "Checks if damage is caused. \nSUCCESS: When no damage happened.\nFAILURE: When damage has been dealt",
+    "textColor" : [0, 0, 0, 255]
+  }
+}

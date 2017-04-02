@@ -147,7 +147,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         Vector3f yAxis = new Vector3f(0, 1, 0);
         float randomAngle = (float) (random.nextFloat()*Math.PI*2);
         Quat4f rotation = new Quat4f(yAxis, randomAngle);
-        entityManager.create(deerPrefab, floatVectorLocation, rotation);
+//        entityManager.create(deerPrefab, floatVectorLocation, rotation);
     }
 
     /**
