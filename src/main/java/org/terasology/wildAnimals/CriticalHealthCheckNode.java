@@ -49,7 +49,6 @@ public class CriticalHealthCheckNode extends Node {
                 return Status.SUCCESS;
             } else {
                 logger.info("health is critical");
-                this.actor().getEntity().removeComponent(CharacterMovementComponent.class);
                 return Status.FAILURE;
             }
         }

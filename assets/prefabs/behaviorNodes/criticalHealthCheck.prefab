@@ -2,7 +2,7 @@
   "BehaviorNode" : {
     "type"      : "criticalHealthCheckNode",
     "name"      : "Critical Health check",
-    "category"  : "moving",
+    "category"  : "wildAnimals",
     "shape"     : "rect",
     "color"     : [180, 180, 180, 255],
     "description": "Checks if damage is caused. \nSUCCESS: When health is not critical.\nFAILURE: When health becaomes critical.",

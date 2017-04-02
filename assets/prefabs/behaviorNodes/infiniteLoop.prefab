@@ -2,7 +2,7 @@
   "BehaviorNode" : {
     "type"      : "infiniteLoopNode",
     "name"      : "Infinite Empty Loop",
-    "category"  : "moving",
+    "category"  : "logic",
     "shape"     : "rect",
     "color"     : [180, 180, 180, 255],
     "description": "Always RUNNING.",

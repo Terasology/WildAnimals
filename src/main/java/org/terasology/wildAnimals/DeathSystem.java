@@ -48,27 +48,10 @@ public class DeathSystem extends BaseComponentSystem {
         FleeComponent fleeComponent = new FleeComponent();
         entity.addComponent(fleeComponent);
 
-        if (healthComponent.currentHealth == 5) {
-            logger.info("almost dead");
-
-//            SkeletalMeshComponent skeletalMeshComponent = entity.getComponent(SkeletalMeshComponent.class);
-//            DieComponent dieComponent = entity.getComponent(DieComponent.class);
-//            BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-//            behaviorComponent.tree = null;
-//
-//            entity.removeComponent(BehaviorComponent.class);
-//            entity.removeComponent(CharacterMovementComponent.class);
-//            skeletalMeshComponent.animation = null;
-//            skeletalMeshComponent.animationPool.clear();
-//            skeletalMeshComponent.animationPool.addAll(dieComponent.animationPool);
-//            skeletalMeshComponent.loop = true;
-//            entity.saveComponent(skeletalMeshComponent);
-        }
-
     }
 
     @ReceiveEvent(components = WildAnimalComponent.class)
-    public void onDeath(DestroyEvent event, EntityRef entity) {
+    public void onDeath(BeforeDestroyEvent event, EntityRef entity) {
         logger.info("dead");
 
     }
