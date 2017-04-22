@@ -20,10 +20,6 @@ import org.slf4j.LoggerFactory;
 import org.terasology.logic.behavior.tree.Node;
 import org.terasology.logic.behavior.tree.Status;
 import org.terasology.logic.behavior.tree.Task;
-import org.terasology.logic.characters.CharacterMovementComponent;
-import org.terasology.logic.health.HealthComponent;
-import org.terasology.pathfinding.componentSystem.PathfinderSystem;
-import org.terasology.registry.In;
 
 public class InfiniteLoopNode extends Node {
     private static final Logger logger = LoggerFactory.getLogger(InfiniteLoopNode.class);

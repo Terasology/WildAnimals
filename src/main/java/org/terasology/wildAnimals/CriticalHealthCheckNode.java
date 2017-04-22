@@ -22,6 +22,7 @@ import org.terasology.logic.behavior.tree.Status;
 import org.terasology.logic.behavior.tree.Task;
 import org.terasology.logic.characters.CharacterMovementComponent;
 import org.terasology.logic.health.HealthComponent;
+import org.terasology.math.geom.Vector3f;
 import org.terasology.pathfinding.componentSystem.PathfinderSystem;
 import org.terasology.registry.In;
 import org.terasology.wildAnimals.component.FleeComponent;
@@ -49,6 +50,12 @@ public class CriticalHealthCheckNode extends Node {
                 return Status.SUCCESS;
             } else {
                 logger.info("health is critical");
+                /* Sets velocity to 0. KinematicCharacterMover updates the entity's velocity to account for inertia.
+                * So characterMovementComponent.setVelocity(new Vector3f(0,0,0)) cannot be used. */
+                // TODO: find a better solution to stop entity movement
+                CharacterMovementComponent characterMovementComponent = this.actor().getComponent(CharacterMovementComponent.class);
+                this.actor().getEntity().removeComponent(CharacterMovementComponent.class);
+                this.actor().getEntity().addOrSaveComponent(characterMovementComponent);
                 return Status.FAILURE;
             }
         }

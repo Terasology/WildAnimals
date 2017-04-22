@@ -30,19 +30,18 @@ public class CheckDamageNode extends Node {
     public CheckDamageNode() {
     }
 
-    public DamageFollowedPlayerTask createTask() {
-        return new DamageFollowedPlayerTask(this);
+    public CheckDamageTask createTask() {
+        return new CheckDamageTask(this);
     }
 
-    public static class DamageFollowedPlayerTask extends Task {
+    public static class CheckDamageTask extends Task {
 
-        public DamageFollowedPlayerTask(Node node) {
+        public CheckDamageTask(Node node) {
             super(node);
         }
 
         public Status update(float dt) {
-//            HealthComponent healthComponent = (HealthComponent)this.actor().getComponent(HealthComponent.class);
-            FleeComponent fleeComponent = (FleeComponent) this.actor().getComponent(FleeComponent.class);
+            FleeComponent fleeComponent = this.actor().getComponent(FleeComponent.class);
             if (fleeComponent != null) {
                 logger.info("Damage done");
                 this.actor().getEntity().removeComponent(FleeComponent.class);

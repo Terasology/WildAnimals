@@ -29,6 +29,7 @@ import org.terasology.logic.health.BeforeDestroyEvent;
 import org.terasology.logic.health.DestroyEvent;
 import org.terasology.logic.health.HealthComponent;
 import org.terasology.logic.health.OnDamagedEvent;
+import org.terasology.math.geom.Vector3f;
 import org.terasology.rendering.assets.skeletalmesh.SkeletalMesh;
 import org.terasology.rendering.logic.SkeletalMeshComponent;
 import org.terasology.wildAnimals.component.DieComponent;
@@ -45,17 +46,14 @@ public class DeathSystem extends BaseComponentSystem {
 
         HealthComponent healthComponent = entity.getComponent(HealthComponent.class);
         logger.info("remaining " + healthComponent.currentHealth);
-        FleeComponent fleeComponent = new FleeComponent();
-        entity.addComponent(fleeComponent);
-
+        if (!entity.hasComponent(FleeComponent.class)) {
+            FleeComponent fleeComponent = new FleeComponent();
+            entity.addComponent(fleeComponent);
+        }
     }
 
     @ReceiveEvent(components = WildAnimalComponent.class)
     public void onDeath(BeforeDestroyEvent event, EntityRef entity) {
         logger.info("dead");
-
     }
-
-
-
 }
