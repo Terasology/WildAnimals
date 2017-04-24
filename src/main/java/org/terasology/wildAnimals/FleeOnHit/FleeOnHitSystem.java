@@ -27,6 +27,7 @@ import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.logic.behavior.BehaviorComponent;
 import org.terasology.logic.behavior.asset.BehaviorTree;
+import org.terasology.logic.characters.CharacterMovementComponent;
 import org.terasology.logic.health.HealthComponent;
 import org.terasology.logic.health.OnDamagedEvent;
 import org.terasology.registry.In;
@@ -61,6 +62,10 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             behaviorComponent.tree = assetManager.getAsset("WildAnimals:flee", BehaviorTree.class).get();
             logger.info("Changed behavior to Flee");
+            // Increase speed by multiplier factor
+            CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
+            characterMovementComponent.speedMultiplier = fleeOnHitComponent.speedMultiplier;
+            entity.saveComponent(characterMovementComponent);
             //TODO: add a onBehaviorChanged method to BehaviorSystem that receives a OnChangedComponent Event
 //            entity.saveComponent(behaviorComponent);
             entity.removeComponent(BehaviorComponent.class);
@@ -71,6 +76,11 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             fleeOnHitComponent.instigator = null;
             entity.saveComponent(fleeOnHitComponent);
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
+            // Restore speed to normal
+            CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
+            characterMovementComponent.speedMultiplier = fleeOnHitComponent.speedMultiplier;
+            entity.saveComponent(characterMovementComponent);
+            // Change behavior to "stray"
             behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
             logger.info("Changed behavior to stray");
             entity.saveComponent(behaviorComponent);
