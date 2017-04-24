@@ -56,18 +56,23 @@ public class FleeOnHitSystem extends BaseComponentSystem {
 
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = FleeOnHitComponent.class)
     public void onUpdateBehavior(UpdateBehaviorEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
-        if (fleeOnHitComponent.instigator != null && fleeOnHitComponent.timeWhenHit <= time.getGameTimeInMs() + 1000) {
+        if (fleeOnHitComponent.instigator != null) {
             // Start fleeing behavior, when a hit that is recorded is recent
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            logger.info("Extracted Flee behavior tree: " + assetManager.getAsset("WildAnimals:flee", BehaviorTree.class).get().toString());
             behaviorComponent.tree = assetManager.getAsset("WildAnimals:flee", BehaviorTree.class).get();
-            entity.saveComponent(behaviorComponent);
-        } else if (fleeOnHitComponent.instigator != null) {
+            logger.info("Changed behavior to Flee");
+            //TODO: add a onBehaviorChanged method to BehaviorSystem that receives a OnChangedComponent Event
+//            entity.saveComponent(behaviorComponent);
+            entity.removeComponent(BehaviorComponent.class);
+            entity.addComponent(behaviorComponent);
+
+        } else {
             // To stop 'flee'ing behavior
             fleeOnHitComponent.instigator = null;
             entity.saveComponent(fleeOnHitComponent);
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
+            logger.info("Changed behavior to stray");
             entity.saveComponent(behaviorComponent);
         }
     }

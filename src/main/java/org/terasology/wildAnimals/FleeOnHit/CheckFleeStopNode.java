@@ -18,19 +18,19 @@ package org.terasology.wildAnimals.FleeOnHit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.terasology.engine.Time;
+import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.logic.behavior.tree.Node;
 import org.terasology.logic.behavior.tree.Status;
 import org.terasology.logic.behavior.tree.Task;
+import org.terasology.logic.location.LocationComponent;
+import org.terasology.math.geom.Vector3f;
 import org.terasology.registry.In;
 import org.terasology.wildAnimals.UpdateBehaviorEvent;
 
-@RegisterSystem(RegisterMode.AUTHORITY)
 public class CheckFleeStopNode extends Node {
     private static final Logger logger = LoggerFactory.getLogger(CheckFleeStopNode.class);
-    @In
-    private static Time time;
 
     public CheckFleeStopNode() {
     }
@@ -47,8 +47,29 @@ public class CheckFleeStopNode extends Node {
 
         public Status update(float dt) {
             FleeOnHitComponent fleeOnHitComponent = this.actor().getComponent(FleeOnHitComponent.class);
-            if (fleeOnHitComponent.timeWhenHit + 3000 <= time.getGameTimeInMs()) {
+            EntityRef instigator =fleeOnHitComponent.instigator;
+            if (instigator == null || !instigator.isActive()) {
+                return Status.FAILURE;
+            }
+            LocationComponent targetLocation = instigator.getComponent(LocationComponent.class);
+            if (targetLocation == null) {
+                return Status.FAILURE;
+            }
+            LocationComponent currentLocation = actor().getComponent(LocationComponent.class);
+            if (currentLocation == null) {
+                return Status.FAILURE;
+            }
+            Vector3f instigatorLocation = currentLocation.getWorldPosition();
+            Vector3f selfLocation = targetLocation.getWorldPosition();
+            float currentDistanceSquared = selfLocation.distanceSquared(instigatorLocation);
+
+            float minDistance = fleeOnHitComponent.minDistance;
+            float minDistanceSquared = minDistance*minDistance;
+
+            if (currentDistanceSquared >= minDistanceSquared) {
                 logger.info("Stopping Flee");
+                fleeOnHitComponent.instigator = null;
+                this.actor().getEntity().saveComponent(fleeOnHitComponent);
                 this.actor().getEntity().send(new UpdateBehaviorEvent());
                 return Status.FAILURE;
             } else {

@@ -10,7 +10,7 @@
     "tree" : "stray"
   },
   "FleeOnHit" : {
-    "minDistance" : 15
+    "minDistance" : 5
   },
   "Stand" :{
     "animationPool": [

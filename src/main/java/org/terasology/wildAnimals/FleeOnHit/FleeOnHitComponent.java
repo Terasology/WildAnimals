@@ -19,7 +19,7 @@ import org.terasology.entitySystem.Component;
 import org.terasology.entitySystem.entity.EntityRef;
 
 public class FleeOnHitComponent implements Component {
-    public float minDistance = 15f;
+    public float minDistance = 10f;
     public EntityRef instigator;
     public float distanceFromInstigator;
     public long timeWhenHit;
