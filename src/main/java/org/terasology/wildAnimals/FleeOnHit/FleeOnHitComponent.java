@@ -13,9 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals.component;
+package org.terasology.wildAnimals.FleeOnHit;
 
 import org.terasology.entitySystem.Component;
+import org.terasology.entitySystem.entity.EntityRef;
 
-public class FleeComponent implements Component {
+public class FleeOnHitComponent implements Component {
+    public float minDistance = 15f;
+    public EntityRef instigator;
+    public float distanceFromInstigator;
+    public long timeWhenHit;
 }

@@ -13,38 +13,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals;
+package org.terasology.wildAnimals.FleeOnHit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.terasology.engine.Time;
+import org.terasology.entitySystem.systems.RegisterMode;
+import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.logic.behavior.tree.Node;
 import org.terasology.logic.behavior.tree.Status;
 import org.terasology.logic.behavior.tree.Task;
-import org.terasology.pathfinding.componentSystem.PathfinderSystem;
 import org.terasology.registry.In;
-import org.terasology.wildAnimals.component.FleeComponent;
+import org.terasology.wildAnimals.UpdateBehaviorEvent;
 
-public class CheckDamageNode extends Node {
-    private static final Logger logger = LoggerFactory.getLogger(CheckDamageNode.class);
+@RegisterSystem(RegisterMode.AUTHORITY)
+public class CheckFleeStopNode extends Node {
+    private static final Logger logger = LoggerFactory.getLogger(CheckFleeStopNode.class);
+    @In
+    private static Time time;
 
-    public CheckDamageNode() {
+    public CheckFleeStopNode() {
     }
 
-    public CheckDamageTask createTask() {
-        return new CheckDamageTask(this);
+    public CheckFleeStopTask createTask() {
+        return new CheckFleeStopTask(this);
     }
 
-    public static class CheckDamageTask extends Task {
+    public static class CheckFleeStopTask extends Task {
 
-        public CheckDamageTask(Node node) {
+        public CheckFleeStopTask(Node node) {
             super(node);
         }
 
         public Status update(float dt) {
-            FleeComponent fleeComponent = this.actor().getComponent(FleeComponent.class);
-            if (fleeComponent != null) {
-                logger.info("Damage done");
-                this.actor().getEntity().removeComponent(FleeComponent.class);
+            FleeOnHitComponent fleeOnHitComponent = this.actor().getComponent(FleeOnHitComponent.class);
+            if (fleeOnHitComponent.timeWhenHit + 3000 <= time.getGameTimeInMs()) {
+                logger.info("Stopping Flee");
+                this.actor().getEntity().send(new UpdateBehaviorEvent());
                 return Status.FAILURE;
             } else {
                 return Status.RUNNING;
@@ -54,8 +59,8 @@ public class CheckDamageNode extends Node {
         public void handle(Status result) {
         }
 
-        public CheckDamageNode getNode() {
-            return (CheckDamageNode) super.getNode();
+        public CheckFleeStopNode getNode() {
+            return (CheckFleeStopNode) super.getNode();
         }
     }
 }
