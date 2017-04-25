@@ -17,6 +17,7 @@ package org.terasology.wildAnimals.Death;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.EventPriority;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -27,16 +28,27 @@ import org.terasology.logic.behavior.BehaviorComponent;
 import org.terasology.logic.characters.CharacterMovementComponent;
 import org.terasology.logic.common.lifespan.LifespanComponent;
 import org.terasology.logic.health.BeforeDestroyEvent;
+import org.terasology.logic.inventory.events.DropItemEvent;
+import org.terasology.logic.location.LocationComponent;
+import org.terasology.math.geom.Vector3f;
+import org.terasology.registry.CoreRegistry;
+import org.terasology.registry.In;
 import org.terasology.rendering.assets.animation.MeshAnimation;
 import org.terasology.rendering.logic.SkeletalMeshComponent;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
+import org.terasology.world.block.Block;
+import org.terasology.world.block.BlockManager;
 
 import java.util.List;
 
 
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class DeathSystem extends BaseComponentSystem {
+
     private static final Logger logger = LoggerFactory.getLogger(DeathSystem.class);
+
+    @In
+    EntityManager entityManager;
 
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = {WildAnimalComponent.class, DieComponent.class})
     public void onDeath(BeforeDestroyEvent event, EntityRef entity, DieComponent dieComponent) {
@@ -57,11 +69,10 @@ public class DeathSystem extends BaseComponentSystem {
         entity.saveComponent(skeletalMeshComponent);
         float lifespan = 0;
         for (MeshAnimation meshAnimation : skeletalMeshComponent.animationPool) {
-
-            logger.info("time per frame: " + meshAnimation.getTimePerFrame() + " frame count: " + (meshAnimation.getFrameCount() - 1));
             lifespan += meshAnimation.getTimePerFrame() * (meshAnimation.getFrameCount() - 1);
         }
         LifespanComponent lifespanComponent = new LifespanComponent(lifespan);
-        entity.addComponent(lifespanComponent);
+        entity.addOrSaveComponent(lifespanComponent);
+        Vector3f location = entity.getComponent(LocationComponent.class).getWorldPosition();
     }
 }

@@ -17,6 +17,7 @@ package org.terasology.wildAnimals.Death;
 
 import com.google.common.collect.Lists;
 import org.terasology.entitySystem.Component;
+import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.rendering.assets.animation.MeshAnimation;
 
 import java.util.List;
@@ -29,4 +30,5 @@ public class DieComponent implements Component{
      * frequently.
      */
     public List<MeshAnimation> animationPool = Lists.newArrayList();
+    public List<String> itemsDropped = Lists.newArrayList();
 }

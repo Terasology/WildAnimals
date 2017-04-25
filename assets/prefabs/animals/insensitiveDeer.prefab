@@ -25,6 +25,10 @@
   "Die" :{
     "animationPool": ["deerFall"]
   },
+  "BlockDropGrammar": {
+    "blockDrops": ["1-2*Core:Dirt"],
+    "itemDrops": ["0.5|WildAnimals:meat","1-2*Core:Pickaxe"]
+  },
   "persisted" : true,
   "location" : {},
   "Character": {},

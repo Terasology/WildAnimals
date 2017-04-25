@@ -66,6 +66,7 @@ public class CheckFleeStopNode extends Node {
             float minDistance = fleeOnHitComponent.minDistance;
             float minDistanceSquared = minDistance*minDistance;
 
+            logger.info("currentDisanceSquared: " + currentDistanceSquared + "minDistanceSquared: " + minDistanceSquared);
             if (currentDistanceSquared >= minDistanceSquared) {
                 logger.info("Stopping Flee");
                 fleeOnHitComponent.instigator = null;

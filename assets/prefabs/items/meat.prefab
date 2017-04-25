@@ -1,0 +1,27 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "WildAnimals:meat",
+        "stackId": "WildAnimals:meat",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Meat"
+    },
+    "CraftingStationIngredient": {
+        "type": "WildAnimals:Meat"
+    },
+    "Food": {
+        "filling": 5
+    },
+    "Drink": {
+        "filling": 0
+    },
+    "ItemHelp": {
+        "category": "WildAnimals",
+        "paragraphText": [
+             "Raw meat obtained after killing an animal.",
+             "Restores 5 food"
+        ]
+    }
+ }
