@@ -47,7 +47,7 @@ public class CheckFleeStopNode extends Node {
 
         public Status update(float dt) {
             FleeOnHitComponent fleeOnHitComponent = this.actor().getComponent(FleeOnHitComponent.class);
-            EntityRef instigator =fleeOnHitComponent.instigator;
+            EntityRef instigator = fleeOnHitComponent.instigator;
             if (instigator == null || !instigator.isActive()) {
                 return Status.FAILURE;
             }
@@ -64,11 +64,12 @@ public class CheckFleeStopNode extends Node {
             float currentDistanceSquared = selfLocation.distanceSquared(instigatorLocation);
 
             float minDistance = fleeOnHitComponent.minDistance;
-            float minDistanceSquared = minDistance*minDistance;
+            float minDistanceSquared = minDistance * minDistance;
 
-            logger.info("currentDisanceSquared: " + currentDistanceSquared + "minDistanceSquared: " + minDistanceSquared);
+            // Triggers an updateBehaviorEvent for the entity when it reaches a safe distance from flee instigator
+            // logger.info("currentDisanceSquared: " + currentDistanceSquared + "minDistanceSquared: " + minDistanceSquared);
             if (currentDistanceSquared >= minDistanceSquared) {
-                logger.info("Stopping Flee");
+                //logger.info("Stopping Flee");
                 fleeOnHitComponent.instigator = null;
                 this.actor().getEntity().saveComponent(fleeOnHitComponent);
                 this.actor().getEntity().send(new UpdateBehaviorEvent());

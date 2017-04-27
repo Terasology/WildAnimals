@@ -22,12 +22,10 @@ import org.terasology.rendering.assets.animation.MeshAnimation;
 
 import java.util.List;
 
-public class DieComponent implements Component{
+public class DieComponent implements Component {
     /**
      * A pool of death animations. It gets currently only used by behavior trees to make a skeletal mesh perform an
-     * animation loop while dying. The animations of the pool will be picked by random. The result is a randomized
-     * animation loop. The same animation can be put multiple times in the pool, so that it will be chosen more
-     * frequently.
+     * animation while dying/falling. The animations of the pool will be played once.
      */
     public List<MeshAnimation> animationPool = Lists.newArrayList();
     public List<String> itemsDropped = Lists.newArrayList();

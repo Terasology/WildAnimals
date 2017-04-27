@@ -19,9 +19,10 @@ import org.terasology.entitySystem.Component;
 import org.terasology.entitySystem.entity.EntityRef;
 
 public class FleeOnHitComponent implements Component {
+    // Minimum distance from instigator after which the deer will stop 'flee'ing
     public float minDistance = 10f;
+    // Speed factor by which flee speed increases
     public float speedMultiplier = 1.2f;
     public EntityRef instigator;
-    public float distanceFromInstigator;
     public long timeWhenHit;
 }

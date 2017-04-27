@@ -42,18 +42,17 @@ public class FleeOnHitSystem extends BaseComponentSystem {
     @In
     private AssetManager assetManager;
 
+    /**
+     * Updares the FleeOnHitComponent with information about the hit
+     */
     @ReceiveEvent(components = FleeOnHitComponent.class)
     public void onDamage(OnDamagedEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
-        HealthComponent healthComponent = entity.getComponent(HealthComponent.class);
-        logger.info("remaining " + healthComponent.currentHealth);
-
         fleeOnHitComponent.instigator = event.getInstigator();
-        fleeOnHitComponent.distanceFromInstigator = 0;
         fleeOnHitComponent.timeWhenHit = time.getGameTimeInMs();
         entity.saveComponent(fleeOnHitComponent);
-
         entity.send(new UpdateBehaviorEvent());
     }
+
 
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = FleeOnHitComponent.class)
     public void onUpdateBehavior(UpdateBehaviorEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
@@ -61,13 +60,13 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             // Start fleeing behavior, when a hit that is recorded is recent
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             behaviorComponent.tree = assetManager.getAsset("WildAnimals:flee", BehaviorTree.class).get();
-            logger.info("Changed behavior to Flee");
+            //logger.info("Changed behavior to Flee");
             // Increase speed by multiplier factor
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
             characterMovementComponent.speedMultiplier = fleeOnHitComponent.speedMultiplier;
             entity.saveComponent(characterMovementComponent);
             //TODO: add a onBehaviorChanged method to BehaviorSystem that receives a OnChangedComponent Event
-//            entity.saveComponent(behaviorComponent);
+            //entity.saveComponent(behaviorComponent);
             entity.removeComponent(BehaviorComponent.class);
             entity.addComponent(behaviorComponent);
 
@@ -82,7 +81,7 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             entity.saveComponent(characterMovementComponent);
             // Change behavior to "stray"
             behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
-            logger.info("Changed behavior to stray");
+            //logger.info("Changed behavior to stray");
             entity.saveComponent(behaviorComponent);
         }
     }

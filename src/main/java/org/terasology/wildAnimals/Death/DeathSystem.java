@@ -45,9 +45,8 @@ import org.terasology.world.block.BlockManager;
 
 import java.util.List;
 
-
 @RegisterSystem(RegisterMode.AUTHORITY)
-public class DeathSystem extends BaseComponentSystem implements UpdateSubscriberSystem{
+public class DeathSystem extends BaseComponentSystem implements UpdateSubscriberSystem {
 
     private static final Logger logger = LoggerFactory.getLogger(DeathSystem.class);
 
@@ -56,6 +55,12 @@ public class DeathSystem extends BaseComponentSystem implements UpdateSubscriber
     @In
     private Time time;
 
+    /**
+     * On every update, checks for entities which have DestroyAtAnimationEndComponent,
+     * finds them and destroys them.
+     * Sending the DoDestroyEvent is essential for the BlockDropGrammar system to handle
+     * item drops specified in the animal's DieComponent
+     */
     @Override
     public void update(float delta) {
         long currentTime = time.getGameTimeInMs();
@@ -68,33 +73,41 @@ public class DeathSystem extends BaseComponentSystem implements UpdateSubscriber
         }
     }
 
+    /**
+     * Compute and save deathTime whenever a DestroyAtAnimationEndComponent is added
+     */
     @ReceiveEvent
     public void addedDestroyAtAnimationEndComponent(OnAddedComponent event, EntityRef entityRef, DestroyAtAnimationEndComponent destroyAtAnimationEndComponent) {
         destroyAtAnimationEndComponent.deathTime = time.getGameTimeInMs() + (long) (destroyAtAnimationEndComponent.lifespan * 1000);
         entityRef.saveComponent(destroyAtAnimationEndComponent);
     }
 
+    /**
+     * Receives and consumes the BeforeDestroyEvent.
+     * Removes extra components from the animal entity and updates skeletalMesh to play dying animation
+     * Triggers the entity to self destruct after animation ends by attaching DestroyAtAnimationEndComponent
+     */
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = {WildAnimalComponent.class, DieComponent.class})
     public void onDeath(BeforeDestroyEvent event, EntityRef entity, DieComponent dieComponent) {
-        logger.info("dead");
         event.consume();
         entity.removeComponent(BehaviorComponent.class);
         entity.removeComponent(CharacterMovementComponent.class);
         SkeletalMeshComponent skeletalMeshComponent = entity.getComponent(SkeletalMeshComponent.class);
-        if (skeletalMeshComponent == null)  {
+        if (skeletalMeshComponent == null) {
             return;
         }
-        List<MeshAnimation> wantedAnimationPool;
-        wantedAnimationPool = dieComponent.animationPool;
+        // Add fall animation from DieComponent
         skeletalMeshComponent.animation = null;
         skeletalMeshComponent.animationPool.clear();
-        skeletalMeshComponent.animationPool.addAll(wantedAnimationPool);
+        skeletalMeshComponent.animationPool.addAll(dieComponent.animationPool);
         skeletalMeshComponent.loop = false;
         entity.saveComponent(skeletalMeshComponent);
+        // Find total length of animations
         float lifespan = 0;
         for (MeshAnimation meshAnimation : skeletalMeshComponent.animationPool) {
             lifespan += meshAnimation.getTimePerFrame() * (meshAnimation.getFrameCount() - 1);
         }
+        // Trigger entity to self destruct after animations end
         DestroyAtAnimationEndComponent destroyAtAnimationEndComponent = new DestroyAtAnimationEndComponent(lifespan, event.getInstigator(), event.getDirectCause(), event.getDamageType());
         entity.addOrSaveComponent(destroyAtAnimationEndComponent);
     }

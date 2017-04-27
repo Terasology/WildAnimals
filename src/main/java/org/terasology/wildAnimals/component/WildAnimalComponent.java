@@ -19,7 +19,7 @@ import org.terasology.entitySystem.Component;
 
 /**
  * All WildAnimal entities have the WildAnimal component.
- * Helps the DeathSystem receive selected OnDamagedEvent and BeforeDestroyEvent
+ * Helps the DeathSystem receive selected BeforeDestroyEvent
  */
 public class WildAnimalComponent implements Component {
 }
