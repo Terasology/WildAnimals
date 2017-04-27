@@ -17,17 +17,21 @@ package org.terasology.wildAnimals.Death;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.terasology.engine.Time;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
+import org.terasology.entitySystem.entity.lifecycleEvents.OnAddedComponent;
 import org.terasology.entitySystem.event.EventPriority;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.entitySystem.systems.UpdateSubscriberSystem;
 import org.terasology.logic.behavior.BehaviorComponent;
 import org.terasology.logic.characters.CharacterMovementComponent;
 import org.terasology.logic.common.lifespan.LifespanComponent;
 import org.terasology.logic.health.BeforeDestroyEvent;
+import org.terasology.logic.health.DoDestroyEvent;
 import org.terasology.logic.inventory.events.DropItemEvent;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.math.geom.Vector3f;
@@ -43,12 +47,32 @@ import java.util.List;
 
 
 @RegisterSystem(RegisterMode.AUTHORITY)
-public class DeathSystem extends BaseComponentSystem {
+public class DeathSystem extends BaseComponentSystem implements UpdateSubscriberSystem{
 
     private static final Logger logger = LoggerFactory.getLogger(DeathSystem.class);
 
     @In
     EntityManager entityManager;
+    @In
+    private Time time;
+
+    @Override
+    public void update(float delta) {
+        long currentTime = time.getGameTimeInMs();
+        for (EntityRef entity : entityManager.getEntitiesWith(DestroyAtAnimationEndComponent.class)) {
+            DestroyAtAnimationEndComponent destroyAtAnimationEndComponent = entity.getComponent(DestroyAtAnimationEndComponent.class);
+            if (destroyAtAnimationEndComponent.deathTime < currentTime) {
+                entity.send(new DoDestroyEvent(destroyAtAnimationEndComponent.getInstigator(), destroyAtAnimationEndComponent.getDirectCause(), destroyAtAnimationEndComponent.getDamageType()));
+                entity.destroy();
+            }
+        }
+    }
+
+    @ReceiveEvent
+    public void addedDestroyAtAnimationEndComponent(OnAddedComponent event, EntityRef entityRef, DestroyAtAnimationEndComponent destroyAtAnimationEndComponent) {
+        destroyAtAnimationEndComponent.deathTime = time.getGameTimeInMs() + (long) (destroyAtAnimationEndComponent.lifespan * 1000);
+        entityRef.saveComponent(destroyAtAnimationEndComponent);
+    }
 
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = {WildAnimalComponent.class, DieComponent.class})
     public void onDeath(BeforeDestroyEvent event, EntityRef entity, DieComponent dieComponent) {
@@ -71,8 +95,7 @@ public class DeathSystem extends BaseComponentSystem {
         for (MeshAnimation meshAnimation : skeletalMeshComponent.animationPool) {
             lifespan += meshAnimation.getTimePerFrame() * (meshAnimation.getFrameCount() - 1);
         }
-        LifespanComponent lifespanComponent = new LifespanComponent(lifespan);
-        entity.addOrSaveComponent(lifespanComponent);
-        Vector3f location = entity.getComponent(LocationComponent.class).getWorldPosition();
+        DestroyAtAnimationEndComponent destroyAtAnimationEndComponent = new DestroyAtAnimationEndComponent(lifespan, event.getInstigator(), event.getDirectCause(), event.getDamageType());
+        entity.addOrSaveComponent(destroyAtAnimationEndComponent);
     }
 }
