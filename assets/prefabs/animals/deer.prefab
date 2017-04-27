@@ -12,6 +12,10 @@
   "FleeOnHit" : {
     "minDistance" : 5
   },
+  "BlockDropGrammar": {
+    "blockDrops": [],
+    "itemDrops": ["2*WildAnimals:meat"]
+  },
   "Stand" :{
     "animationPool": [
       "deerIdle",
