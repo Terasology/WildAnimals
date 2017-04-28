@@ -18,6 +18,12 @@ package org.terasology.wildAnimals.FleeOnHit;
 import org.terasology.entitySystem.Component;
 import org.terasology.entitySystem.entity.EntityRef;
 
+/**
+ * If this component is attached to a WildAnimal entity it will exhibit the flee-on-hit behavior
+ * When hit, the animal will run with a speed of `speedMultiplier`*normalSpeed
+ * till it is at a safe `minDistance` from the damage inflicter- `instigator`.
+ * When it reaches a safe distance the instigator is set to null.
+ */
 public class FleeOnHitComponent implements Component {
     // Minimum distance from instigator after which the deer will stop 'flee'ing
     public float minDistance = 10f;
