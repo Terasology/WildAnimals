@@ -60,7 +60,7 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             // Start fleeing behavior, when a hit that is recorded is recent
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             behaviorComponent.tree = assetManager.getAsset("WildAnimals:flee", BehaviorTree.class).get();
-            //logger.info("Changed behavior to Flee");
+            logger.info("Changed behavior to Flee");
             // Increase speed by multiplier factor
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
             characterMovementComponent.speedMultiplier = fleeOnHitComponent.speedMultiplier;
@@ -77,12 +77,13 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             // Restore speed to normal
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
-            characterMovementComponent.speedMultiplier = fleeOnHitComponent.speedMultiplier;
+            characterMovementComponent.speedMultiplier = fleeOnHitComponent.defaultSpeedMultipler;
             entity.saveComponent(characterMovementComponent);
             // Change behavior to "stray"
             behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
-            //logger.info("Changed behavior to stray");
-            entity.saveComponent(behaviorComponent);
+            logger.info("Changed behavior to stray");
+            entity.removeComponent(BehaviorComponent.class);
+            entity.addComponent(behaviorComponent);
         }
     }
 }

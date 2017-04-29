@@ -67,9 +67,7 @@ public class CheckFleeStopNode extends Node {
             float minDistanceSquared = minDistance * minDistance;
 
             // Triggers an updateBehaviorEvent for the entity when it reaches a safe distance from flee instigator
-            // logger.info("currentDisanceSquared: " + currentDistanceSquared + "minDistanceSquared: " + minDistanceSquared);
             if (currentDistanceSquared >= minDistanceSquared) {
-                //logger.info("Stopping Flee");
                 fleeOnHitComponent.instigator = null;
                 this.actor().getEntity().saveComponent(fleeOnHitComponent);
                 this.actor().getEntity().send(new UpdateBehaviorEvent());

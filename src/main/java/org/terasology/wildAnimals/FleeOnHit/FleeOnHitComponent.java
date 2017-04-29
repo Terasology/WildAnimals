@@ -29,6 +29,8 @@ public class FleeOnHitComponent implements Component {
     public float minDistance = 10f;
     // Speed factor by which flee speed increases
     public float speedMultiplier = 1.2f;
+    // Speed Multiplier for default walk mode
+    public float defaultSpeedMultipler = 0.3f;
     public EntityRef instigator;
     public long timeWhenHit;
 }

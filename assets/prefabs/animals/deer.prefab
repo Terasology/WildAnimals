@@ -10,7 +10,9 @@
     "tree" : "stray"
   },
   "FleeOnHit" : {
-    "minDistance" : 5
+    "minDistance" : 5,
+    "defaultSpeedMultiplier" : 0.3,
+    "speedMultiplier" : 1.2
   },
   "BlockDropGrammar": {
     "blockDrops": [],
@@ -34,8 +36,9 @@
   },
   "persisted" : true,
   "location" : {},
-  "Character": {},
-  "WildAnimal": {},
+  "Character" : {},
+  "WildAnimal" : {},
+  "NPCMovement" : {},
   "CreatureNameGenerator" : {
     "genderRatio" : 0.5,
     "nobility" : 0.5,
