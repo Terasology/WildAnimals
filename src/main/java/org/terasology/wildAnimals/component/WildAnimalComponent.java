@@ -16,10 +16,18 @@
 package org.terasology.wildAnimals.component;
 
 import org.terasology.entitySystem.Component;
+import org.terasology.network.FieldReplicateType;
+import org.terasology.network.Replicate;
+import org.terasology.rendering.assets.texture.TextureRegionAsset;
 
 /**
  * All WildAnimal entities have the WildAnimal component.
  * Helps the DeathSystem receive selected BeforeDestroyEvent
  */
 public class WildAnimalComponent implements Component {
+    /**
+     * Name of the icon this WildAnimal has
+     */
+    @Replicate(value = FieldReplicateType.SERVER_TO_CLIENT, initialOnly = true)
+    public TextureRegionAsset<?> icon;
 }

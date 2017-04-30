@@ -37,7 +37,9 @@
   "persisted" : true,
   "location" : {},
   "Character" : {},
-  "WildAnimal" : {},
+  "WildAnimal" : {
+    "icon": "WildAnimals:deerIcon"
+  },
   "NPCMovement" : {},
   "CreatureNameGenerator" : {
     "genderRatio" : 0.5,
