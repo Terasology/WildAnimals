@@ -15,12 +15,12 @@
  */
 package org.terasology.wildAnimals;
 
-import org.terasology.entitySystem.event.Event;
+import org.terasology.entitySystem.event.AbstractConsumableEvent;
 
 /**
  * This event is sent whenever an entity requires a change in it's behavior tree.
  * Using this event several behavior trees can be chained together to facilitate
  * an event driven behavior tree system.
  */
-public class UpdateBehaviorEvent implements Event {
+public class UpdateBehaviorEvent extends AbstractConsumableEvent {
 }

@@ -55,8 +55,10 @@ public class FleeOnHitSystem extends BaseComponentSystem {
 
 
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = FleeOnHitComponent.class)
-    public void onUpdateBehavior(UpdateBehaviorEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
+    public void onUpdateBehaviorFlee(UpdateBehaviorEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
         if (fleeOnHitComponent.instigator != null) {
+            event.consume();
+
             // Start fleeing behavior, when a hit that is recorded is recent
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             behaviorComponent.tree = assetManager.getAsset("WildAnimals:flee", BehaviorTree.class).get();
@@ -69,8 +71,10 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             //entity.saveComponent(behaviorComponent);
             entity.removeComponent(BehaviorComponent.class);
             entity.addComponent(behaviorComponent);
-
-        } else {
+        }
+    }
+        @ReceiveEvent(priority = EventPriority.PRIORITY_LOW, components = FleeOnHitComponent.class)
+        public void onUpdateBehaviorStray(UpdateBehaviorEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
             // To stop 'flee'ing behavior
             fleeOnHitComponent.instigator = null;
             entity.saveComponent(fleeOnHitComponent);
@@ -84,6 +88,5 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             logger.info("Changed behavior to stray");
             entity.removeComponent(BehaviorComponent.class);
             entity.addComponent(behaviorComponent);
-        }
     }
 }
