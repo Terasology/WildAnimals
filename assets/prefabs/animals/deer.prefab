@@ -38,6 +38,7 @@
   "location" : {},
   "Character" : {},
   "WildAnimal" : {
+    "name": "Deer",
     "icon": "WildAnimals:deerIcon"
   },
   "NPCMovement" : {},

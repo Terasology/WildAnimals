@@ -28,6 +28,10 @@ public class WildAnimalComponent implements Component {
     /**
      * Name of the icon this WildAnimal has
      */
+    public String name;
+    /**
+     * Name of the icon this WildAnimal has
+     */
     @Replicate(value = FieldReplicateType.SERVER_TO_CLIENT, initialOnly = true)
     public TextureRegionAsset<?> icon;
 }
