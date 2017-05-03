@@ -22,12 +22,12 @@ import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.layers.ingame.inventory.GetTooltipIconEvent;
-import org.terasology.rendering.nui.layers.ingame.inventory.GetTooltipNameEvent;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
+import org.terasology.worldlyTooltip.events.GetTooltipIconEvent;
+import org.terasology.worldlyTooltip.events.GetTooltipNameEvent;
 
-@RegisterSystem(RegisterMode.CLIENT)
+@RegisterSystem(value = RegisterMode.CLIENT, requiresOptional = {"WorldlyTooltip"})
 public class WildAnimalsTooltipSystem extends BaseComponentSystem {
 
     /*

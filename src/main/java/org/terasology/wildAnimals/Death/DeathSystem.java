@@ -29,25 +29,12 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.entitySystem.systems.UpdateSubscriberSystem;
 import org.terasology.logic.behavior.BehaviorComponent;
 import org.terasology.logic.characters.CharacterMovementComponent;
-import org.terasology.logic.common.DisplayNameComponent;
-import org.terasology.logic.common.lifespan.LifespanComponent;
 import org.terasology.logic.health.BeforeDestroyEvent;
 import org.terasology.logic.health.DoDestroyEvent;
-import org.terasology.logic.inventory.events.DropItemEvent;
-import org.terasology.logic.location.LocationComponent;
-import org.terasology.math.geom.Vector3f;
-import org.terasology.registry.CoreRegistry;
 import org.terasology.registry.In;
 import org.terasology.rendering.assets.animation.MeshAnimation;
 import org.terasology.rendering.logic.SkeletalMeshComponent;
-import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.layers.ingame.inventory.GetTooltipIconEvent;
-import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
-import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockManager;
-
-import java.util.List;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class DeathSystem extends BaseComponentSystem implements UpdateSubscriberSystem {
