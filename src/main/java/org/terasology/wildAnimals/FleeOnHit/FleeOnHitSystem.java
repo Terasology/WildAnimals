@@ -67,10 +67,7 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
             characterMovementComponent.speedMultiplier = fleeOnHitComponent.speedMultiplier;
             entity.saveComponent(characterMovementComponent);
-            //TODO: add a onBehaviorChanged method to BehaviorSystem that receives a OnChangedComponent Event
-            //entity.saveComponent(behaviorComponent);
-            entity.removeComponent(BehaviorComponent.class);
-            entity.addComponent(behaviorComponent);
+            entity.saveComponent(behaviorComponent);
         }
     }
         @ReceiveEvent(priority = EventPriority.PRIORITY_LOW, components = FleeOnHitComponent.class)
@@ -86,7 +83,6 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             // Change behavior to "stray"
             behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
             logger.info("Changed behavior to stray");
-            entity.removeComponent(BehaviorComponent.class);
-            entity.addComponent(behaviorComponent);
+            entity.saveComponent(behaviorComponent);
     }
 }
