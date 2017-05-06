@@ -24,10 +24,10 @@ import org.terasology.logic.common.DisplayNameComponent;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
 import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
-import org.terasology.worldlyTooltip.events.GetTooltipIconEvent;
-import org.terasology.worldlyTooltip.events.GetTooltipNameEvent;
+import org.terasology.worldlyTooltipAPI.events.GetTooltipIconEvent;
+import org.terasology.worldlyTooltipAPI.events.GetTooltipNameEvent;
 
-@RegisterSystem(value = RegisterMode.CLIENT, requiresOptional = {"WorldlyTooltip"})
+@RegisterSystem(value = RegisterMode.CLIENT)
 public class WildAnimalsTooltipSystem extends BaseComponentSystem {
 
     /*

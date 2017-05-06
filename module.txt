@@ -1,7 +1,7 @@
 {
     "id" : "WildAnimals",
     "version" : "0.1.1-SNAPSHOT",
-    "author" : "glasz, flo",
+    "author" : "glasz, flo, nihal111, quaternius",
     "displayName" : "WildAnimals",
     "description" : "Contains so far only a deer. Can be spawned with spawnPrefab deer",
     "dependencies" : [{
@@ -14,9 +14,8 @@
             "id" : "NameGenerator",
             "minVersion" : "0.4.0"
         },{
-             "id" : "WorldlyTooltip",
-             "minVersion" : "1.0.0",
-             "optional" : true
-         }],
+             "id" : "WorldlyTooltipAPI",
+             "minVersion" : "0.1.0"
+        }],
     "isServerSideOnly" : false
 }
