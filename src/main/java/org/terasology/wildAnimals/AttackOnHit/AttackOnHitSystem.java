@@ -64,8 +64,8 @@ public class AttackOnHitSystem extends BaseComponentSystem {
 
             // Start attacking behavior, when a hit that is recorded is recent
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            behaviorComponent.tree = assetManager.getAsset("WildAnimals:attackInProximity", BehaviorTree.class).get();
-            logger.info("Changed behavior to Attack");
+            behaviorComponent.tree = assetManager.getAsset("WildAnimals:hostileOnHit", BehaviorTree.class).get();
+            logger.info("Changed behavior to Hostile");
             // Increase speed by multiplier factor
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
             characterMovementComponent.speedMultiplier = attackOnHitComponent.speedMultiplier;
