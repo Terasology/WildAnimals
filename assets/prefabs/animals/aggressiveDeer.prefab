@@ -10,7 +10,7 @@
     "tree" : "stray"
   },
   "AttackOnHit" : {
-    "maxDistance" : 5,
+    "maxDistance" : 15,
     "defaultSpeedMultiplier" : 0.3,
     "speedMultiplier" : 1.2
   },

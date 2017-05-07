@@ -43,7 +43,7 @@ public class AttackOnHitSystem extends BaseComponentSystem {
     private AssetManager assetManager;
 
     /**
-     * Updares the AttackOnHitComponent with information about the hit
+     * Updates the AttackOnHitComponent with information about the hit
      */
     @ReceiveEvent(components = AttackOnHitComponent.class)
     public void onDamage(OnDamagedEvent event, EntityRef entity, AttackOnHitComponent attackOnHitComponent) {
@@ -61,7 +61,6 @@ public class AttackOnHitSystem extends BaseComponentSystem {
     public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackOnHitComponent attackOnHitComponent) {
         if (attackOnHitComponent.instigator != null) {
             event.consume();
-
             // Start attacking behavior, when a hit that is recorded is recent
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             behaviorComponent.tree = assetManager.getAsset("WildAnimals:hostileOnHit", BehaviorTree.class).get();

@@ -25,7 +25,7 @@ import org.terasology.entitySystem.entity.EntityRef;
  * When it reaches a greater distance, the instigator is set to null, and the animal stops.
  */
 public class AttackOnHitComponent implements Component {
-    // Minimum distance from instigator after which the deer will stop chasing to attack
+    // Maximum distance from instigator after which the animal will stop chasing to attack
     public float maxDistance = 10f;
     // Speed factor by which attack speed increases
     public float speedMultiplier = 1.2f;

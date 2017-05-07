@@ -39,9 +39,6 @@ import java.util.List;
  */
 public class CheckAttackStopNode extends Node {
 
-    @Range(min = 2, max = 50)
-    private float maxDistance = 15.0f;
-
     @Override
     public CheckAttackStopTask createTask() {
         return new CheckAttackStopTask(this);
@@ -75,8 +72,9 @@ public class CheckAttackStopNode extends Node {
                 return Status.FAILURE;
             }
             Vector3f actorPosition = actorLocationComponent.getWorldPosition();
+            float maxDistance = this.actor().getComponent(AttackOnHitComponent.class).maxDistance;
 
-            float maxDistanceSquared = getNode().getMaxDistance()*getNode().getMaxDistance();
+            float maxDistanceSquared = maxDistance*maxDistance;
             FollowComponent followWish = actor().getComponent(FollowComponent.class);
             if (followWish == null || followWish.entityToFollow == null) {
                 return Status.FAILURE;
@@ -101,9 +99,5 @@ public class CheckAttackStopNode extends Node {
         public CheckAttackStopNode getNode() {
             return (CheckAttackStopNode) super.getNode();
         }
-    }
-
-    public float getMaxDistance() {
-        return maxDistance;
     }
 }

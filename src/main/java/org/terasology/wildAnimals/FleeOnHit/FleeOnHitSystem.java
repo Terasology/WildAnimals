@@ -43,7 +43,7 @@ public class FleeOnHitSystem extends BaseComponentSystem {
     private AssetManager assetManager;
 
     /**
-     * Updares the FleeOnHitComponent with information about the hit
+     * Updates the FleeOnHitComponent with information about the hit
      */
     @ReceiveEvent(components = FleeOnHitComponent.class)
     public void onDamage(OnDamagedEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
