@@ -26,7 +26,6 @@ import org.terasology.math.geom.Vector3f;
 import org.terasology.network.ClientComponent;
 import org.terasology.pathfinding.components.FollowComponent;
 import org.terasology.registry.In;
-import org.terasology.rendering.nui.properties.Range;
 import org.terasology.wildAnimals.UpdateBehaviorEvent;
 
 import java.util.List;
@@ -36,19 +35,19 @@ import java.util.List;
  * Sends FAILURE when the distance is greater than maxDistance
  * along with an UpdateBehaviorEvent
  */
-public class CheckProximityAttackStopNode extends Node {
+public class CheckProximityAttackStartNode extends Node {
 
     @Override
-    public CheckProximityAttackStopTask createTask() {
-        return new CheckProximityAttackStopTask(this);
+    public CheckProximityAttackStartTask createTask() {
+        return new CheckProximityAttackStartTask(this);
     }
 
-    public static class CheckProximityAttackStopTask extends Task {
+    public static class CheckProximityAttackStartTask extends Task {
 
         @In
         private EntityManager entityManager;
 
-        public CheckProximityAttackStopTask(Node node) {
+        public CheckProximityAttackStartTask(Node node) {
             super(node);
         }
 
@@ -67,9 +66,6 @@ public class CheckProximityAttackStopNode extends Node {
 
         private Status getStatusWithoutReturn() {
             LocationComponent actorLocationComponent = actor().getComponent(LocationComponent.class);
-            if (actorLocationComponent == null) {
-                return Status.FAILURE;
-            }
             Vector3f actorPosition = actorLocationComponent.getWorldPosition();
 
             float maxDistance = this.actor().getComponent(AttackInProximityComponent.class).maxDistance;
@@ -90,19 +86,19 @@ public class CheckProximityAttackStopNode extends Node {
             }
 
             if (charactersWithinRange.isEmpty()) {
-                return Status.FAILURE;
+                return Status.RUNNING;
             }
 
             FollowComponent followWish = actor().getComponent(FollowComponent.class);
             if (followWish == null) {
-                return Status.FAILURE;
+                return Status.RUNNING;
             }
 
             // TODO select closest character
             EntityRef someCharacterWithinRange = charactersWithinRange.get(0);
             followWish.entityToFollow = someCharacterWithinRange;
             actor().save(followWish);
-            return Status.RUNNING;
+            return Status.FAILURE;
         }
 
         @Override
@@ -111,8 +107,8 @@ public class CheckProximityAttackStopNode extends Node {
         }
 
         @Override
-        public CheckProximityAttackStopNode getNode() {
-            return (CheckProximityAttackStopNode) super.getNode();
+        public CheckProximityAttackStartNode getNode() {
+            return (CheckProximityAttackStartNode) super.getNode();
         }
     }
 }

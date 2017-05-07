@@ -1,0 +1,11 @@
+{
+  "BehaviorNode" : {
+    "type"      : "checkProximityAttackStartNode",
+    "name"      : "Check Proximity Attack Start",
+    "category"  : "wildAnimals",
+    "shape"     : "rect",
+    "color"     : [180, 180, 180, 255],
+    "description": "Checks if hostile behavior needs to be started, by checking for client entities nearby. \nRUNNING: When hostile behavior should not start.\nFAILURE: When hostile behavior needs to be started",
+    "textColor" : [0, 0, 0, 255]
+  }
+}

@@ -61,10 +61,9 @@ public class AttackInProximitySystem extends BaseComponentSystem {
     public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent) {
         if (attackInProximityComponent.instigator != null) {
             event.consume();
-
-            // Start attacking behavior, when a hit that is recorded is recent
+            // Start hostile behavior, when an entity enters nearby
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            behaviorComponent.tree = assetManager.getAsset("WildAnimals:hostileOnHit", BehaviorTree.class).get();
+            behaviorComponent.tree = assetManager.getAsset("WildAnimals:attackInProximityHostile", BehaviorTree.class).get();
             logger.info("Changed behavior to Hostile");
             // Increase speed by multiplier factor
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
@@ -84,8 +83,8 @@ public class AttackInProximitySystem extends BaseComponentSystem {
             characterMovementComponent.speedMultiplier = attackInProximityComponent.defaultSpeedMultipler;
             entity.saveComponent(characterMovementComponent);
             // Change behavior to "stray"
-            behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
-            logger.info("Changed behavior to stray");
+            behaviorComponent.tree = assetManager.getAsset("WildAnimals:attackInProximityStray", BehaviorTree.class).get();
+            logger.info("Changed behavior to Stray");
             entity.saveComponent(behaviorComponent);
     }
 }
