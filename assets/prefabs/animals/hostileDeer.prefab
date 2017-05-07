@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "stray"
+    "tree" : "attackInProximityStray"
   },
   "AttackInProximity" : {
     "maxDistance" : 10,

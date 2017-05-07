@@ -57,7 +57,7 @@ public class CheckProximityAttackStopNode extends Node {
             Status status = getStatusWithoutReturn();
             if (status == Status.FAILURE) {
                 AttackInProximityComponent attackInProximityComponent = this.actor().getComponent(AttackInProximityComponent.class);
-                attackInProximityComponent.instigator = null;
+                attackInProximityComponent.nearbyEntity = null;
                 this.actor().getEntity().saveComponent(attackInProximityComponent);
                 this.actor().getEntity().removeComponent(FollowComponent.class);
                 this.actor().getEntity().send(new UpdateBehaviorEvent());
@@ -102,6 +102,8 @@ public class CheckProximityAttackStopNode extends Node {
             EntityRef someCharacterWithinRange = charactersWithinRange.get(0);
             followWish.entityToFollow = someCharacterWithinRange;
             actor().save(followWish);
+            AttackInProximityComponent attackInProximityComponent = actor().getComponent(AttackInProximityComponent.class);
+            attackInProximityComponent.nearbyEntity = someCharacterWithinRange;
             return Status.RUNNING;
         }
 

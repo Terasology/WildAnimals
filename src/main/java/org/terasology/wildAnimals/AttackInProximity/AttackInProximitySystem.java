@@ -42,24 +42,9 @@ public class AttackInProximitySystem extends BaseComponentSystem {
     @In
     private AssetManager assetManager;
 
-    /**
-     * Updares the AttackInProximityComponent with information about the hit
-     */
-    @ReceiveEvent(components = AttackInProximityComponent.class)
-    public void onDamage(OnDamagedEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent) {
-        attackInProximityComponent.instigator = event.getInstigator();
-        attackInProximityComponent.timeWhenHit = time.getGameTimeInMs();
-        entity.saveComponent(attackInProximityComponent);
-        FollowComponent followComponent = new FollowComponent();
-        followComponent.entityToFollow = event.getInstigator();
-        entity.addOrSaveComponent(followComponent);
-        entity.send(new UpdateBehaviorEvent());
-    }
-
-
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = AttackInProximityComponent.class)
     public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent) {
-        if (attackInProximityComponent.instigator != null) {
+        if (attackInProximityComponent.nearbyEntity != null) {
             event.consume();
             // Start hostile behavior, when an entity enters nearby
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
@@ -75,7 +60,7 @@ public class AttackInProximitySystem extends BaseComponentSystem {
         @ReceiveEvent(priority = EventPriority.PRIORITY_LOW, components = AttackInProximityComponent.class)
         public void onUpdateBehaviorStray(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent) {
             // To stop 'attack'ing behavior
-            attackInProximityComponent.instigator = null;
+            attackInProximityComponent.nearbyEntity = null;
             entity.saveComponent(attackInProximityComponent);
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
             // Restore speed to normal

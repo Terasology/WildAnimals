@@ -16,6 +16,8 @@
 package org.terasology.wildAnimals.AttackInProximity;
 
 import com.google.common.collect.Lists;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.logic.behavior.tree.Node;
@@ -51,20 +53,10 @@ public class CheckProximityAttackStartNode extends Node {
             super(node);
         }
 
+        private static final Logger logger = LoggerFactory.getLogger(CheckProximityAttackStartNode.class);
+
         @Override
         public Status update(float dt) {
-            Status status = getStatusWithoutReturn();
-            if (status == Status.FAILURE) {
-                AttackInProximityComponent attackInProximityComponent = this.actor().getComponent(AttackInProximityComponent.class);
-                attackInProximityComponent.instigator = null;
-                this.actor().getEntity().saveComponent(attackInProximityComponent);
-                this.actor().getEntity().removeComponent(FollowComponent.class);
-                this.actor().getEntity().send(new UpdateBehaviorEvent());
-            }
-            return status;
-        }
-
-        private Status getStatusWithoutReturn() {
             LocationComponent actorLocationComponent = actor().getComponent(LocationComponent.class);
             Vector3f actorPosition = actorLocationComponent.getWorldPosition();
 
@@ -82,6 +74,7 @@ public class CheckProximityAttackStartNode extends Node {
                 }
                 if (locationComponent.getWorldPosition().distanceSquared(actorPosition) <= maxDistanceSquared) {
                     charactersWithinRange.add(character);
+                    break;
                 }
             }
 
@@ -89,15 +82,12 @@ public class CheckProximityAttackStartNode extends Node {
                 return Status.RUNNING;
             }
 
-            FollowComponent followWish = actor().getComponent(FollowComponent.class);
-            if (followWish == null) {
-                return Status.RUNNING;
-            }
-
             // TODO select closest character
             EntityRef someCharacterWithinRange = charactersWithinRange.get(0);
-            followWish.entityToFollow = someCharacterWithinRange;
-            actor().save(followWish);
+            AttackInProximityComponent attackInProximityComponent = this.actor().getComponent(AttackInProximityComponent.class);
+            attackInProximityComponent.nearbyEntity = someCharacterWithinRange;
+            this.actor().getEntity().saveComponent(attackInProximityComponent);
+            this.actor().getEntity().send(new UpdateBehaviorEvent());
             return Status.FAILURE;
         }
 
