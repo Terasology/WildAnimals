@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals.FleeOnHit;
+package org.terasology.wildAnimals.AttackOnHit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,14 +28,14 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.logic.behavior.BehaviorComponent;
 import org.terasology.logic.behavior.asset.BehaviorTree;
 import org.terasology.logic.characters.CharacterMovementComponent;
-import org.terasology.logic.health.HealthComponent;
 import org.terasology.logic.health.OnDamagedEvent;
+import org.terasology.pathfinding.components.FollowComponent;
 import org.terasology.registry.In;
 import org.terasology.wildAnimals.UpdateBehaviorEvent;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
-public class FleeOnHitSystem extends BaseComponentSystem {
-    private static final Logger logger = LoggerFactory.getLogger(FleeOnHitSystem.class);
+public class AttackOnHitSystem extends BaseComponentSystem {
+    private static final Logger logger = LoggerFactory.getLogger(AttackOnHitSystem.class);
 
     @In
     private Time time;
@@ -43,29 +43,31 @@ public class FleeOnHitSystem extends BaseComponentSystem {
     private AssetManager assetManager;
 
     /**
-     * Updates the FleeOnHitComponent with information about the hit
+     * Updates the AttackOnHitComponent with information about the hit
      */
-    @ReceiveEvent(components = FleeOnHitComponent.class)
-    public void onDamage(OnDamagedEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
-        fleeOnHitComponent.instigator = event.getInstigator();
-        fleeOnHitComponent.timeWhenHit = time.getGameTimeInMs();
-        entity.saveComponent(fleeOnHitComponent);
+    @ReceiveEvent(components = AttackOnHitComponent.class)
+    public void onDamage(OnDamagedEvent event, EntityRef entity, AttackOnHitComponent attackOnHitComponent) {
+        attackOnHitComponent.instigator = event.getInstigator();
+        attackOnHitComponent.timeWhenHit = time.getGameTimeInMs();
+        entity.saveComponent(attackOnHitComponent);
+        FollowComponent followComponent = new FollowComponent();
+        followComponent.entityToFollow = event.getInstigator();
+        entity.addOrSaveComponent(followComponent);
         entity.send(new UpdateBehaviorEvent());
     }
 
 
-    @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = FleeOnHitComponent.class)
-    public void onUpdateBehaviorFlee(UpdateBehaviorEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
-        if (fleeOnHitComponent.instigator != null) {
+    @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = AttackOnHitComponent.class)
+    public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackOnHitComponent attackOnHitComponent) {
+        if (attackOnHitComponent.instigator != null) {
             event.consume();
-
-            // Start fleeing behavior, when a hit that is recorded is recent
+            // Start attacking behavior, when a hit that is recorded is recent
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            behaviorComponent.tree = assetManager.getAsset("WildAnimals:flee", BehaviorTree.class).get();
-            logger.info("Changed behavior to Flee");
+            behaviorComponent.tree = assetManager.getAsset("WildAnimals:hostileOnHit", BehaviorTree.class).get();
+            logger.info("Changed behavior to Hostile");
             // Increase speed by multiplier factor
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
-            characterMovementComponent.speedMultiplier = fleeOnHitComponent.speedMultiplier;
+            characterMovementComponent.speedMultiplier = attackOnHitComponent.speedMultiplier;
             entity.saveComponent(characterMovementComponent);
             entity.saveComponent(behaviorComponent);
         }
