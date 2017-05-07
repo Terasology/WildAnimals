@@ -70,19 +70,4 @@ public class FleeOnHitSystem extends BaseComponentSystem {
             entity.saveComponent(behaviorComponent);
         }
     }
-        @ReceiveEvent(priority = EventPriority.PRIORITY_LOW, components = FleeOnHitComponent.class)
-        public void onUpdateBehaviorStray(UpdateBehaviorEvent event, EntityRef entity, FleeOnHitComponent fleeOnHitComponent) {
-            // To stop 'flee'ing behavior
-            fleeOnHitComponent.instigator = null;
-            entity.saveComponent(fleeOnHitComponent);
-            BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            // Restore speed to normal
-            CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
-            characterMovementComponent.speedMultiplier = fleeOnHitComponent.defaultSpeedMultipler;
-            entity.saveComponent(characterMovementComponent);
-            // Change behavior to "stray"
-            behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
-            logger.info("Changed behavior to stray");
-            entity.saveComponent(behaviorComponent);
-    }
 }

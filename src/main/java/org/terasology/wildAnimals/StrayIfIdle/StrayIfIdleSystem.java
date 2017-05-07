@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals.AttackOnHit;
+package org.terasology.wildAnimals.StrayIfIdle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,45 +31,28 @@ import org.terasology.logic.characters.CharacterMovementComponent;
 import org.terasology.logic.health.OnDamagedEvent;
 import org.terasology.pathfinding.components.FollowComponent;
 import org.terasology.registry.In;
+import org.terasology.wildAnimals.AttackOnHit.AttackOnHitComponent;
 import org.terasology.wildAnimals.UpdateBehaviorEvent;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
-public class AttackOnHitSystem extends BaseComponentSystem {
-    private static final Logger logger = LoggerFactory.getLogger(AttackOnHitSystem.class);
+public class StrayIfIdleSystem extends BaseComponentSystem {
+    private static final Logger logger = LoggerFactory.getLogger(StrayIfIdleSystem.class);
 
     @In
     private Time time;
     @In
     private AssetManager assetManager;
 
-    /**
-     * Updates the AttackOnHitComponent with information about the hit
-     */
-    @ReceiveEvent(components = AttackOnHitComponent.class)
-    public void onDamage(OnDamagedEvent event, EntityRef entity, AttackOnHitComponent attackOnHitComponent) {
-        attackOnHitComponent.instigator = event.getInstigator();
-        attackOnHitComponent.timeWhenHit = time.getGameTimeInMs();
-        entity.saveComponent(attackOnHitComponent);
-        FollowComponent followComponent = new FollowComponent();
-        followComponent.entityToFollow = event.getInstigator();
-        entity.addOrSaveComponent(followComponent);
-        entity.send(new UpdateBehaviorEvent());
-    }
-
-
-    @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = AttackOnHitComponent.class)
-    public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackOnHitComponent attackOnHitComponent) {
-        if (attackOnHitComponent.instigator != null) {
-            event.consume();
-            // Start attacking behavior, when a hit that is recorded is recent
+        @ReceiveEvent(priority = EventPriority.PRIORITY_LOW, components = StrayIfIdleComponent.class)
+        public void onUpdateBehaviorStray(UpdateBehaviorEvent event, EntityRef entity, StrayIfIdleComponent strayIfIdleComponent) {
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            behaviorComponent.tree = assetManager.getAsset("WildAnimals:hostileOnHit", BehaviorTree.class).get();
-            logger.info("Changed behavior to Hostile");
-            // Increase speed by multiplier factor
+            // Restore speed to normal
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
-            characterMovementComponent.speedMultiplier = attackOnHitComponent.speedMultiplier;
+            characterMovementComponent.speedMultiplier = strayIfIdleComponent.defaultSpeedMultipler;
             entity.saveComponent(characterMovementComponent);
+            // Change behavior to "stray"
+            behaviorComponent.tree = assetManager.getAsset("Pathfinding:stray", BehaviorTree.class).get();
+            logger.info("Changed behavior to stray");
             entity.saveComponent(behaviorComponent);
-        }
     }
 }

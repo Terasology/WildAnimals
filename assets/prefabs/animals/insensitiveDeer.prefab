@@ -9,6 +9,9 @@
   "Behavior" : {
     "tree" : "stray"
   },
+  "StrayIfIdle" : {
+    "defaultSpeedMultiplier" : 0.3
+  },
   "Stand" :{
     "animationPool": [
       "deerIdle",

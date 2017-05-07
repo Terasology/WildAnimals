@@ -11,8 +11,10 @@
   },
   "FleeOnHit" : {
     "minDistance" : 5,
-    "defaultSpeedMultiplier" : 0.3,
     "speedMultiplier" : 1.2
+  },
+  "StrayIfIdle" : {
+    "defaultSpeedMultiplier" : 0.3
   },
   "BlockDropGrammar": {
     "blockDrops": [],

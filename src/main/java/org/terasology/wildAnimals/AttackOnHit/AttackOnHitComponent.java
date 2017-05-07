@@ -29,8 +29,6 @@ public class AttackOnHitComponent implements Component {
     public float maxDistance = 10f;
     // Speed factor by which attack speed increases
     public float speedMultiplier = 1.2f;
-    // Speed Multiplier for default walk mode
-    public float defaultSpeedMultipler = 0.3f;
     public EntityRef instigator;
     public long timeWhenHit;
 }
