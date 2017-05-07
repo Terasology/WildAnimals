@@ -93,15 +93,11 @@ public class CheckProximityAttackStopNode extends Node {
                 return Status.FAILURE;
             }
 
-            FollowComponent followWish = actor().getComponent(FollowComponent.class);
-            if (followWish == null) {
-                return Status.FAILURE;
-            }
-
             // TODO select closest character
             EntityRef someCharacterWithinRange = charactersWithinRange.get(0);
-            followWish.entityToFollow = someCharacterWithinRange;
-            actor().save(followWish);
+            FollowComponent followComponent = new FollowComponent();
+            followComponent.entityToFollow = someCharacterWithinRange;
+            this.actor().getEntity().addOrSaveComponent(followComponent);
             AttackInProximityComponent attackInProximityComponent = actor().getComponent(AttackInProximityComponent.class);
             attackInProximityComponent.nearbyEntity = someCharacterWithinRange;
             return Status.RUNNING;

@@ -25,7 +25,7 @@
                       "nodeType": "engine:LookupNode",
                       "nodeId": 4,
                       "node": {
-                        "tree": "Pathfinding:attackPlayerToFollow"
+                        "tree": "Pathfinding:hostile"
                       }
                     }
                   }
