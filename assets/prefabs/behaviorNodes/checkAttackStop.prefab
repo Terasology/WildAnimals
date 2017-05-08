@@ -1,6 +1,6 @@
 {
   "BehaviorNode" : {
-    "type"      : "checkAtackStopNode",
+    "type"      : "checkAttackStopNode",
     "name"      : "Check Attack Stop",
     "category"  : "wildAnimals",
     "shape"     : "rect",
