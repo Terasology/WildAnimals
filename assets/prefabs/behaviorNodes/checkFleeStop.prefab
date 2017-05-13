@@ -5,7 +5,7 @@
     "category"  : "wildAnimals",
     "shape"     : "rect",
     "color"     : [180, 180, 180, 255],
-    "description": "Checks if fleeing needs to be stopped, by calculating distance from instigator. \nSUCCESS: When fleeing should not stop.\nFAILURE: When fleeing needs to be stopped",
+    "description": "Checks if fleeing needs to be stopped, by calculating distance from instigator. \nRUNNING: When fleeing should not stop.\nFAILURE: When fleeing needs to be stopped",
     "textColor" : [0, 0, 0, 255]
   }
 }

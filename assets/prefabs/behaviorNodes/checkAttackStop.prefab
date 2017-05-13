@@ -1,0 +1,11 @@
+{
+  "BehaviorNode" : {
+    "type"      : "checkAttackStopNode",
+    "name"      : "Check Attack Stop",
+    "category"  : "wildAnimals",
+    "shape"     : "rect",
+    "color"     : [180, 180, 180, 255],
+    "description": "Checks if hostile behavior needs to be stopped for attackOnHit behavior, by calculating distance from instigator. \nRUNNING: When chasing should not stop.\nFAILURE: When chasing needs to be stopped",
+    "textColor" : [0, 0, 0, 255]
+  }
+}
