@@ -28,11 +28,9 @@ import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.logic.behavior.BehaviorComponent;
 import org.terasology.logic.behavior.asset.BehaviorTree;
 import org.terasology.logic.characters.CharacterMovementComponent;
-import org.terasology.logic.health.OnDamagedEvent;
 import org.terasology.pathfinding.components.FollowComponent;
 import org.terasology.registry.In;
-import org.terasology.wildAnimals.FindNearbyEntities.FindNearbyEntitiesComponent;
-import org.terasology.wildAnimals.FindNearbyEntities.FindNearbyEntitiesSystem;
+import org.terasology.wildAnimals.FindNearbyPlayers.FindNearbyPlayersComponent;
 import org.terasology.wildAnimals.UpdateBehaviorEvent;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
@@ -45,10 +43,10 @@ public class AttackInProximitySystem extends BaseComponentSystem {
     private AssetManager assetManager;
 
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = AttackInProximityComponent.class)
-    public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent, FindNearbyEntitiesComponent findNearbyEntitiesComponent) {
-        if (findNearbyEntitiesComponent.charactersWithinRange != null && findNearbyEntitiesComponent.charactersWithinRange.size() > 0) {
+    public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent, FindNearbyPlayersComponent findNearbyPlayersComponent) {
+        if (findNearbyPlayersComponent.charactersWithinRange != null && findNearbyPlayersComponent.charactersWithinRange.size() > 0) {
             event.consume();
-            EntityRef someCharacterWithinRange = findNearbyEntitiesComponent.charactersWithinRange.get(0);
+            EntityRef someCharacterWithinRange = findNearbyPlayersComponent.charactersWithinRange.get(0);
             FollowComponent followComponent = new FollowComponent();
             followComponent.entityToFollow = someCharacterWithinRange;
             entity.addOrSaveComponent(followComponent);

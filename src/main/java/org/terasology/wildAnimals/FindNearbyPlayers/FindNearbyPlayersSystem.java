@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals.FindNearbyEntities;
+package org.terasology.wildAnimals.FindNearbyPlayers;
 
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
@@ -35,10 +35,10 @@ import java.util.List;
 import java.util.Set;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
-public class FindNearbyEntitiesSystem extends BaseComponentSystem implements UpdateSubscriberSystem {
+public class FindNearbyPlayersSystem extends BaseComponentSystem implements UpdateSubscriberSystem {
 
 
-    private static final Logger logger = LoggerFactory.getLogger(FindNearbyEntitiesSystem.class);
+    private static final Logger logger = LoggerFactory.getLogger(FindNearbyPlayersSystem.class);
 
     @In
     private EntityManager entityManager;
@@ -46,10 +46,10 @@ public class FindNearbyEntitiesSystem extends BaseComponentSystem implements Upd
     @Override
     public void update(float delta) {
         // Iterate through all the Breaking blocks
-        for (EntityRef entity : entityManager.getEntitiesWith(FindNearbyEntitiesComponent.class)) {
+        for (EntityRef entity : entityManager.getEntitiesWith(FindNearbyPlayersComponent.class)) {
             Vector3f actorPosition = entity.getComponent(LocationComponent.class).getWorldPosition();
-            FindNearbyEntitiesComponent findNearbyEntitiesComponent = entity.getComponent(FindNearbyEntitiesComponent.class);
-            float maxDistance = findNearbyEntitiesComponent.searchRadius;
+            FindNearbyPlayersComponent findNearbyPlayersComponent = entity.getComponent(FindNearbyPlayersComponent.class);
+            float maxDistance = findNearbyPlayersComponent.searchRadius;
             float maxDistanceSquared = maxDistance*maxDistance;
             Iterable<EntityRef> clients = entityManager.getEntitiesWith(ClientComponent.class);
             List<EntityRef> charactersWithinRange = Lists.newArrayList();
@@ -66,9 +66,9 @@ public class FindNearbyEntitiesSystem extends BaseComponentSystem implements Upd
                 }
             }
 
-            if (!isEqual(charactersWithinRange, findNearbyEntitiesComponent.charactersWithinRange)) {
-                findNearbyEntitiesComponent.charactersWithinRange = charactersWithinRange;
-                entity.saveComponent(findNearbyEntitiesComponent);
+            if (!isEqual(charactersWithinRange, findNearbyPlayersComponent.charactersWithinRange)) {
+                findNearbyPlayersComponent.charactersWithinRange = charactersWithinRange;
+                entity.saveComponent(findNearbyPlayersComponent);
                 entity.send(new UpdateBehaviorEvent());
             }
         }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals.FindNearbyEntities;
+package org.terasology.wildAnimals.FindNearbyPlayers;
 
 
 import org.terasology.entitySystem.Component;
@@ -25,7 +25,7 @@ import java.util.List;
  * If this component is attached to a WildAnimal entity it will constantly look
  * around for nearby entities that enter a given radius.
  */
-public class FindNearbyEntitiesComponent implements Component {
+public class FindNearbyPlayersComponent implements Component {
     public float searchRadius = 10f;
     public List<EntityRef> charactersWithinRange;
 }

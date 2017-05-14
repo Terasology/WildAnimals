@@ -13,7 +13,7 @@
     "maxDistance" : 10,
     "speedMultiplier" : 1.2
   },
-  "FindNearbyEntities": {
+  "FindNearbyPlayers": {
     "searchRadius" : 10
   },
   "StrayIfIdle" : {
