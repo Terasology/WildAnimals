@@ -1,0 +1,37 @@
+{
+  "model": {
+    "nodeType": "engine:RepeatNode",
+    "nodeId": 0,
+    "node": {
+      "child": {
+        "nodeType": "engine:WrapperNode",
+        "nodeId": 1,
+        "node": {
+          "child": {
+            "nodeType": "engine:SequenceNode",
+            "nodeId": 2,
+            "node": {
+              "children": [
+                {
+                  "nodeType": "engine:SelectorNode",
+                  "nodeId": 4,
+                  "node": {
+                    "children": [
+                      {
+                        "nodeType": "engine:LookupNode",
+                        "nodeId": 5,
+                        "node": {
+                          "tree": "Pathfinding:attackPlayerToFollow"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

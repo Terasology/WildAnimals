@@ -13,18 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals.AttackInProximity;
+package org.terasology.wildAnimals.FindNearbyEntities;
+
 
 import org.terasology.entitySystem.Component;
 import org.terasology.entitySystem.entity.EntityRef;
 
+import java.util.List;
+
 /**
- * If this component is attached to a WildAnimal entity it will exhibit the attack-on-hit behavior
- * When hit, the animal will run with a speed of `speedMultiplier`*normalSpeed to attack the instigator
- * until it is at a greater distance than `maxDistance` from the damage inflicter- `instigator`.
- * When it reaches a greater distance, the instigator is set to null, and the animal stops.
+ * If this component is attached to a WildAnimal entity it will constantly look
+ * around for nearby entities that enter a given radius.
  */
-public class AttackInProximityComponent implements Component {
-    // Speed factor by which attack speed increases
-    public float speedMultiplier = 1.2f;
+public class FindNearbyEntitiesComponent implements Component {
+    public float searchRadius = 10f;
+    public List<EntityRef> charactersWithinRange;
 }

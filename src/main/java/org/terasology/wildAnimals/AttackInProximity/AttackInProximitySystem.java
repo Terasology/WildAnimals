@@ -31,6 +31,8 @@ import org.terasology.logic.characters.CharacterMovementComponent;
 import org.terasology.logic.health.OnDamagedEvent;
 import org.terasology.pathfinding.components.FollowComponent;
 import org.terasology.registry.In;
+import org.terasology.wildAnimals.FindNearbyEntities.FindNearbyEntitiesComponent;
+import org.terasology.wildAnimals.FindNearbyEntities.FindNearbyEntitiesSystem;
 import org.terasology.wildAnimals.UpdateBehaviorEvent;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
@@ -43,33 +45,26 @@ public class AttackInProximitySystem extends BaseComponentSystem {
     private AssetManager assetManager;
 
     @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = AttackInProximityComponent.class)
-    public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent) {
-        if (attackInProximityComponent.nearbyEntity != null) {
+    public void onUpdateBehaviorAttack(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent, FindNearbyEntitiesComponent findNearbyEntitiesComponent) {
+        if (findNearbyEntitiesComponent.charactersWithinRange != null && findNearbyEntitiesComponent.charactersWithinRange.size() > 0) {
             event.consume();
+            EntityRef someCharacterWithinRange = findNearbyEntitiesComponent.charactersWithinRange.get(0);
+            FollowComponent followComponent = new FollowComponent();
+            followComponent.entityToFollow = someCharacterWithinRange;
+            entity.addOrSaveComponent(followComponent);
             // Start hostile behavior, when an entity enters nearby
             BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            behaviorComponent.tree = assetManager.getAsset("WildAnimals:attackInProximityHostile", BehaviorTree.class).get();
+            behaviorComponent.tree = assetManager.getAsset("WildAnimals:hostile", BehaviorTree.class).get();
             logger.info("Changed behavior to Hostile");
             // Increase speed by multiplier factor
             CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
             characterMovementComponent.speedMultiplier = attackInProximityComponent.speedMultiplier;
             entity.saveComponent(characterMovementComponent);
             entity.saveComponent(behaviorComponent);
+        } else {
+            if (entity.hasComponent(FollowComponent.class)) {
+                entity.removeComponent(FollowComponent.class);
+            }
         }
-    }
-        @ReceiveEvent(priority = EventPriority.PRIORITY_LOW, components = AttackInProximityComponent.class)
-        public void onUpdateBehaviorStray(UpdateBehaviorEvent event, EntityRef entity, AttackInProximityComponent attackInProximityComponent) {
-            // To stop 'attack'ing behavior
-            attackInProximityComponent.nearbyEntity = null;
-            entity.saveComponent(attackInProximityComponent);
-            BehaviorComponent behaviorComponent = entity.getComponent(BehaviorComponent.class);
-            // Restore speed to normal
-            CharacterMovementComponent characterMovementComponent = entity.getComponent(CharacterMovementComponent.class);
-            characterMovementComponent.speedMultiplier = attackInProximityComponent.defaultSpeedMultipler;
-            entity.saveComponent(characterMovementComponent);
-            // Change behavior to "stray"
-            behaviorComponent.tree = assetManager.getAsset("WildAnimals:attackInProximityStray", BehaviorTree.class).get();
-            logger.info("Changed behavior to Stray");
-            entity.saveComponent(behaviorComponent);
     }
 }
