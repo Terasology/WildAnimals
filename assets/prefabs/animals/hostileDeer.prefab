@@ -7,10 +7,9 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "attackInProximityStray"
+    "tree" : "stray"
   },
   "AttackInProximity" : {
-    "maxDistance" : 10,
     "speedMultiplier" : 1.2
   },
   "FindNearbyPlayers": {
