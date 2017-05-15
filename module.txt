@@ -16,6 +16,9 @@
         },{
              "id" : "WorldlyTooltipAPI",
              "minVersion" : "0.1.0"
+        },{
+             "id" : "AdvancedBehaviors",
+             "minVersion" : "0.1.0"
         }],
     "isServerSideOnly" : false
 }
