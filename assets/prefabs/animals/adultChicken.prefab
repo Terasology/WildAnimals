@@ -1,0 +1,67 @@
+{
+  "skeletalmesh" : {
+    "mesh" : "adultChicken",
+    "scale": [0.25, 0.25, 0.25],
+    "heightOffset" : -0.8,
+    "material" : "adultChickenSkin",
+    "animation" : "adultChickenIdle",
+    "loop" : true
+  },
+  "Behavior" : {
+    "tree" : "stray"
+  },
+  "BlockDropGrammar": {
+    "blockDrops": [],
+    "itemDrops": ["2*WildAnimals:meat"]
+  },
+  "Stand" :{
+    "animationPool": [
+      "adultChickenIdle",
+      "adultChickenIdle",
+      "adultChickenIdle",
+      "adultChickenIdle",
+      "adultChickenIdle"
+      ]
+  },
+  "Walk" :{
+    "animationPool": ["adultChickenIdle"]
+  },
+  "Die" :{
+    "animationPool": ["adultChickenIdle"]
+  },
+  "persisted" : true,
+  "location" : {},
+  "Character" : {},
+  "WildAnimal" : {},
+  "NPCMovement" : {},
+  "CreatureNameGenerator" : {
+    "genderRatio" : 0.5,
+    "nobility" : 0.5,
+    "theme": "DWARF"
+  },
+  "CharacterMovement" : {
+    "groundFriction" : 16,
+    "speedMultiplier" : 0.3,
+    "distanceBetweenFootsteps" : 0.2,
+    "distanceBetweenSwimStrokes" : 2.5,
+    "height" : 1.6,
+    "radius" : 0.3,
+    "jumpSpeed" : 12
+  },
+  "CharacterSound" : {
+    "footstepSounds" : ["FootGrass1", "FootGrass2", "FootGrass3", "FootGrass4", "FootGrass5"],
+    "footstepVolume" : 0.03
+  },
+  "Network" :{},
+  "MinionMove" : {},
+  "Health" : {
+    "destroyEntityOnNoHealth" : true,
+    "currentHealth": 7
+  },
+  "BoxShape" : {
+    "extents" : [1.5, 1.5, 1.5]
+  },
+  "Trigger" : {
+    "detectGroups" : ["engine:debris", "engine:sensor"]
+  }
+}
