@@ -19,15 +19,15 @@
       "adultChickenIdle",
       "adultChickenIdle",
       "adultChickenIdle",
-      "adultChickenIdle",
-      "adultChickenIdle"
-      ]
+      "adultChickenLookLeft",
+      "adultChickenLookRight"
+    ]
   },
   "Walk" :{
-    "animationPool": ["adultChickenIdle"]
+    "animationPool": ["adultChickenWalk"]
   },
   "Die" :{
-    "animationPool": ["adultChickenIdle"]
+    "animationPool": ["adultChickenFall"]
   },
   "persisted" : true,
   "location" : {},
