@@ -45,6 +45,7 @@
   "persisted" : true,
   "location" : {},
   "Character" : {},
+  "AliveCharacter": {},
   "WildAnimal" : {
     "name": "Deer",
     "icon": "WildAnimals:deerIcon"
