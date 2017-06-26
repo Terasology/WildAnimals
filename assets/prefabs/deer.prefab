@@ -7,8 +7,10 @@
         "loop" : true
     },
     "Behavior" : {
-        "tree" : "stray"
+        "tree" : "Behaviors:stray"
     },
+
+    "AliveCharacter": {},
     "Stand" :{
         "animationPool": [
             "deerIdle",
