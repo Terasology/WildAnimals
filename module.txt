@@ -1,6 +1,6 @@
 {
     "id" : "WildAnimals",
-    "version" : "0.1.1-SNAPSHOT",
+    "version" : "0.2.0-SNAPSHOT",
     "author" : "glasz, flo",
     "displayName" : "WildAnimals",
     "description" : "Contains so far only a deer. Can be spawned with spawnPrefab deer",
@@ -9,7 +9,7 @@
             "minVersion" : "1.0.0"
         },{
             "id" : "Pathfinding",
-            "minVersion" : "0.2.0"
+            "minVersion" : "0.3.0-SNAPSHOT"
         },{
             "id" : "NameGenerator",
             "minVersion" : "0.4.0"
