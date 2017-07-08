@@ -70,5 +70,6 @@
   },
   "Trigger" : {
     "detectGroups" : ["engine:debris", "engine:sensor"]
-  }
+  },
+  "InteractionTarget": {}
 }
