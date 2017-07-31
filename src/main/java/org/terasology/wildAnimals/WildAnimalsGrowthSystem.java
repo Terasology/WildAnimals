@@ -27,6 +27,7 @@ import org.terasology.logic.location.LocationComponent;
 import org.terasology.registry.In;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
 import org.terasology.wildAnimals.component.WildAnimalGrowthComponent;
+import org.terasology.wildAnimals.event.AnimalGrowthEvent;
 
 @RegisterSystem
 public class WildAnimalsGrowthSystem extends BaseComponentSystem {
@@ -46,6 +47,7 @@ public class WildAnimalsGrowthSystem extends BaseComponentSystem {
     @ReceiveEvent(components = {WildAnimalComponent.class})
     public void onGrowth(DelayedActionTriggeredEvent event, EntityRef entityRef, WildAnimalGrowthComponent wildAnimalGrowthComponent) {
         LocationComponent locationComponent = entityRef.getComponent(LocationComponent.class);
+        entityRef.send(new AnimalGrowthEvent());
         entityRef.destroy();
         entityManager.create(wildAnimalGrowthComponent.nextStagePrefab, locationComponent.getWorldPosition());
     }
