@@ -42,7 +42,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     private static final int MIN_GROUND_PER_DEER = 5;
     private static final int MIN_DEER_GROUP_SIZE = 4;
     private static final int MAX_DEER_GROUP_SIZE = 10;
-    private static final int SPAWN_CHANCE_IN_PERCENT = 10;
+    private static final int SPAWN_CHANCE_IN_PERCENT = 0;
 
     @In
     private EntityManager entityManager;
