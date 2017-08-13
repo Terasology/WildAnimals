@@ -1,0 +1,24 @@
+{
+  dynamic: [
+      {
+        guard: {
+          componentPresent: "WildAnimals:FindNearbyPlayers",
+          values: ["N charactersWithinRange nonEmpty"],
+          child: {
+          sequence: [
+            { log: {message: "Trying to murder a fool" }},
+            { sleep: {time: 0.1f }},
+            followCharacter,
+            { lookup: {tree: "WildAnimals:hostile" }}
+
+            ]
+          }
+        }
+      },
+      {
+        lookup: {
+          tree: "WildAnimals:stray"
+        }
+      }
+  ]
+}

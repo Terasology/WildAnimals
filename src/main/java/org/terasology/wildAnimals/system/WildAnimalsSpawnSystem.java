@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 MovingBlocks
+ * Copyright 2017 MovingBlocks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.terasology.wildAnimals;
+package org.terasology.wildAnimals.system;
 
 import com.google.common.collect.Lists;
 import org.terasology.utilities.Assets;
@@ -147,7 +147,8 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         Vector3f yAxis = new Vector3f(0, 1, 0);
         float randomAngle = (float) (random.nextFloat()*Math.PI*2);
         Quat4f rotation = new Quat4f(yAxis, randomAngle);
-        entityManager.create(deerPrefab, floatVectorLocation, rotation);
+        // TODO Turn deer spawning back on when done with debugging - this and the SPAWN_CHANCE_IN_PERCENT constant.
+        // entityManager.create(deerPrefab, floatVectorLocation, rotation);
     }
 
     /**

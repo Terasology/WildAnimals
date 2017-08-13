@@ -1,0 +1,21 @@
+{
+  dynamic: [
+      {
+        guard: {
+          componentPresent: "WildAnimals:AttackOnHit",
+          values: ["N instigator exists"],
+          child: {
+            lookup: {
+              tree: "WildAnimals:hostile"
+            }
+          }
+        }
+      },
+      {
+        lookup: {
+          tree: "WildAnimals:stray"
+        }
+      }
+
+  ]
+}

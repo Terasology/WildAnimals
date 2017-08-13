@@ -1,0 +1,24 @@
+{
+  dynamic: [
+      {
+        guard: {
+          componentPresent: "WildAnimals:FindNearbyPlayers",
+          values: ["N charactersWithinRange nonEmpty"],
+          child: {
+          sequence: [
+            { sleep: {time: 0.1f }},
+            flee_from_character,
+            { lookup: {tree: "WildAnimals:flee" }}
+
+            ]
+          }
+        }
+      },
+      {
+        lookup: {
+          tree: "WildAnimals:stray"
+        }
+      }
+
+  ]
+}

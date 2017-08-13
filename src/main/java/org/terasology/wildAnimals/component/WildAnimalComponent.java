@@ -1,0 +1,37 @@
+/*
+ * Copyright 2017 MovingBlocks
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.terasology.wildAnimals.component;
+
+import org.terasology.entitySystem.Component;
+import org.terasology.network.FieldReplicateType;
+import org.terasology.network.Replicate;
+import org.terasology.rendering.assets.texture.TextureRegionAsset;
+
+/**
+ * All WildAnimal entities have the WildAnimal component.
+ * Helps the DeathSystem receive selected BeforeDestroyEvent
+ */
+public class WildAnimalComponent implements Component {
+    /**
+     * Name of the icon this WildAnimal has
+     */
+    public String name;
+    /**
+     * Name of the icon this WildAnimal has
+     */
+    @Replicate(value = FieldReplicateType.SERVER_TO_CLIENT, initialOnly = true)
+    public TextureRegionAsset<?> icon;
+}
