@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "hostileCritter"
+    "tree" : "Behaviors:hostileCritter"
   },
   "AttackInProximity" : {
     "speedMultiplier" : 1.2

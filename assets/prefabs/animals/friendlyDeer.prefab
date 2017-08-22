@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "WildAnimals:friendlyCritter"
+    "tree" : "Behaviors:friendlyCritter"
   },
   "FindNearbyPlayers": {
     "searchRadius" : 8

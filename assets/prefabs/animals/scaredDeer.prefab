@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "WildAnimals:scaredCritter"
+    "tree" : "Behaviors:scaredCritter"
   },
   "FindNearbyPlayers": {
     "searchRadius" : 8
