@@ -15,6 +15,7 @@
  */
 package org.terasology.wildAnimals.component;
 
+import org.terasology.core.logic.random.Interval;
 import org.terasology.entitySystem.Component;
 
 /**
@@ -22,9 +23,9 @@ import org.terasology.entitySystem.Component;
  */
 public class WildAnimalGrowthComponent implements Component {
     /**
-     * The time the animal will stay in this stage.
+     * The time range the animal will stay in this stage, expressed in ms.
      */
-    public long timeToGrowth;
+    public Interval timeToGrowth;
 
     /**
      * The prefab for the next stage the animal will grow into.
