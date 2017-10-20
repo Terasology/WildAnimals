@@ -42,7 +42,7 @@ public class WildAnimalsGrowthSystem extends BaseComponentSystem {
 
     @ReceiveEvent(components = {WildAnimalComponent.class})
     public void onGrowthComponentActivated(OnActivatedComponent event, EntityRef entityRef, WildAnimalGrowthComponent wildAnimalGrowthComponent) {
-        delayManager.addDelayedAction(entityRef, GROWTH_ID, wildAnimalGrowthComponent.timeToGrowth);
+        delayManager.addDelayedAction(entityRef, GROWTH_ID, wildAnimalGrowthComponent.timeToGrowth.sample());
     }
 
     @ReceiveEvent(components = {WildAnimalComponent.class})
