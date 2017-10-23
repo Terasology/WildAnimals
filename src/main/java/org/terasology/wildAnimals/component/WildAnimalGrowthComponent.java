@@ -22,9 +22,14 @@ import org.terasology.entitySystem.Component;
  */
 public class WildAnimalGrowthComponent implements Component {
     /**
-     * The time the animal will stay in this stage.
+     * The minimum time the animal will stay in this stage, in milliseconds.
      */
-    public long timeToGrowth;
+    public long minGrowthTime;
+
+    /**
+     * The maximum time the animal will stay in this stage, in milliseconds.
+     */
+    public long maxGrowthTime;
 
     /**
      * The prefab for the next stage the animal will grow into.

@@ -26,6 +26,8 @@ import org.terasology.logic.delay.DelayManager;
 import org.terasology.logic.delay.DelayedActionTriggeredEvent;
 import org.terasology.logic.location.LocationComponent;
 import org.terasology.registry.In;
+import org.terasology.utilities.random.FastRandom;
+import org.terasology.utilities.random.Random;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
 import org.terasology.wildAnimals.component.WildAnimalGrowthComponent;
 import org.terasology.wildAnimals.event.AnimalGrowthEvent;
@@ -35,9 +37,9 @@ import org.terasology.wildAnimals.event.AnimalGrowthEvent;
  *
  * An animal may have multiple prefabs in its lifecycle.  Each prefab
  * except the last should have a {@link WildAnimalGrowthComponent}
- * giving the next prefab in the chain, along with the amount of time
- * to spend in this prefab.  When the specified amount of time has
- * elapsed (since the growth component was activated, typically
+ * giving the next prefab in the chain, along with the range of time
+ * to spend in this prefab.  At a random time within the specified
+ * range (since the growth component was activated, typically
  * immediately on spawning), the existing animal is deleted and
  * replaced with a freshly spawned instance of the new prefab.
  *
@@ -46,14 +48,15 @@ import org.terasology.wildAnimals.event.AnimalGrowthEvent;
  * <b>Example:</b> Suppose we have a lizard, and we want to model its
  * maturation process as a three-stage cycle, with {@code lizardEgg},
  * {@code babyLizard}, and {@code lizard} prefabs.  We want each lizard
- * to spend 10 minutes as an egg, then 5 minutes as a baby, before
+ * to spend 10-15 minutes as an egg, then 5-10 minutes as a baby, before
  * finally maturing.  Then the prefabs should have growth components as
  * follows:
  *
  * lizardEgg.prefab:
  * {@code
  *   "WildAnimalGrowth": {
- *     "timeToGrowth": 600000,
+ *     "minGrowthTime": 600000,
+ *     "maxGrowthTime": 900000,
  *     "nextStagePrefab": "WildAnimals:babyLizard"
  *     }
  * }
@@ -61,7 +64,8 @@ import org.terasology.wildAnimals.event.AnimalGrowthEvent;
  * babyLizard.prefab:
  * {@code
  *   "WildAnimalGrowth": {
- *     "timeToGrowth": 300000,
+ *     "minGrowthTime": 300000,
+ *     "maxGrowthTime": 600000,
  *     "nextStagePrefab": "WildAnimals:lizard"
  *   }
  * }
@@ -80,18 +84,21 @@ public class WildAnimalsGrowthSystem extends BaseComponentSystem {
     @In
     private EntityManager entityManager;
 
+    private Random random = new FastRandom();
+
     /** Start the growth timer.  Called on activation of the animal's {@code WildAnimalGrowthComponent}. */
     @ReceiveEvent(components = {WildAnimalComponent.class})
-    public void onGrowthComponentActivated(OnActivatedComponent event, EntityRef entityRef, WildAnimalGrowthComponent wildAnimalGrowthComponent) {
-        delayManager.addDelayedAction(entityRef, GROWTH_ID, wildAnimalGrowthComponent.timeToGrowth);
+    public void onGrowthComponentActivated(OnActivatedComponent event, EntityRef entityRef, WildAnimalGrowthComponent growthComponent) {
+      long randomTime = random.nextLong(growthComponent.minGrowthTime, growthComponent.maxGrowthTime);
+      delayManager.addDelayedAction(entityRef, GROWTH_ID, randomTime);
     }
 
     /** Execute the next growth stage.  Called when the growth timer expires. */
     @ReceiveEvent(components = {WildAnimalComponent.class})
-    public void onGrowth(DelayedActionTriggeredEvent event, EntityRef entityRef, WildAnimalGrowthComponent wildAnimalGrowthComponent) {
+    public void onGrowth(DelayedActionTriggeredEvent event, EntityRef entityRef, WildAnimalGrowthComponent growthComponent) {
         LocationComponent locationComponent = entityRef.getComponent(LocationComponent.class);
         entityRef.send(new AnimalGrowthEvent());
         entityRef.destroy();
-        entityManager.create(wildAnimalGrowthComponent.nextStagePrefab, locationComponent.getWorldPosition());
+        entityManager.create(growthComponent.nextStagePrefab, locationComponent.getWorldPosition());
     }
 }

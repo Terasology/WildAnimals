@@ -56,7 +56,8 @@
     "icon": "WildAnimals:deerIcon"
   },
   "WildAnimalGrowth": {
-    "timeToGrowth": 15000,
+    "minGrowthTime": 15000,
+    "maxGrowthTime": 30000,
     "nextStagePrefab": "WildAnimals:deer"
   },
   "NPCMovement": {},
