@@ -30,21 +30,63 @@ import org.terasology.wildAnimals.component.WildAnimalComponent;
 import org.terasology.wildAnimals.component.WildAnimalGrowthComponent;
 import org.terasology.wildAnimals.event.AnimalGrowthEvent;
 
+/**
+ * System handling animals changing into other animals.
+ *
+ * An animal may have multiple prefabs in its lifecycle.  Each prefab
+ * except the last should have a {@link WildAnimalGrowthComponent}
+ * giving the next prefab in the chain, along with the amount of time
+ * to spend in this prefab.  When the specified amount of time has
+ * elapsed (since the growth component was activated, typically
+ * immediately on spawning), the existing animal is deleted and
+ * replaced with a freshly spawned instance of the new prefab.
+ *
+ * <hr>
+ *
+ * <b>Example:</b> Suppose we have a lizard, and we want to model its
+ * maturation process as a three-stage cycle, with {@code lizardEgg},
+ * {@code babyLizard}, and {@code lizard} prefabs.  We want each lizard
+ * to spend 10 minutes as an egg, then 5 minutes as a baby, before
+ * finally maturing.  Then the prefabs should have growth components as
+ * follows:
+ *
+ * lizardEgg.prefab:
+ * {@code
+ *   "WildAnimalGrowth": {
+ *     "timeToGrowth": 600000,
+ *     "nextStagePrefab": "WildAnimals:babyLizard"
+ *     }
+ * }
+ *
+ * babyLizard.prefab:
+ * {@code
+ *   "WildAnimalGrowth": {
+ *     "timeToGrowth": 300000,
+ *     "nextStagePrefab": "WildAnimals:lizard"
+ *   }
+ * }
+ *
+ * The final prefab, lizard.prefab, has no growth component.
+ */
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class WildAnimalsGrowthSystem extends BaseComponentSystem {
+
+    /** Unique action ID required by {@code DelayManager.addDelayedAction}. */
+    private static final String GROWTH_ID = "WildAnimals:Growth";
+
     @In
     private DelayManager delayManager;
 
     @In
     private EntityManager entityManager;
 
-    private static final String GROWTH_ID = "WildAnimals:Growth";
-
+    /** Start the growth timer.  Called on activation of the animal's {@code WildAnimalGrowthComponent}. */
     @ReceiveEvent(components = {WildAnimalComponent.class})
     public void onGrowthComponentActivated(OnActivatedComponent event, EntityRef entityRef, WildAnimalGrowthComponent wildAnimalGrowthComponent) {
         delayManager.addDelayedAction(entityRef, GROWTH_ID, wildAnimalGrowthComponent.timeToGrowth);
     }
 
+    /** Execute the next growth stage.  Called when the growth timer expires. */
     @ReceiveEvent(components = {WildAnimalComponent.class})
     public void onGrowth(DelayedActionTriggeredEvent event, EntityRef entityRef, WildAnimalGrowthComponent wildAnimalGrowthComponent) {
         LocationComponent locationComponent = entityRef.getComponent(LocationComponent.class);
