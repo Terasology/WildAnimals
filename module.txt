@@ -1,24 +1,15 @@
 {
     "id" : "WildAnimals",
-    "version" : "0.1.1-SNAPSHOT",
+    "version" : "0.1.2-SNAPSHOT",
     "author" : "glasz, flo, nihal111, quaternius",
     "displayName" : "WildAnimals",
     "description" : "Contains so far only a deer. Can be spawned with spawnPrefab deer",
-    "dependencies" : [{
-            "id" : "Core",
-            "minVersion" : "1.0.0"
-        },{
-            "id" : "Pathfinding",
-            "minVersion" : "0.2.0"
-        },{
-            "id" : "NameGenerator",
-            "minVersion" : "0.4.0"
-        },{
-             "id" : "WorldlyTooltipAPI",
-             "minVersion" : "0.1.0"
-        },{
-             "id" : "AdvancedBehaviors",
-             "minVersion" : "0.1.0"
-        }],
+    "dependencies" : [
+        {"id" : "Core", "minVersion" : "2.0.0"},
+        {"id" : "Pathfinding", "minVersion" : "0.2.0"},
+        {"id" : "NameGenerator", "minVersion" : "0.4.0"},
+        {"id" : "WorldlyTooltipAPI", "minVersion" : "0.1.0"},
+        {"id" : "AdvancedBehaviors", "minVersion" : "0.1.0"}
+    ],
     "isServerSideOnly" : false
 }
