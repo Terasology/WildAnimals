@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "WildAnimals:stray"
+    "tree" : "Behaviors:stray"
   },
   "BlockDropGrammar": {
     "blockDrops": [],

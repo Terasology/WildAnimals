@@ -21,7 +21,7 @@ import org.terasology.network.Replicate;
 import org.terasology.rendering.assets.texture.TextureRegionAsset;
 
 /**
- * All WildAnimal entities have the WildAnimal component.
+ * All WildAnimal entities have the WildAnimal components.
  * Helps the DeathSystem receive selected BeforeDestroyEvent
  */
 public class WildAnimalComponent implements Component {

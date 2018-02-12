@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "WildAnimals:aggressiveCritter"
+    "tree" : "Behaviors:aggressiveCritter"
   },
   "AttackOnHit" : {
     "maxDistance" : 15,

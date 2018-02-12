@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "WildAnimals:critter"
+    "tree" : "Behaviors:critter"
   },
   "FleeOnHit" : {
     "minDistance" : 5
