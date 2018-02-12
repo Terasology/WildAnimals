@@ -18,7 +18,7 @@ package org.terasology.wildAnimals.component;
 import org.terasology.entitySystem.Component;
 
 /**
- * This component allows WildAnimals to grow into their next stage.
+ * This components allows WildAnimals to grow into their next stage.
  */
 public class WildAnimalGrowthComponent implements Component {
     /**

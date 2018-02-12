@@ -7,20 +7,10 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "stray"
-  },
-  "FollowInProximity" : {
-    "speedMultiplier" : 0.9
+    "tree" : "Behaviors:friendlyCritter"
   },
   "FindNearbyPlayers": {
-    "searchRadius" : 5
-  },
-  "FleeOnHit" : {
-    "minDistance" : 10,
-    "speedMultiplier" : 1.2
-  },
-  "StrayIfIdle" : {
-    "defaultSpeedMultiplier" : 0.3
+    "searchRadius" : 8
   },
   "BlockDropGrammar": {
     "blockDrops": [],
@@ -34,7 +24,7 @@
       "deerIdleLookLeft",
       "deerIdleLookRight",
       "deerIdleMoveLegs"
-      ]
+    ]
   },
   "Walk" :{
     "animationPool": ["deerWalk"]
@@ -55,9 +45,9 @@
   },
   "NPCMovement" : {},
   "CreatureNameGenerator" : {
-    "genderRatio" : 0.5,
-    "nobility" : 0.5,
-    "theme": "DWARF"
+    "genderRatio" : 0,
+    "nobility" : 0,
+    "theme": "ANIMAL"
   },
   "CharacterMovement" : {
     "groundFriction" : 16,
@@ -76,7 +66,8 @@
   "MinionMove" : {},
   "Health" : {
     "destroyEntityOnNoHealth" : true,
-    "currentHealth": 7
+    "currentHealth": 50,
+    "maxHealth": 50
   },
   "BoxShape" : {
     "extents" : [1.5, 1.5, 1.5]
