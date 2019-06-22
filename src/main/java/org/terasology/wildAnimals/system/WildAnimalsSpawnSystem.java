@@ -59,6 +59,10 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     private Block airBlock;
 
     private Prefab deerPrefab;
+    private Prefab redDeerPrefab;
+    private Prefab greenDeerPrefab;
+    private Prefab blueDeerPrefab;
+
     
     
     /**
@@ -69,6 +73,9 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         grassBlock = blockManager.getBlock("core:Grass");
         airBlock = blockManager.getBlock(BlockManager.AIR_ID);
         deerPrefab = Assets.getPrefab("WildAnimals:Deer").get();
+        redDeerPrefab = Assets.getPrefab("WildAnimals:RedDeer").get();
+        greenDeerPrefab = Assets.getPrefab("WildAnimals:GreenDeer").get();
+        blueDeerPrefab = Assets.getPrefab("WildAnimals:BlueDeer").get();
     }
     
     /**
