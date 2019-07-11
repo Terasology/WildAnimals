@@ -29,6 +29,7 @@ import org.terasology.math.geom.Vector3i;
 import org.terasology.registry.In;
 import org.terasology.registry.Share;
 import org.terasology.utilities.Assets;
+import org.terasology.wildAnimals.AnimalSpawnConfig;
 import org.terasology.world.WorldProvider;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
@@ -42,7 +43,7 @@ import java.util.function.Function;
 @Share(value = WildAnimalsSpawnSystem.class)
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class WildAnimalsSpawnSystem extends BaseComponentSystem {
-    private Configuration config;
+    private AnimalSpawnConfig config;
 
     @In
     private EntityManager entityManager;
@@ -100,7 +101,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         }
 
         if (config == null) {
-            config = new Configuration();
+            config = new AnimalSpawnConfig();
         }
     }
 
@@ -108,7 +109,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         isValidSpawnPosition = function;
     }
 
-    public void setConfig(Configuration configuration) {
+    public void setConfig(AnimalSpawnConfig configuration) {
         config = configuration;
     }
 
@@ -191,13 +192,6 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         Quat4f rotation = new Quat4f(yAxis, randomAngle);
         // TODO Turn deer spawning back on when done with debugging - this and the SPAWN_CHANCE_IN_PERCENT constant.
         entityManager.create(deerPrefab, floatVectorLocation, rotation);
-    }
-
-    public static class Configuration {
-        public int MIN_GROUND_PER_DEER = 5;
-        public int MIN_DEER_GROUP_SIZE = 4;
-        public int MAX_DEER_GROUP_SIZE = 10;
-        public int SPAWN_CHANCE_IN_PERCENT = 10;
     }
 
 }
