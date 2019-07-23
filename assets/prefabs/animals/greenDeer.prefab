@@ -6,9 +6,6 @@
     "animation" : "deerIdle",
     "loop" : true
   },
-  "Behavior" : {
-    "tree" : "Behaviors:critter"
-  },
   "FleeOnHit" : {
     "minDistance" : 5
   },
