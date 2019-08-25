@@ -6,9 +6,6 @@
     "animation" : "deerIdle",
     "loop" : true
   },
-  "FleeOnHit" : {
-    "minDistance" : 5
-  },
   "BlockDropGrammar": {
     "blockDrops": [],
     "itemDrops": ["2*WildAnimals:meat"]
