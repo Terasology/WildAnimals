@@ -1,12 +1,13 @@
 {
     "id" : "WildAnimals",
-    "version" : "0.2.0-SNAPSHOT",
+    "version" : "0.2.1-SNAPSHOT",
     "author" : "glasz, flo, nihal111, quaternius, dkambersky",
     "displayName" : "WildAnimals",
     "description" : "Contains a deer and some other placeholder deer variants. Spawned with `spawnPrefab deer` and similar",
     "dependencies" : [
         {"id" : "Behaviors", "minVersion" : "0.2.0"},
         {"id" : "Core", "minVersion" : "2.0.0"},
+        {"id" : "CoreBlocks", "minVersion" : "1.0.0"},
         {"id" : "Pathfinding", "minVersion" : "0.3.0"},
         {"id" : "NameGenerator", "minVersion" : "0.4.0"},
         {"id" : "WorldlyTooltipAPI", "minVersion" : "0.1.0"}
