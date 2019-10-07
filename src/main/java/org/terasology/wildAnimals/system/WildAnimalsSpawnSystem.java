@@ -75,7 +75,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      */
     @Override
     public void initialise() {
-        grassBlock = blockManager.getBlock("core:Grass");
+        grassBlock = blockManager.getBlock("CoreBlocks:Grass");
         airBlock = blockManager.getBlock(BlockManager.AIR_ID);
         deerPrefab = Assets.getPrefab("WildAnimals:Deer").get();
         redDeerPrefab = Assets.getPrefab("WildAnimals:RedDeer").get();
