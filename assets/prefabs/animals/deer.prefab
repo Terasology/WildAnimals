@@ -7,10 +7,13 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "speedUp"
+    "tree" : "regularDeer"
   },
   "FleeOnHit" : {
     "minDistance" : 5
+  },
+  "FindNearbyPlayers" : {
+    "searchRadius": 8
   },
   "BlockDropGrammar": {
     "blockDrops": [],
