@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "Behaviors:critter"
+    "tree" : "speedUp"
   },
   "FleeOnHit" : {
     "minDistance" : 5
