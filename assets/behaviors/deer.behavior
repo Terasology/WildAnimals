@@ -1,0 +1,30 @@
+{
+  dynamic: [
+    {
+      guard: {
+        componentPresent: "Behaviors:Flee",
+        child: {
+          sequence: [
+            {
+              set_speed : {
+                speedMultiplier: 3
+              }
+            },
+            check_flee_stop,
+            {
+              lookup: {
+                tree: "Behaviors:flee"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      lookup: {
+        tree: "Behaviors:stray"
+      }
+    }
+
+  ]
+}
