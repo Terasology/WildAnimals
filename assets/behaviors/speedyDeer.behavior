@@ -1,0 +1,16 @@
+{
+  loop: {
+    child: {
+        sequence: [
+                {
+                  set_speed : { speedMultiplier: 3 }
+                },
+                {
+                  lookup: {
+                    tree: "Behaviors:Stray"
+                  }
+                }
+            ]
+        }
+    }
+}
