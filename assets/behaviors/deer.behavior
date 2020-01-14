@@ -2,21 +2,32 @@
   dynamic: [
     {
       guard: {
-        componentPresent: "Behaviors:Flee",
+        componentPresent: "Health",
+        values: ["V currentHealth < 10"],
+        child: { log: {message: "I'm injured!" }}
+      }
+    },
+    {
+      guard: {
+        componentPresent: "Behaviors:FindNearbyPlayers",
+        values: ["N charactersWithinRange nonEmpty"],
         child: {
           sequence: [
-            {
-              set_speed : {
-                speedMultiplier: 3
-              }
-            },
-            check_flee_stop,
-            {
-              lookup: {
-                tree: "Behaviors:flee"
-              }
-            }
+            { sleep: {time: 0.1f }},
+            followCharacter,
+            { lookup: {tree: "Behaviors:follow" }}
           ]
+        }
+      }
+    },
+    {
+      guard: {
+        componentPresent: "Behaviors:AttackOnHit",
+        values: ["N instigator exists"],
+        child: {
+          lookup: {
+            tree: "Behaviors:hostile"
+          }
         }
       }
     },
@@ -25,6 +36,5 @@
         tree: "Behaviors:stray"
       }
     }
-
   ]
 }

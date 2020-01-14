@@ -9,6 +9,7 @@
         {"id" : "Core", "minVersion" : "2.0.0"},
         {"id" : "CoreBlocks", "minVersion" : "1.0.0"},
         {"id" : "Pathfinding", "minVersion" : "0.3.0"},
+        {"id" : "Health", "minVersion" : "0.1.0-SNAPSHOT"},
         {"id" : "NameGenerator", "minVersion" : "0.4.0"},
         {"id" : "WorldlyTooltipAPI", "minVersion" : "0.1.0"}
     ],
