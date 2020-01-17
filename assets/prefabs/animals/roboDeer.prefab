@@ -1,0 +1,10 @@
+{
+  "parent" : "redDeer",
+  "skeletalmesh" : {
+    "mesh" : "deer",
+    "heightOffset" : -0.8,
+    "material" : "roboDeerSkin",
+    "animation" : "deerIdle",
+    "loop" : true
+  }
+}
