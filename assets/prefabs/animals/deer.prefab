@@ -7,7 +7,7 @@
     "loop" : true
   },
   "Behavior" : {
-    "tree" : "Behaviors:critter"
+    "tree" : "WildAnimals:deerbehavior"
   },
   "FleeOnHit" : {
     "minDistance" : 5

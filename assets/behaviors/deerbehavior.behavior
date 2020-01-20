@@ -1,0 +1,55 @@
+{
+  dynamic: [
+    {
+      guard: {
+        componentPresent: "Health",
+        values: ["V currentHealth < 10" ],
+        child: { log: {message: "Are you going to kill me and eat my flesh , I will curse you!!!" }}
+      }
+    },
+    {
+      guard: {
+        componentPresent: "Behaviors:FindNearbyPlayers",
+        values: ["N charactersWithinRange nonEmpty"],
+        child: {
+          sequence: [
+            { sleep: {time: 0.4f }},
+            followCharacter,
+            { lookup: {tree: "Behaviors:follow" }}
+          ]
+        }
+      }
+    },
+    {
+      guard: {
+        componentPresent: "Behaviors:Flee",
+        child: {
+           sequence: [
+              check_flee_stop,
+             {
+                lookup: {
+                   tree: "Behaviors:flee"
+                }
+             }
+        ]
+        }
+      }
+    },
+    {
+      guard: {
+        componentPresent: "Behaviors:AttackOnHit",
+        values: ["N instigator exists"],
+        child: {
+          lookup: {
+            tree: "Behaviors:hostile"
+          }
+        }
+      }
+    },
+    {
+      lookup: {
+        tree: "Behaviors:stray"
+      }
+    }
+  ]
+}
