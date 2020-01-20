@@ -7,6 +7,7 @@
     "dependencies" : [
         {"id" : "Behaviors", "minVersion" : "0.2.0"},
         {"id" : "Core", "minVersion" : "2.0.0"},
+        {"id" : "Health", "minVersion" : "0.1.0-SNAPSHOT"},
         {"id" : "CoreBlocks", "minVersion" : "1.0.0"},
         {"id" : "Pathfinding", "minVersion" : "0.3.0"},
         {"id" : "NameGenerator", "minVersion" : "0.4.0"},
