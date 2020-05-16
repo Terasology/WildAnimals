@@ -2,7 +2,7 @@
     "id": "WildAnimals",
     "version": "1.0.0",
     "author": "glasz, flo, nihal111, quaternius, dkambersky",
-    "displayName": "WildAnimals",
+    "displayName": "Wild Animals",
     "description": "Contains a deer and some other placeholder deer variants. Spawned with `spawnPrefab deer` and similar",
     "dependencies": [
         { "id": "Behaviors", "minVersion": "0.2.0" },
