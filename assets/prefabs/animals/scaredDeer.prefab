@@ -12,7 +12,7 @@
   "FindNearbyPlayers": {
     "searchRadius" : 8
   },
-   "BlockDropGrammar": {
+   "DropGrammar": {
     "blockDrops": [],
     "itemDrops": ["2*WildAnimals:meat"]
   },

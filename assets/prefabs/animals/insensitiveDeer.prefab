@@ -9,7 +9,7 @@
   "Behavior" : {
     "tree" : "Behaviors:stray"
   },
-  "BlockDropGrammar": {
+  "DropGrammar": {
     "blockDrops": [],
     "itemDrops": ["2*WildAnimals:meat"]
   },
