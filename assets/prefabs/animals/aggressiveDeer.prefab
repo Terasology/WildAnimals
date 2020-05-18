@@ -16,7 +16,7 @@
   "StrayIfIdle" : {
     "defaultSpeedMultiplier" : 0.3
   },
-  "BlockDropGrammar": {
+  "DropGrammar": {
     "blockDrops": [],
     "itemDrops": ["2*WildAnimals:meat"]
   },

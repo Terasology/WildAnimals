@@ -6,7 +6,7 @@
     "animation" : "deerIdle",
     "loop" : true
   },
-  "BlockDropGrammar": {
+  "DropGrammar": {
     "blockDrops": [],
     "itemDrops": ["2*WildAnimals:meat"]
   },

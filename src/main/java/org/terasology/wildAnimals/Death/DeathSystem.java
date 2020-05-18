@@ -49,7 +49,7 @@ public class DeathSystem extends BaseComponentSystem implements UpdateSubscriber
     /**
      * On every update, checks for entities which have DestroyAtAnimationEndComponent,
      * finds them and destroys them.
-     * Sending the DoDestroyEvent is essential for the BlockDropGrammar system to handle
+     * Sending the DoDestroyEvent is essential for the DropGrammar system to handle
      * item drops specified in the animal's DieComponent
      */
     @Override

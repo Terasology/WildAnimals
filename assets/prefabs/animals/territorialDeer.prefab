@@ -20,7 +20,7 @@
   "AttackOnHit": {
     "minDistance": 5
   },
-  "BlockDropGrammar": {
+  "DropGrammar": {
     "blockDrops": [],
     "itemDrops": [
       "2*WildAnimals:meat"
