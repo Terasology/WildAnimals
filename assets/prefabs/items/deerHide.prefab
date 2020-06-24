@@ -1,0 +1,20 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "WildAnimals:deerHide",
+        "stackId": "WildAnimals:deerHide",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Deer Hide"
+    },
+    "CraftingStationIngredient": {
+        "type": "WildAnimals:deerHide"
+    },
+    "ItemHelp": {
+        "category": "WildAnimals",
+        "paragraphText": [
+             "Deer hide obtained after killing a deer."
+        ]
+    }
+ }

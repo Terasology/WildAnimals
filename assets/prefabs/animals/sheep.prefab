@@ -14,7 +14,7 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": ["2*WildAnimals:wool"]
   },
   "Stand" :{
     "animationPool": [
@@ -37,7 +37,7 @@
   "Character" : {},
   "AliveCharacter": {},
   "WildAnimal" : {
-    "name": "Deer",
+    "name": "Sheep",
     "icon": "WildAnimals:deerIcon"
   },
   "NPCMovement" : {},
@@ -63,8 +63,8 @@
   "MinionMove" : {},
   "Health" : {
     "destroyEntityOnNoHealth" : true,
-    "currentHealth": 50,
-    "maxHealth": 50
+    "currentHealth": 25,
+    "maxHealth": 25
   },
   "BoxShape" : {
     "extents" : [1.5, 1.5, 1.5]

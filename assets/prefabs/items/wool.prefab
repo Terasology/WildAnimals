@@ -1,0 +1,20 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "WildAnimals:wool",
+        "stackId": "WildAnimals:wool",
+        "consumedOnUse": true
+    },
+    "DisplayName": {
+        "name": "Wool"
+    },
+    "CraftingStationIngredient": {
+        "type": "WildAnimals:Wool"
+    },
+    "ItemHelp": {
+        "category": "WildAnimals",
+        "paragraphText": [
+             "Wool obtained after killing a sheep."
+        ]
+    }
+ }
