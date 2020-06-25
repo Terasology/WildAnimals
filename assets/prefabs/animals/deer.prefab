@@ -63,8 +63,8 @@
   "MinionMove" : {},
   "Health" : {
     "destroyEntityOnNoHealth" : true,
-    "currentHealth": 5,
-    "maxHealth": 5
+    "currentHealth": 50,
+    "maxHealth": 50
   },
   "BoxShape" : {
     "extents" : [1.5, 1.5, 1.5]
