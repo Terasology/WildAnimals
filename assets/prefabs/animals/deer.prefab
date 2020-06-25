@@ -14,7 +14,7 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": ["WildAnimals:deerHide"]
   },
   "Stand" :{
     "animationPool": [
@@ -63,8 +63,8 @@
   "MinionMove" : {},
   "Health" : {
     "destroyEntityOnNoHealth" : true,
-    "currentHealth": 50,
-    "maxHealth": 50
+    "currentHealth": 5,
+    "maxHealth": 5
   },
   "BoxShape" : {
     "extents" : [1.5, 1.5, 1.5]
