@@ -14,7 +14,7 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["WildAnimals:deerHide"]
+    "itemDrops": ["0.7|WildAnimals:meat", "0.3|WildAnimals:deerHide"]
   },
   "Stand" :{
     "animationPool": [
