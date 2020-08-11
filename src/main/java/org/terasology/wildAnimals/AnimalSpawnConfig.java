@@ -16,8 +16,8 @@
 package org.terasology.wildAnimals;
 
 public class AnimalSpawnConfig {
-    public int MIN_GROUND_PER_DEER = 5;
-    public int MIN_DEER_GROUP_SIZE = 4;
-    public int MAX_DEER_GROUP_SIZE = 10;
-    public int SPAWN_CHANCE_IN_PERCENT = 10;
+    public int MIN_GROUND_PER_DEER = 10;
+    public int MIN_DEER_GROUP_SIZE = 2;
+    public int MAX_DEER_GROUP_SIZE = 5;
+    public int SPAWN_CHANCE_IN_PERCENT = 1;
 }
