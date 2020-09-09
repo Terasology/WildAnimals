@@ -1,40 +1,27 @@
-/*
- * Copyright 2017 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.system;
 
 import com.google.common.collect.Lists;
-import org.terasology.entitySystem.entity.EntityManager;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.prefab.Prefab;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.entitySystem.entity.EntityManager;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.prefab.Prefab;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterMode;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.registry.Share;
+import org.terasology.engine.utilities.Assets;
+import org.terasology.engine.world.WorldProvider;
+import org.terasology.engine.world.block.Block;
+import org.terasology.engine.world.block.BlockManager;
+import org.terasology.engine.world.chunks.ChunkConstants;
+import org.terasology.engine.world.chunks.event.OnChunkGenerated;
 import org.terasology.math.geom.Quat4f;
 import org.terasology.math.geom.Vector3f;
 import org.terasology.math.geom.Vector3i;
-import org.terasology.registry.In;
-import org.terasology.registry.Share;
-import org.terasology.utilities.Assets;
 import org.terasology.wildAnimals.AnimalSpawnConfig;
-import org.terasology.world.WorldProvider;
-import org.terasology.world.block.Block;
-import org.terasology.world.block.BlockManager;
-import org.terasology.world.chunks.ChunkConstants;
-import org.terasology.world.chunks.event.OnChunkGenerated;
 
 import java.util.List;
 import java.util.Random;
@@ -43,19 +30,14 @@ import java.util.function.Function;
 @Share(value = WildAnimalsSpawnSystem.class)
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class WildAnimalsSpawnSystem extends BaseComponentSystem {
+    private final Random random = new Random();
     private AnimalSpawnConfig config;
-
     @In
     private EntityManager entityManager;
-
     @In
     private WorldProvider worldProvider;
-
     @In
     private BlockManager blockManager;
-
-    private Random random = new Random();
-
     private Block grassBlock;
     private Block airBlock;
 
@@ -117,7 +99,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     /**
      * Runs upon a chunk being generated to see whether a deer should be spawned
      *
-     * @param event       The event which the method will run upon receiving
+     * @param event The event which the method will run upon receiving
      * @param worldEntity The world that the chunk is in
      */
     @ReceiveEvent

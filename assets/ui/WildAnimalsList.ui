@@ -69,7 +69,8 @@
                     "cc": "cell 0 1",
                     "height": "5"
                   }
-                },{
+                },
+                {
                   "type": "UIButton",
                   "id": "crocodile",
                   "text": "Crocodile",
@@ -105,9 +106,7 @@
                     "height": "30"
                   }
                 }
-
-
-                ]
+              ]
             }
           ]
         }
