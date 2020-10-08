@@ -44,7 +44,7 @@
   "AliveCharacter": {},
   "WildAnimal": {
     "name": "Wolf",
-    "icon": "WildAnimalsMadness:wolfIcon"
+    "icon": "WildAnimals:icons#Wolf"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {

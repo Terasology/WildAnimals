@@ -53,7 +53,7 @@
   "AliveCharacter": {},
   "WildAnimal": {
     "name": "Deer",
-    "icon": "WildAnimals:deerIcon"
+    "icon": "WildAnimals:icons#Deer"
   },
   "WildAnimalGrowth": {
     "minGrowthTime": 15000,

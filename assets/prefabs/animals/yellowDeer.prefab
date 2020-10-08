@@ -1,0 +1,13 @@
+{
+  "parent" : "greenDeer",
+  "skeletalmesh" : {
+      "mesh" : "WildAnimals:deer",
+      "heightOffset" : -0.8,
+      "material" : "yellowDeerSkin",
+      "animation" : "WildAnimals:deerIdle",
+      "loop" : true
+    },
+    "GroupTag" : {
+      "groups" : [ "yellow" ]
+    }
+ }

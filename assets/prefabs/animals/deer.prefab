@@ -38,7 +38,7 @@
   "AliveCharacter": {},
   "WildAnimal" : {
     "name": "Deer",
-    "icon": "WildAnimals:deerIcon"
+    "icon": "WildAnimals:icons#Deer"
   },
   "NPCMovement" : {},
   "CreatureNameGenerator" : {

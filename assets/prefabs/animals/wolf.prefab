@@ -1,30 +1,32 @@
 {
   "skeletalmesh": {
-    "mesh": "cat",
+    "mesh": "wolf",
     "heightOffset": -0.8,
-    "material": "catSkin",
-    "animation": "catIdle",
+    "material": "wolfSkin",
+    "animation": "wolfScene",
     "loop": true
   },
   "Behavior": {
-    "tree": "Behaviors:critter"
+    "tree": "stray"
   },
   "FleeOnHit": {
-    "minDistance": 5
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
+  "StrayIfIdle": {
+    "defaultSpeedMultiplier": 0.3
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": [
+      "2*WildAnimals:meat"
+    ]
   },
   "Stand": {
-    "animationPool": [
-      "catIdle"
-    ]
+    "animationPool": []
   },
   "Walk": {
-    "animationPool": [
-    "catWalk"
-    ]
+    "animationPool": []
   },
   "Die": {
     "animationPool": []
@@ -34,8 +36,8 @@
   "Character": {},
   "AliveCharacter": {},
   "WildAnimal": {
-    "name": "Cat",
-    "icon": "WildAnimals:icons#Cat"
+    "name": "wolf",
+    "icon": "WildAnimals:icons#Wolf"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {
