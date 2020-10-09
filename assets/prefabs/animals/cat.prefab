@@ -3,7 +3,7 @@
     "mesh": "cat",
     "heightOffset": -0.8,
     "material": "catSkin",
-    "animation": "catIdle",
+    "animation": "cat#Idle",
     "loop": true
   },
   "Behavior": {
@@ -18,12 +18,12 @@
   },
   "Stand": {
     "animationPool": [
-      "catIdle"
+      "cat#Idle"
     ]
   },
   "Walk": {
     "animationPool": [
-    "catWalk"
+      "cat#Walking"
     ]
   },
   "Die": {
