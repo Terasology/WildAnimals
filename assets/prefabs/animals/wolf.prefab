@@ -3,7 +3,7 @@
     "mesh": "wolf",
     "heightOffset": -0.8,
     "material": "wolfSkin",
-    "animation": "wolfScene",
+    "animation": "wolf#Idle",
     "loop": true
   },
   "Behavior": {
@@ -23,10 +23,14 @@
     ]
   },
   "Stand": {
-    "animationPool": []
+    "animationPool": [
+      "wolf#Idle"
+    ]
   },
   "Walk": {
-    "animationPool": []
+    "animationPool": [
+      "wolf#Walk
+    ]
   },
   "Die": {
     "animationPool": []
