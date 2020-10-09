@@ -3,7 +3,7 @@
     "mesh": "cow",
     "heightOffset": -0.8,
     "material": "cowSkin",
-    "animation": "cowIdle",
+    "animation": "cow#IdleLeft",
     "loop": true
   },
   "Behavior": {
@@ -18,12 +18,12 @@
   },
   "Stand": {
     "animationPool": [
-      "cowIdle"
+      "cow#IdleLeft"
     ]
   },
   "Walk": {
     "animationPool": [
-    "cowWalk"
+    "cow#Walking"
     ]
   },
   "Die": {
