@@ -3,7 +3,7 @@
     "mesh": "deer",
     "heightOffset": -1.6,
     "material": "deerSkin",
-    "animation": "deerIdle",
+    "animation": "deer#idle",
     "loop": true,
     "scale": [
       0.5,
@@ -29,22 +29,20 @@
   },
   "Stand": {
     "animationPool": [
-      "deerIdle",
-      "deerIdle",
-      "deerIdle",
-      "deerIdleLookLeft",
-      "deerIdleLookRight",
-      "deerIdleMoveLegs"
+      "deer#idle",
+      "deer#idlelookleft",
+      "deer#idlelookright",
+      "deer#idlemovelegs"
     ]
   },
   "Walk": {
     "animationPool": [
-      "deerWalk"
+      "deer#walkloop"
     ]
   },
   "Die": {
     "animationPool": [
-      "deerFall"
+      "deer#Death"
     ]
   },
   "persisted": true,

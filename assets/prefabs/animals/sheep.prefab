@@ -3,7 +3,7 @@
     "mesh" : "deer",
     "heightOffset" : -0.8,
     "material" : "deerSkin",
-    "animation" : "deerIdle",
+    "animation" : "deer#idle",
     "loop" : true
   },
   "Behavior" : {
@@ -18,19 +18,21 @@
   },
   "Stand" :{
     "animationPool": [
-      "deerIdle",
-      "deerIdle",
-      "deerIdle",
-      "deerIdleLookLeft",
-      "deerIdleLookRight",
-      "deerIdleMoveLegs"
-      ]
+      "deer#idle",
+      "deer#idlelookleft",
+      "deer#idlelookright",
+      "deer#idlemovelegs"
+    ]
   },
   "Walk" :{
-    "animationPool": ["deerWalk"]
+    "animationPool": [
+      "deer#walkloop"
+    ]
   },
   "Die" :{
-    "animationPool": ["deerFall"]
+    "animationPool": [
+      "deer#Death"
+    ]
   },
   "persisted" : true,
   "location" : {},
@@ -38,7 +40,7 @@
   "AliveCharacter": {},
   "WildAnimal" : {
     "name": "Sheep",
-    "icon": "WildAnimals:deerIcon"
+    "icon": "WildAnimals:icons#Sheep"
   },
   "NPCMovement" : {},
   "CreatureNameGenerator" : {

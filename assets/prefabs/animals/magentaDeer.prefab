@@ -1,10 +1,10 @@
 {
-  "parent" : "greenDeer",
+  "parent" : "deer",
   "skeletalmesh" : {
-      "mesh" : "WildAnimals:deer",
+      "mesh" : "deer",
       "heightOffset" : -0.8,
-      "material" : "magentaDeerSkin",
-      "animation" : "WildAnimals:deerIdle",
+      "material" : "deerSkin",
+      "animation" : "deer#idle",
       "loop" : true
     },
   "Behavior" : {
