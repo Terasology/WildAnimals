@@ -40,7 +40,7 @@
   "AliveCharacter": {},
   "WildAnimal" : {
     "name": "Sheep",
-    "icon": "WildAnimals:icons#Sheep"
+    "icon": "WildAnimals:icons#Deer"
   },
   "NPCMovement" : {},
   "CreatureNameGenerator" : {
