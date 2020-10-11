@@ -1,5 +1,5 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "deer",
     "heightOffset": -0.8,
     "material": "deerSkin",
@@ -8,8 +8,10 @@
   },
   "TerritoryDistance": {
   },
-  "GroupTag" : {
-    "groups" : [ "territorial" ]
+  "GroupTag": {
+    "groups": [
+      "territorial"
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:territorialCritter"

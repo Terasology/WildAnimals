@@ -1,16 +1,18 @@
 {
-  "parent" : "deer",
-  "skeletalmesh" : {
-      "mesh" : "deer",
-      "heightOffset" : -0.8,
-      "material" : "deerSkin",
-      "animation" : "deer#idle",
-      "loop" : true
-    },
-  "Behavior" : {
-    "tree" : "still"
+  "parent": "deer",
+  "skeletalMesh": {
+    "mesh": "deer",
+    "heightOffset": -0.8,
+    "material": "blackDeerSkin",
+    "animation": "deer#idle",
+    "loop": true
   },
-   "GroupTag" : {
-     "groups" : [ "black" ]
-   }
- }
+  "Behavior": {
+    "tree": "still"
+  },
+  "GroupTag": {
+    "groups": [
+      "black"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "cow",
-    "heightOffset": -0.8,
+    "heightOffset": 2.0,
     "material": "cowSkin",
     "animation": "cow#IdleLeft",
     "loop": true
@@ -14,7 +14,9 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": [
+      "2*WildAnimals:meat"
+    ]
   },
   "Stand": {
     "animationPool": [
@@ -23,7 +25,7 @@
   },
   "Walk": {
     "animationPool": [
-    "cow#Walking"
+      "cow#Walking"
     ]
   },
   "Die": {

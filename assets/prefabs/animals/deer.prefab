@@ -1,22 +1,25 @@
 {
-  "skeletalmesh" : {
-    "mesh" : "deer",
-    "heightOffset" : -0.75,
-    "material" : "deerSkin",
-    "animation" : "deer#idle",
-    "loop" : true
+  "skeletalMesh": {
+    "mesh": "deer",
+    "heightOffset": 1.0,
+    "material": "deerSkin",
+    "animation": "deer#idle",
+    "loop": true
   },
-  "Behavior" : {
-    "tree" : "Behaviors:critter"
+  "Behavior": {
+    "tree": "Behaviors:critter"
   },
-  "FleeOnHit" : {
-    "minDistance" : 5
+  "FleeOnHit": {
+    "minDistance": 5
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["0.7|WildAnimals:meat", "0.3|WildAnimals:deerHide"]
+    "itemDrops": [
+      "0.7|WildAnimals:meat",
+      "0.3|WildAnimals:deerHide"
+    ]
   },
-  "Stand" :{
+  "Stand": {
     "animationPool": [
       "deer#idle",
       "deer#idle",
@@ -24,52 +27,69 @@
       "deer#idlelookleft",
       "deer#idlelookright",
       "deer#idlemovelegs"
-      ]
+    ]
   },
-  "Walk" :{
-    "animationPool": ["deer#walkloop"]
+  "Walk": {
+    "animationPool": [
+      "deer#walkloop"
+    ]
   },
-  "Die" :{
-    "animationPool": ["deer#Death"]
+  "Die": {
+    "animationPool": [
+      "deer#Death"
+    ]
   },
-  "persisted" : true,
-  "location" : {},
-  "Character" : {},
+  "persisted": true,
+  "location": {},
+  "Character": {},
   "AliveCharacter": {},
-  "WildAnimal" : {
+  "WildAnimal": {
     "name": "Deer",
     "icon": "WildAnimals:icons#Deer"
   },
-  "NPCMovement" : {},
-  "CreatureNameGenerator" : {
-    "genderRatio" : 0,
-    "nobility" : 0,
+  "NPCMovement": {},
+  "CreatureNameGenerator": {
+    "genderRatio": 0,
+    "nobility": 0,
     "theme": "ANIMAL"
   },
-  "CharacterMovement" : {
-    "groundFriction" : 16,
-    "speedMultiplier" : 0.3,
-    "distanceBetweenFootsteps" : 0.2,
-    "distanceBetweenSwimStrokes" : 2.5,
-    "height" : 1.6,
-    "radius" : 0.3,
-    "jumpSpeed" : 12
+  "CharacterMovement": {
+    "groundFriction": 16,
+    "speedMultiplier": 0.3,
+    "distanceBetweenFootsteps": 0.2,
+    "distanceBetweenSwimStrokes": 2.5,
+    "height": 1.6,
+    "radius": 0.3,
+    "jumpSpeed": 12
   },
-  "CharacterSound" : {
-    "footstepSounds" : ["FootGrass1", "FootGrass2", "FootGrass3", "FootGrass4", "FootGrass5"],
-    "footstepVolume" : 0.03
+  "CharacterSound": {
+    "footstepSounds": [
+      "FootGrass1",
+      "FootGrass2",
+      "FootGrass3",
+      "FootGrass4",
+      "FootGrass5"
+    ],
+    "footstepVolume": 0.03
   },
-  "Network" :{},
-  "MinionMove" : {},
-  "Health" : {
-    "destroyEntityOnNoHealth" : true,
+  "Network": {},
+  "MinionMove": {},
+  "Health": {
+    "destroyEntityOnNoHealth": true,
     "currentHealth": 50,
     "maxHealth": 50
   },
-  "BoxShape" : {
-    "extents" : [1.5, 1.5, 1.5]
+  "BoxShape": {
+    "extents": [
+      1.5,
+      1.5,
+      1.5
+    ]
   },
-  "Trigger" : {
-    "detectGroups" : ["engine:debris", "engine:sensor"]
+  "Trigger": {
+    "detectGroups": [
+      "engine:debris",
+      "engine:sensor"
+    ]
   }
 }

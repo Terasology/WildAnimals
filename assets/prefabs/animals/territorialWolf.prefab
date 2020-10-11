@@ -1,5 +1,5 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "wolf",
     "heightOffset": -0.8,
     "material": "wolfSkin",
@@ -8,8 +8,10 @@
   },
   "TerritoryDistance": {
   },
-  "GroupTag" : {
-    "groups" : [ "territorial" ]
+  "GroupTag": {
+    "groups": [
+      "territorial"
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:territorialCritter"
@@ -33,7 +35,7 @@
   },
   "Walk": {
     "animationPool": [
-      "wolf#Walk
+      "wolf#Walk"
     ]
   },
   "Die": {

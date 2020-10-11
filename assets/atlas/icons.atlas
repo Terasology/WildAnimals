@@ -1,5 +1,5 @@
 {
-    "texture":"icons",
+    "texture":"WildAnimals:icons",
     "textureSize":[256, 256],
     "grid":{
         "tileSize":[64, 64],
@@ -8,7 +8,7 @@
             "Deer", "Wolf", "Cow", "Cat",
             "", "", "", "",
             "", "", "", "",
-            "", "", "", "",
+            "", "", "", ""
         ]
     }
 }

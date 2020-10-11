@@ -1,5 +1,5 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "cat",
     "heightOffset": -0.8,
     "material": "catSkin",
@@ -14,7 +14,9 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": [
+      "2*WildAnimals:meat"
+    ]
   },
   "Stand": {
     "animationPool": [
