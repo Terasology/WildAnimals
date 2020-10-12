@@ -1,10 +1,15 @@
 {
   "skeletalMesh": {
     "mesh": "deer",
-    "heightOffset": 1.0,
+    "heightOffset": -0.5,
     "material": "deerSkin",
     "animation": "deer#idle",
-    "loop": true
+    "loop": true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:stray"
