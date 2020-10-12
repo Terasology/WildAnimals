@@ -1,10 +1,15 @@
 {
   "skeletalMesh": {
     "mesh": "cow",
-    "heightOffset": 2.0,
+    "heightOffset": 0.6,
     "material": "cowSkin",
     "animation": "cow#IdleLeft",
-    "loop": true
+    "loop": true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:critter"

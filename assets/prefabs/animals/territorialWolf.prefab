@@ -1,10 +1,15 @@
 {
   "skeletalMesh": {
     "mesh": "wolf",
-    "heightOffset": -0.8,
+    "heightOffset": -0.75,
     "material": "wolfSkin",
     "animation": "wolf#Idle",
-    "loop": true
+    "loop": true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "TerritoryDistance": {
   },
