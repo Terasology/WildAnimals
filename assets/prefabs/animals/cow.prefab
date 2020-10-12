@@ -1,9 +1,9 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "cow",
-    "heightOffset": -0.8,
+    "heightOffset": 2.0,
     "material": "cowSkin",
-    "animation": "cowIdle",
+    "animation": "cow#IdleLeft",
     "loop": true
   },
   "Behavior": {
@@ -14,16 +14,18 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": [
+      "2*WildAnimals:meat"
+    ]
   },
   "Stand": {
     "animationPool": [
-      "cowIdle"
+      "cow#IdleLeft"
     ]
   },
   "Walk": {
     "animationPool": [
-    "cowWalk"
+      "cow#Walking"
     ]
   },
   "Die": {
@@ -35,7 +37,7 @@
   "AliveCharacter": {},
   "WildAnimal": {
     "name": "Cow2",
-    "icon": "WildAnimals:cow2Icon"
+    "icon": "WildAnimals:icons#Cow"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {

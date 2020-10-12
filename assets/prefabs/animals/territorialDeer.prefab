@@ -1,15 +1,17 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "deer",
     "heightOffset": -0.8,
     "material": "deerSkin",
-    "animation": "deerIdle",
+    "animation": "deer#idle",
     "loop": true
   },
   "TerritoryDistance": {
   },
-  "GroupTag" : {
-    "groups" : [ "territorial" ]
+  "GroupTag": {
+    "groups": [
+      "territorial"
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:territorialCritter"
@@ -28,22 +30,20 @@
   },
   "Stand": {
     "animationPool": [
-      "deerIdle",
-      "deerIdle",
-      "deerIdle",
-      "deerIdleLookLeft",
-      "deerIdleLookRight",
-      "deerIdleMoveLegs"
+      "deer#idle",
+      "deer#idlelookleft",
+      "deer#idlelookright",
+      "deer#idlemovelegs"
     ]
   },
   "Walk": {
     "animationPool": [
-      "deerWalk"
+      "deer#walkloop"
     ]
   },
   "Die": {
     "animationPool": [
-      "deerFall"
+      "deer#Death"
     ]
   },
   "persisted": true,
@@ -52,7 +52,7 @@
   "AliveCharacter": {},
   "WildAnimal": {
     "name": "Deer",
-    "icon": "WildAnimals:deerIcon"
+    "icon": "WildAnimals:icons#Deer"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {
