@@ -5,7 +5,7 @@
         "tileSize":[64, 64],
         "gridDimensions":[4, 4],
         "tileNames":[
-            "Deer", "Crab", "Chicken", "Bat",
+            "Deer", "Wolf", "Cow", "Cat",
             "MawGooey", "", "", "",
             "", "", "", "",
             "", "", "", ""
