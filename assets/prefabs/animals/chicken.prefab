@@ -1,7 +1,7 @@
 {
   "skeletalMesh": {
     "mesh": "chicken",
-    "heightOffset": 0.6,
+    "heightOffset": -0.7,
     "material": "chickenSkin",
     "animation": "chicken#IdleLeft",
     "loop": true,

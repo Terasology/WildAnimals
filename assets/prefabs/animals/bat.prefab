@@ -1,7 +1,7 @@
 {
   "skeletalMesh": {
     "mesh": "bat",
-    "heightOffset": 2.0,
+    "heightOffset": 1.0,
     "material": "batSkin",
     "animation": "bat#Flying",
     "loop": true,
