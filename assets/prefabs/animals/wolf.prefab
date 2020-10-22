@@ -1,16 +1,25 @@
 {
   "skeletalMesh": {
-    "mesh": "deer",
-    "heightOffset": -0.8,
-    "material": "deerSkin",
-    "animation": "deer#idle",
-    "loop": true
+    "mesh": "wolf",
+    "heightOffset": -0.7,
+    "material": "wolfSkin",
+    "animation": "wolf#Idle",
+    "loop": true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "Behavior": {
-    "tree": "Behaviors:friendlyCritter"
+    "tree": "stray"
   },
-  "FindNearbyPlayers": {
-    "searchRadius": 8
+  "FleeOnHit": {
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
+  "StrayIfIdle": {
+    "defaultSpeedMultiplier": 0.3
   },
   "DropGrammar": {
     "blockDrops": [],
@@ -20,40 +29,30 @@
   },
   "Stand": {
     "animationPool": [
-      "deer#idle",
-      "deer#idlelookleft",
-      "deer#idlelookright",
-      "deer#idlemovelegs"
+      "wolf#Idle"
     ]
   },
   "Walk": {
     "animationPool": [
-      "deer#walkloop"
+      "wolf#Walk"
     ]
   },
   "Die": {
-    "animationPool": [
-      "deer#Death"
-    ]
-  },
-  "MeleeAttack": {
-    "animationPool": [
-      "deer#idlemovelegs"
-    ]
+    "animationPool": []
   },
   "persisted": true,
   "location": {},
   "Character": {},
   "AliveCharacter": {},
   "WildAnimal": {
-    "name": "Deer",
-    "icon": "WildAnimals:icons#Deer"
+    "name": "wolf",
+    "icon": "WildAnimals:icons#Wolf"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {
-    "genderRatio": 0,
-    "nobility": 0,
-    "theme": "ANIMAL"
+    "genderRatio": 0.5,
+    "nobility": 0.5,
+    "theme": "DWARF"
   },
   "CharacterMovement": {
     "groundFriction": 16,
@@ -78,8 +77,7 @@
   "MinionMove": {},
   "Health": {
     "destroyEntityOnNoHealth": true,
-    "currentHealth": 50,
-    "maxHealth": 50
+    "currentHealth": 7
   },
   "BoxShape": {
     "extents": [

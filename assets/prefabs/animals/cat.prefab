@@ -1,10 +1,15 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "cat",
-    "heightOffset": -0.8,
+    "heightOffset": -0.75,
     "material": "catSkin",
-    "animation": "catIdle",
-    "loop": true
+    "animation": "cat#Idle",
+    "loop": true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:critter"
@@ -14,16 +19,18 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": [
+      "2*WildAnimals:meat"
+    ]
   },
   "Stand": {
     "animationPool": [
-      "catIdle"
+      "cat#Idle"
     ]
   },
   "Walk": {
     "animationPool": [
-    "catWalk"
+      "cat#Walking"
     ]
   },
   "Die": {
@@ -35,7 +42,7 @@
   "AliveCharacter": {},
   "WildAnimal": {
     "name": "Cat",
-    "icon": "WildAnimals:catIcon"
+    "icon": "WildAnimals:icons#Cat"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {

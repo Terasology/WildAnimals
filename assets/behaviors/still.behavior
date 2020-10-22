@@ -1,0 +1,15 @@
+{
+  sequence:[
+  {
+    animation : {
+      play: "engine:Stand.animationPool",
+      loop: "engine:Stand.animationPool"
+    }
+  },
+  {
+    sleep : {
+      time : 3
+    }
+  }
+  ]
+}
