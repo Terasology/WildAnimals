@@ -1,9 +1,9 @@
 {
   "skeletalMesh": {
-    "mesh": "cow",
+    "mesh": "chicken",
     "heightOffset": 0.6,
-    "material": "cowSkin",
-    "animation": "cow#IdleLeft",
+    "material": "chickenSkin",
+    "animation": "chicken#IdleLeft",
     "loop": true,
     "scale": [
       0.5,
@@ -25,24 +25,32 @@
   },
   "Stand": {
     "animationPool": [
-      "cow#IdleLeft"
+      "chicken#Idle",
+      "chicken#Idle",
+      "chicken#Idle",
+      "chicken#Bite_InPlace",
+      "chicken#Yes",
+      "chicken#No",
+      "chicken#Dance"
     ]
   },
   "Walk": {
     "animationPool": [
-      "cow#Walking"
+      "chicken#Walk"
     ]
   },
   "Die": {
-    "animationPool": []
+    "animationPool": [
+      "chicken#Death"
+    ]
   },
   "persisted": true,
   "location": {},
   "Character": {},
   "AliveCharacter": {},
   "WildAnimal": {
-    "name": "Cow2",
-    "icon": "WildAnimals:icons#Cow"
+    "name": "Chicken",
+    "icon": "WildAnimals:icons#Chicken"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {

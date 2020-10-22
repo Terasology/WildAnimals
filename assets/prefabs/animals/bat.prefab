@@ -1,9 +1,9 @@
 {
   "skeletalMesh": {
-    "mesh": "cat",
-    "heightOffset": -0.75,
-    "material": "catSkin",
-    "animation": "cat#Idle",
+    "mesh": "bat",
+    "heightOffset": 2.0,
+    "material": "batSkin",
+    "animation": "bat#Flying",
     "loop": true,
     "scale": [
       0.5,
@@ -19,30 +19,30 @@
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": [
-      "2*WildAnimals:meat"
-    ]
+    "itemDrops": []
   },
   "Stand": {
     "animationPool": [
-      "cat#Idle"
+      "bat#Flying"
     ]
   },
   "Walk": {
     "animationPool": [
-      "cat#Walking"
+      "bat#Flying"
     ]
   },
   "Die": {
-    "animationPool": []
+    "animationPool": [
+      "bat#Death"
+    ]
   },
   "persisted": true,
   "location": {},
   "Character": {},
   "AliveCharacter": {},
   "WildAnimal": {
-    "name": "Cat",
-    "icon": "WildAnimals:icons#Cat"
+    "name": "Bat",
+    "icon": "WildAnimals:icons#Bat"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {
