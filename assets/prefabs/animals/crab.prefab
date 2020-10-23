@@ -1,9 +1,9 @@
 {
   "skeletalMesh": {
-    "mesh": "wolf",
+    "mesh": "crab",
     "heightOffset": -0.7,
-    "material": "wolfSkin",
-    "animation": "wolf#Idle",
+    "material": "crabSkin",
+    "animation": "crab#Idle",
     "loop": true,
     "scale": [
       0.5,
@@ -29,24 +29,32 @@
   },
   "Stand": {
     "animationPool": [
-      "wolf#Idle"
+      "crab#Idle",
+      "crab#Idle",
+      "crab#Idle",
+      "crab#Bite_InPlace",
+      "crab#Yes",
+      "crab#No",
+      "crab#Dance"
     ]
   },
   "Walk": {
     "animationPool": [
-      "wolf#Walk"
+      "crab#Walk"
     ]
   },
   "Die": {
-    "animationPool": []
+    "animationPool": [
+      "crab#Death",
+    ]
   },
   "persisted": true,
   "location": {},
   "Character": {},
   "AliveCharacter": {},
   "WildAnimal": {
-    "name": "wolf",
-    "icon": "WildAnimals:icons#Wolf"
+    "name": "Crab",
+    "icon": "WildAnimals:icons#Crab"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {

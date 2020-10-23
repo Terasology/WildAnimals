@@ -1,10 +1,15 @@
 {
-  "skeletalMesh": {
-    "mesh": "deer",
-    "heightOffset": 1.0,
-    "material": "deerSkin",
-    "animation": "deer#idle",
-    "loop": true
+  "skeletalmesh" : {
+    "mesh" : "deer",
+    "heightOffset" : -0.7,
+    "material" : "deerSkin",
+    "animation" : "deer#Idle",
+    "loop" : true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:critter"
@@ -21,18 +26,16 @@
   },
   "Stand": {
     "animationPool": [
-      "deer#idle",
-      "deer#idle",
-      "deer#idle",
-      "deer#idlelookleft",
-      "deer#idlelookright",
-      "deer#idlemovelegs"
-    ]
+      "deer#Idle",
+      "deer#Idle",
+      "deer#Idle",
+      "deer#Bite_InPlace",
+      "deer#Yes",
+      "deer#No"
+      ]
   },
-  "Walk": {
-    "animationPool": [
-      "deer#walkloop"
-    ]
+  "Walk" :{
+    "animationPool": ["deer#Walk"]
   },
   "Die": {
     "animationPool": [

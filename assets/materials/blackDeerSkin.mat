@@ -2,7 +2,7 @@
 {
     "shader" : "engine:genericMeshMaterial",
     "params" : {
-        "diffuse" : "blackDeer",
+        "diffuse" : "blackDeerTexture",
         "colorOffset" : [1.0, 1.0, 1.0],
         "textured" : true
     }
