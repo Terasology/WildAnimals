@@ -1,9 +1,9 @@
 {
   "skeletalMesh": {
-    "mesh": "deer",
+    "mesh": "sheep",
     "heightOffset": -0.8,
-    "material": "deerSkin",
-    "animation": "deer#idle",
+    "material": "sheepSkin",
+    "animation": "sheep#idle",
     "loop": true
   },
   "Behavior": {
@@ -20,20 +20,22 @@
   },
   "Stand": {
     "animationPool": [
-      "deer#idle",
-      "deer#idlelookleft",
-      "deer#idlelookright",
-      "deer#idlemovelegs"
+      "sheep#Idle",
+      "sheep#Idle",
+      "sheep#Idle",
+      "sheep#Bite_InPlace",
+      "sheep#Yes",
+      "sheep#No"
     ]
   },
   "Walk": {
     "animationPool": [
-      "deer#walkloop"
+      "sheep#Walk"
     ]
   },
   "Die": {
     "animationPool": [
-      "deer#Death"
+      "sheep#Death"
     ]
   },
   "persisted": true,
@@ -42,7 +44,7 @@
   "AliveCharacter": {},
   "WildAnimal": {
     "name": "Sheep",
-    "icon": "WildAnimals:icons#Deer"
+    "icon": "WildAnimals:icons#Sheep"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {
