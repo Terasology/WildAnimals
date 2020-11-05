@@ -1,0 +1,19 @@
+{
+  sequence:[
+  {
+    animation : {
+      play: "engine:Walk.animationPool",
+      loop: "engine:Walk.animationPool"
+    }
+  },
+  {
+    set_mad_speed : {
+      speedMultiplier: 2.5
+    }
+
+  },
+  {
+    lookup: { tree: "Behaviors:doRandomMove" }
+  }
+  ]
+}

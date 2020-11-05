@@ -1,10 +1,10 @@
 {
-  "skeletalmesh" : {
-    "mesh" : "deer",
-    "heightOffset" : -0.7,
-    "material" : "deerSkin",
-    "animation" : "deer#Idle",
-    "loop" : true,
+  "skeletalMesh": {
+    "mesh": "chicken",
+    "heightOffset": -0.7,
+    "material": "chickenSkin",
+    "animation": "chicken#IdleLeft",
+    "loop": true,
     "scale": [
       0.5,
       0.5,
@@ -20,26 +20,28 @@
   "DropGrammar": {
     "blockDrops": [],
     "itemDrops": [
-      "0.7|WildAnimals:meat",
-      "0.3|WildAnimals:deerHide"
+      "2*WildAnimals:meat"
     ]
   },
   "Stand": {
     "animationPool": [
-      "deer#Idle",
-      "deer#Idle",
-      "deer#Idle",
-      "deer#Bite_InPlace",
-      "deer#Yes",
-      "deer#No"
-      ]
+      "chicken#Idle",
+      "chicken#Idle",
+      "chicken#Idle",
+      "chicken#Bite_InPlace",
+      "chicken#Yes",
+      "chicken#No",
+      "chicken#Dance"
+    ]
   },
-  "Walk" :{
-    "animationPool": ["deer#Walk"]
+  "Walk": {
+    "animationPool": [
+      "chicken#Walk"
+    ]
   },
   "Die": {
     "animationPool": [
-      "deer#Death"
+      "chicken#Death"
     ]
   },
   "persisted": true,
@@ -47,14 +49,14 @@
   "Character": {},
   "AliveCharacter": {},
   "WildAnimal": {
-    "name": "Deer",
-    "icon": "WildAnimals:icons#Deer"
+    "name": "Chicken",
+    "icon": "WildAnimals:icons#Chicken"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {
-    "genderRatio": 0,
-    "nobility": 0,
-    "theme": "ANIMAL"
+    "genderRatio": 0.5,
+    "nobility": 0.5,
+    "theme": "DWARF"
   },
   "CharacterMovement": {
     "groundFriction": 16,
@@ -79,8 +81,7 @@
   "MinionMove": {},
   "Health": {
     "destroyEntityOnNoHealth": true,
-    "currentHealth": 50,
-    "maxHealth": 50
+    "currentHealth": 7
   },
   "BoxShape": {
     "extents": [

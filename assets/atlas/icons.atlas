@@ -1,0 +1,14 @@
+{
+    "texture":"WildAnimals:icons",
+    "textureSize":[256, 256],
+    "grid":{
+        "tileSize":[64, 64],
+        "gridDimensions":[4, 4],
+        "tileNames":[
+            "Deer", "Crab", "Chicken", "Bat",
+            "MawGooey", "Sheep", "", "",
+            "", "", "", "",
+            "", "", "", ""
+        ]
+    }
+}

@@ -1,15 +1,22 @@
 {
-  "skeletalmesh": {
+  "skeletalMesh": {
     "mesh": "wolf",
-    "heightOffset": -0.8,
+    "heightOffset": -0.75,
     "material": "wolfSkin",
-    "animation": "wolfIdle",
-    "loop": true
+    "animation": "wolf#Idle",
+    "loop": true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "TerritoryDistance": {
   },
-  "GroupTag" : {
-    "groups" : [ "territorial" ]
+  "GroupTag": {
+    "groups": [
+      "territorial"
+    ]
   },
   "Behavior": {
     "tree": "Behaviors:territorialCritter"
@@ -28,15 +35,16 @@
   },
   "Stand": {
     "animationPool": [
+      "wolf#Idle"
     ]
   },
   "Walk": {
     "animationPool": [
+      "wolf#Walk"
     ]
   },
   "Die": {
-    "animationPool": [
-    ]
+    "animationPool": []
   },
   "persisted": true,
   "location": {},
@@ -44,7 +52,7 @@
   "AliveCharacter": {},
   "WildAnimal": {
     "name": "Wolf",
-    "icon": "WildAnimalsMadness:wolfIcon"
+    "icon": "WildAnimals:icons#Wolf"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {

@@ -3,11 +3,16 @@
   "skeletalMesh": {
     "mesh": "deer",
     "heightOffset": -0.8,
-    "material": "redDeerSkin",
+    "material": "steelDeerSkin",
     "animation": "deer#idle",
     "loop": true
   },
   "Behavior": {
-    "tree": "Behaviors:critter"
+    "tree": "still"
+  },
+  "GroupTag": {
+    "groups": [
+      "steel"
+    ]
   }
 }

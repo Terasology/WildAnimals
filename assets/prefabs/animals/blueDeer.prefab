@@ -1,13 +1,13 @@
 {
-  "parent" : "greenDeer",
-  "skeletalmesh" : {
-    "mesh" : "deer",
-    "heightOffset" : -0.8,
-    "material" : "blueDeerSkin",
-    "animation" : "deerIdle",
-    "loop" : true
+  "parent": "deer",
+  "skeletalMesh": {
+    "mesh": "deer",
+    "heightOffset": -0.8,
+    "material": "blueDeerSkin",
+    "animation": "deer#idle",
+    "loop": true
   },
-  "Behavior" : {
-    "tree" : "Behaviors:critter"
+  "Behavior": {
+    "tree": "Behaviors:critter"
   }
 }

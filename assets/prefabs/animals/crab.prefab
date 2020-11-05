@@ -1,41 +1,60 @@
 {
-  "skeletalmesh": {
-    "mesh": "cat",
-    "heightOffset": -0.8,
-    "material": "catSkin",
-    "animation": "catIdle",
-    "loop": true
+  "skeletalMesh": {
+    "mesh": "crab",
+    "heightOffset": -0.7,
+    "material": "crabSkin",
+    "animation": "crab#Idle",
+    "loop": true,
+    "scale": [
+      0.5,
+      0.5,
+      0.5
+    ]
   },
   "Behavior": {
-    "tree": "Behaviors:critter"
+    "tree": "stray"
   },
   "FleeOnHit": {
-    "minDistance": 5
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
+  "StrayIfIdle": {
+    "defaultSpeedMultiplier": 0.3
   },
   "DropGrammar": {
     "blockDrops": [],
-    "itemDrops": ["2*WildAnimals:meat"]
+    "itemDrops": [
+      "2*WildAnimals:meat"
+    ]
   },
   "Stand": {
     "animationPool": [
-      "catIdle"
+      "crab#Idle",
+      "crab#Idle",
+      "crab#Idle",
+      "crab#Bite_InPlace",
+      "crab#Yes",
+      "crab#No",
+      "crab#Dance"
     ]
   },
   "Walk": {
     "animationPool": [
-    "catWalk"
+      "crab#Walk"
     ]
   },
   "Die": {
-    "animationPool": []
+    "animationPool": [
+      "crab#Death",
+    ]
   },
   "persisted": true,
   "location": {},
   "Character": {},
   "AliveCharacter": {},
   "WildAnimal": {
-    "name": "Cat",
-    "icon": "WildAnimals:catIcon"
+    "name": "Crab",
+    "icon": "WildAnimals:icons#Crab"
   },
   "NPCMovement": {},
   "CreatureNameGenerator": {
