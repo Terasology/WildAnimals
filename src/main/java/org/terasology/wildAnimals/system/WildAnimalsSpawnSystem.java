@@ -1,21 +1,12 @@
-/*
- * Copyright 2017 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.system;
 
 import com.google.common.collect.Lists;
+import org.joml.AxisAngle4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.joml.Vector3i;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -23,9 +14,7 @@ import org.terasology.entitySystem.prefab.Prefab;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.math.geom.Quat4f;
-import org.terasology.math.geom.Vector3f;
-import org.terasology.math.geom.Vector3i;
+import org.terasology.math.JomlUtil;
 import org.terasology.registry.In;
 import org.terasology.registry.Share;
 import org.terasology.utilities.Assets;
@@ -54,7 +43,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     @In
     private BlockManager blockManager;
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private Block grassBlock;
     private Block airBlock;
@@ -117,16 +106,16 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     /**
      * Runs upon a chunk being generated to see whether a deer should be spawned
      *
-     * @param event       The event which the method will run upon receiving
+     * @param event The event which the method will run upon receiving
      * @param worldEntity The world that the chunk is in
      */
     @ReceiveEvent
     public void onChunkGenerated(OnChunkGenerated event, EntityRef worldEntity) {
-        boolean trySpawn = config.SPAWN_CHANCE_IN_PERCENT > random.nextInt(100);
+        boolean trySpawn = config.spawnChanceInPercent > random.nextInt(100);
         if (!trySpawn) {
             return;
         }
-        Vector3i chunkPos = event.getChunkPos();
+        Vector3i chunkPos = JomlUtil.from(event.getChunkPos());
         tryDeerSpawn(chunkPos);
     }
 
@@ -139,15 +128,15 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     private void tryDeerSpawn(Vector3i chunkPos) {
         List<Vector3i> foundPositions = findDeerSpawnPositions(chunkPos);
 
-        if (foundPositions.size() < config.MIN_DEER_GROUP_SIZE * config.MIN_GROUND_PER_DEER) {
+        if (foundPositions.size() < config.minDeerGroupSize * config.minGroundPerDeer) {
             return;
         }
 
-        int maxDeerCount = foundPositions.size() / config.MIN_DEER_GROUP_SIZE;
-        if (maxDeerCount > config.MAX_DEER_GROUP_SIZE) {
-            maxDeerCount = config.MAX_DEER_GROUP_SIZE;
+        int maxDeerCount = foundPositions.size() / config.minDeerGroupSize;
+        if (maxDeerCount > config.maxDeerGroupSize) {
+            maxDeerCount = config.maxDeerGroupSize;
         }
-        int deerCount = random.nextInt(maxDeerCount - config.MIN_DEER_GROUP_SIZE) + config.MIN_DEER_GROUP_SIZE;
+        int deerCount = random.nextInt(maxDeerCount - config.minDeerGroupSize) + config.minDeerGroupSize;
 
         for (int i = 0; i < deerCount; i++) {
             int randomIndex = random.nextInt(foundPositions.size());
@@ -186,10 +175,10 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      * @param location The location where the deer is to be spawned
      */
     private void spawnDeer(Vector3i location) {
-        Vector3f floatVectorLocation = location.toVector3f();
+        Vector3f floatVectorLocation = new Vector3f(location);
         Vector3f yAxis = new Vector3f(0, 1, 0);
         float randomAngle = (float) (random.nextFloat() * Math.PI * 2);
-        Quat4f rotation = new Quat4f(yAxis, randomAngle);
+        Quaternionf rotation = new Quaternionf(new AxisAngle4f(randomAngle, yAxis));
         // TODO Turn deer spawning back on when done with debugging - this and the SPAWN_CHANCE_IN_PERCENT constant.
         entityManager.create(deerPrefab, floatVectorLocation, rotation);
     }
