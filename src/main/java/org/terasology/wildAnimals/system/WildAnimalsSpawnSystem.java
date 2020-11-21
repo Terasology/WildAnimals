@@ -25,6 +25,7 @@ import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.ChunkConstants;
 import org.terasology.world.chunks.event.OnChunkGenerated;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
@@ -47,6 +48,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
 
     private Block grassBlock;
     private Block airBlock;
+    private List<Prefab> flockAnimals;
 
     /**
      * Check blocks at and around the target position and check if it's a valid spawning spot
@@ -61,6 +63,9 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     public void initialise() {
         grassBlock = blockManager.getBlock("CoreAssets:Grass");
         airBlock = blockManager.getBlock(BlockManager.AIR_ID);
+        flockAnimals = new ArrayList<>();
+        Assets.getPrefab("WildAnimals:Deer").ifPresent(prefab -> flockAnimals.add(prefab));
+        Assets.getPrefab("WildAnimals:Sheep").ifPresent(prefab -> flockAnimals.add(prefab));
 
         if (isValidSpawnPosition == null) {
             isValidSpawnPosition = pos -> {
@@ -108,12 +113,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         }
         Vector3i chunkPos = JomlUtil.from(event.getChunkPos());
         // randomly decide whether to spawn deer or sheep in this chunk
-        Prefab animalPrefab;
-        if (random.nextInt(2) % 2 == 0) {
-            animalPrefab = Assets.getPrefab("WildAnimals:Deer").get();
-        } else {
-            animalPrefab = Assets.getPrefab("WildAnimals:Sheep").get();
-        }
+        Prefab animalPrefab = flockAnimals.get(random.nextInt(flockAnimals.size()));
         tryFlockAnimalSpawn(animalPrefab, chunkPos);
     }
 
