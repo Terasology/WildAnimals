@@ -69,7 +69,11 @@
       "FootGrass4",
       "FootGrass5"
     ],
-    "footstepVolume": 0.03
+    "footstepVolume": 0.03,
+    "damageSounds": [
+      "SheepHit1",
+      "SheepHit2"
+    ]
   },
   "Network": {},
   "MinionMove": {},
