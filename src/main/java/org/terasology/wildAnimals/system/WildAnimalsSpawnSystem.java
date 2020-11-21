@@ -48,11 +48,6 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     private Block grassBlock;
     private Block airBlock;
 
-    private Prefab deerPrefab;
-    private Prefab redDeerPrefab;
-    private Prefab greenDeerPrefab;
-    private Prefab blueDeerPrefab;
-
     /**
      * Check blocks at and around the target position and check if it's a valid spawning spot
      */
@@ -66,10 +61,6 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     public void initialise() {
         grassBlock = blockManager.getBlock("CoreAssets:Grass");
         airBlock = blockManager.getBlock(BlockManager.AIR_ID);
-        deerPrefab = Assets.getPrefab("WildAnimals:Deer").get();
-        redDeerPrefab = Assets.getPrefab("WildAnimals:RedDeer").get();
-        greenDeerPrefab = Assets.getPrefab("WildAnimals:GreenDeer").get();
-        blueDeerPrefab = Assets.getPrefab("WildAnimals:BlueDeer").get();
 
         if (isValidSpawnPosition == null) {
             isValidSpawnPosition = pos -> {
@@ -116,7 +107,14 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
             return;
         }
         Vector3i chunkPos = JomlUtil.from(event.getChunkPos());
-        tryDeerSpawn(chunkPos);
+        // randomly decide whether to spawn deer or sheep in this chunk
+        Prefab animalPrefab;
+        if (random.nextInt(2) % 2 == 0) {
+            animalPrefab = Assets.getPrefab("WildAnimals:Deer").get();
+        } else {
+            animalPrefab = Assets.getPrefab("WildAnimals:Sheep").get();
+        }
+        tryFlockAnimalSpawn(animalPrefab, chunkPos);
     }
 
     /**
@@ -125,23 +123,23 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      *
      * @param chunkPos The chunk which the game will try to spawn deers on
      */
-    private void tryDeerSpawn(Vector3i chunkPos) {
-        List<Vector3i> foundPositions = findDeerSpawnPositions(chunkPos);
+    private void tryFlockAnimalSpawn(Prefab animalPrefab, Vector3i chunkPos) {
+        List<Vector3i> foundPositions = findFlockAnimalSpawnPositions(chunkPos);
 
-        if (foundPositions.size() < config.minDeerGroupSize * config.minGroundPerDeer) {
+        if (foundPositions.size() < config.minFlockSize * config.minGroundPerFlockAnimal) {
             return;
         }
 
-        int maxDeerCount = foundPositions.size() / config.minDeerGroupSize;
-        if (maxDeerCount > config.maxDeerGroupSize) {
-            maxDeerCount = config.maxDeerGroupSize;
+        int maxDeerCount = foundPositions.size() / config.minFlockSize;
+        if (maxDeerCount > config.maxFlockSize) {
+            maxDeerCount = config.maxFlockSize;
         }
-        int deerCount = random.nextInt(maxDeerCount - config.minDeerGroupSize) + config.minDeerGroupSize;
+        int deerCount = random.nextInt(maxDeerCount - config.minFlockSize) + config.minFlockSize;
 
         for (int i = 0; i < deerCount; i++) {
             int randomIndex = random.nextInt(foundPositions.size());
             Vector3i randomSpawnPosition = foundPositions.remove(randomIndex);
-            spawnDeer(randomSpawnPosition);
+            spawnFlockAnimal(animalPrefab, randomSpawnPosition);
         }
     }
 
@@ -151,7 +149,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      * @param chunkPos The chunk that is being checked for valid spawnpoints
      * @return a list of positions of potential deer spawnpoints
      */
-    private List<Vector3i> findDeerSpawnPositions(Vector3i chunkPos) {
+    private List<Vector3i> findFlockAnimalSpawnPositions(Vector3i chunkPos) {
         Vector3i worldPos = new Vector3i(chunkPos);
         worldPos.mul(ChunkConstants.SIZE_X, ChunkConstants.SIZE_Y, ChunkConstants.SIZE_Z);
         List<Vector3i> foundPositions = Lists.newArrayList();
@@ -174,13 +172,13 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      *
      * @param location The location where the deer is to be spawned
      */
-    private void spawnDeer(Vector3i location) {
+    private void spawnFlockAnimal(Prefab animalPrefab, Vector3i location) {
         Vector3f floatVectorLocation = new Vector3f(location);
         Vector3f yAxis = new Vector3f(0, 1, 0);
         float randomAngle = (float) (random.nextFloat() * Math.PI * 2);
         Quaternionf rotation = new Quaternionf(new AxisAngle4f(randomAngle, yAxis));
         // TODO Turn deer spawning back on when done with debugging - this and the SPAWN_CHANCE_IN_PERCENT constant.
-        entityManager.create(deerPrefab, floatVectorLocation, rotation);
+        entityManager.create(animalPrefab, floatVectorLocation, rotation);
     }
 
 }

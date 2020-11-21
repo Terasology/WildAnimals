@@ -3,8 +3,8 @@
 package org.terasology.wildAnimals;
 
 public class AnimalSpawnConfig {
-    public int minGroundPerDeer = 10;
-    public int minDeerGroupSize = 2;
-    public int maxDeerGroupSize = 5;
-    public int spawnChanceInPercent = 1;
+    public int minGroundPerFlockAnimal = 10;
+    public int minFlockSize = 2;
+    public int maxFlockSize = 5;
+    public int spawnChanceInPercent = 2;
 }
