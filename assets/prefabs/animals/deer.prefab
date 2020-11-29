@@ -1,15 +1,10 @@
 {
   "skeletalmesh" : {
     "mesh" : "deer",
-    "heightOffset" : -0.7,
+    "heightOffset" : -0.8,
     "material" : "deerSkin",
     "animation" : "deer#Idle",
-    "loop" : true,
-    "scale": [
-      0.5,
-      0.5,
-      0.5
-    ]
+    "loop" : true
   },
   "Behavior": {
     "tree": "Behaviors:critter"
