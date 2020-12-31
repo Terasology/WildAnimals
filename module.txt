@@ -1,18 +1,39 @@
 {
-    "id": "WildAnimals",
-    "version": "1.0.0",
-    "author": "glasz, flo, nihal111, quaternius, dkambersky",
-    "displayName": "Wild Animals",
-    "description": "Contains a deer and some other placeholder deer variants. Spawned with `spawnPrefab deer` and similar",
-    "dependencies": [
-        { "id": "Behaviors", "minVersion": "1.0.0" },
-        { "id": "CoreAssets", "minVersion": "2.0.1" },
-        { "id": "Drops", "minVersion": "1.0.1" },
-        { "id": "Inventory", "minVersion": "1.1.0" },
-        { "id": "NameGenerator", "minVersion": "1.0.0" },
-        { "id": "Pathfinding", "minVersion": "1.0.0" },
-        { "id": "WorldlyTooltipAPI", "minVersion": "1.0.0" }
-    ],
-    "isServerSideOnly": false,
-    "isLibrary": true
+  "id": "WildAnimals",
+  "version": "1.1.0-SNAPSHOT",
+  "author": "glasz, flo, nihal111, quaternius, dkambersky",
+  "displayName": "Wild Animals",
+  "description": "Contains a deer and some other placeholder deer variants. Spawned with `spawnPrefab deer` and similar",
+  "dependencies": [
+    {
+      "id": "Behaviors",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "CoreAssets",
+      "minVersion": "2.0.1"
+    },
+    {
+      "id": "Drops",
+      "minVersion": "1.0.1"
+    },
+    {
+      "id": "Inventory",
+      "minVersion": "1.1.0"
+    },
+    {
+      "id": "NameGenerator",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "Pathfinding",
+      "minVersion": "1.0.0"
+    },
+    {
+      "id": "WorldlyTooltipAPI",
+      "minVersion": "1.0.0"
+    }
+  ],
+  "isServerSideOnly": false,
+  "isLibrary": true
 }
