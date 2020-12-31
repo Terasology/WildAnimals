@@ -23,6 +23,7 @@ import org.terasology.world.WorldProvider;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
 import org.terasology.world.chunks.ChunkConstants;
+import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.event.OnChunkGenerated;
 
 import java.util.ArrayList;
@@ -151,12 +152,12 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      */
     private List<Vector3i> findFlockAnimalSpawnPositions(Vector3i chunkPos) {
         Vector3i worldPos = new Vector3i(chunkPos);
-        worldPos.mul(ChunkConstants.SIZE_X, ChunkConstants.SIZE_Y, ChunkConstants.SIZE_Z);
+        worldPos.mul(Chunks.SIZE_X, Chunks.SIZE_Y, Chunks.SIZE_Z);
         List<Vector3i> foundPositions = Lists.newArrayList();
         Vector3i blockPos = new Vector3i();
-        for (int y = ChunkConstants.SIZE_Y - 1; y >= 0; y--) {
-            for (int z = 0; z < ChunkConstants.SIZE_Z; z++) {
-                for (int x = 0; x < ChunkConstants.SIZE_X; x++) {
+        for (int y = Chunks.SIZE_Y - 1; y >= 0; y--) {
+            for (int z = 0; z < Chunks.SIZE_Z; z++) {
+                for (int x = 0; x < Chunks.SIZE_X; x++) {
                     blockPos.set(x + worldPos.x, y + worldPos.y, z + worldPos.z);
                     if (isValidSpawnPosition.apply(blockPos)) {
                         foundPositions.add(new Vector3i(blockPos));
