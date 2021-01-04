@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.system;
 
+import org.joml.Vector3f;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.entity.lifecycleEvents.OnActivatedComponent;
@@ -86,6 +87,6 @@ public class WildAnimalsGrowthSystem extends BaseComponentSystem {
         LocationComponent locationComponent = entityRef.getComponent(LocationComponent.class);
         entityRef.send(new AnimalGrowthEvent());
         entityRef.destroy();
-        entityManager.create(growthComponent.nextStagePrefab, locationComponent.getWorldPosition());
+        entityManager.create(growthComponent.nextStagePrefab, locationComponent.getWorldPosition(new Vector3f()));
     }
 }
