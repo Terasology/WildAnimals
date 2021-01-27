@@ -7,6 +7,7 @@ import org.joml.AxisAngle4f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector3i;
+import org.joml.Vector3ic;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
@@ -14,7 +15,6 @@ import org.terasology.entitySystem.prefab.Prefab;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.math.JomlUtil;
 import org.terasology.registry.In;
 import org.terasology.registry.Share;
 import org.terasology.utilities.Assets;
@@ -22,7 +22,6 @@ import org.terasology.wildAnimals.AnimalSpawnConfig;
 import org.terasology.world.WorldProvider;
 import org.terasology.world.block.Block;
 import org.terasology.world.block.BlockManager;
-import org.terasology.world.chunks.ChunkConstants;
 import org.terasology.world.chunks.Chunks;
 import org.terasology.world.chunks.event.OnChunkGenerated;
 
@@ -112,7 +111,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         if (!trySpawn) {
             return;
         }
-        Vector3i chunkPos = JomlUtil.from(event.getChunkPos());
+        Vector3ic chunkPos = event.getChunkPos();
         // randomly decide whether to spawn deer or sheep in this chunk
         Prefab animalPrefab = flockAnimals.get(random.nextInt(flockAnimals.size()));
         tryFlockAnimalSpawn(animalPrefab, chunkPos);
@@ -124,7 +123,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      *
      * @param chunkPos The chunk which the game will try to spawn deers on
      */
-    private void tryFlockAnimalSpawn(Prefab animalPrefab, Vector3i chunkPos) {
+    private void tryFlockAnimalSpawn(Prefab animalPrefab, Vector3ic chunkPos) {
         List<Vector3i> foundPositions = findFlockAnimalSpawnPositions(chunkPos);
 
         if (foundPositions.size() < config.minFlockSize * config.minGroundPerFlockAnimal) {
@@ -150,7 +149,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      * @param chunkPos The chunk that is being checked for valid spawnpoints
      * @return a list of positions of potential deer spawnpoints
      */
-    private List<Vector3i> findFlockAnimalSpawnPositions(Vector3i chunkPos) {
+    private List<Vector3i> findFlockAnimalSpawnPositions(Vector3ic chunkPos) {
         Vector3i worldPos = new Vector3i(chunkPos);
         worldPos.mul(Chunks.SIZE_X, Chunks.SIZE_Y, Chunks.SIZE_Z);
         List<Vector3i> foundPositions = Lists.newArrayList();
