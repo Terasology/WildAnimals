@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.Death;
 
-import org.terasology.entitySystem.Component;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.prefab.Prefab;
-import org.terasology.network.Replicate;
+import org.terasology.engine.entitySystem.Component;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.prefab.Prefab;
+import org.terasology.engine.network.Replicate;
 
 public class DestroyAtAnimationEndComponent implements Component {
 

@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.component;
 
-import org.terasology.entitySystem.Component;
-import org.terasology.network.FieldReplicateType;
-import org.terasology.network.Replicate;
-import org.terasology.rendering.assets.texture.TextureRegionAsset;
+import org.terasology.engine.entitySystem.Component;
+import org.terasology.engine.network.FieldReplicateType;
+import org.terasology.engine.network.Replicate;
+import org.terasology.engine.rendering.assets.texture.TextureRegionAsset;
 
 /**
  * All WildAnimal entities have the WildAnimal components.
