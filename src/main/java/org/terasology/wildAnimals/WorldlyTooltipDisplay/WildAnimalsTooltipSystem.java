@@ -8,7 +8,7 @@ import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.logic.common.DisplayNameComponent;
-import org.terasology.engine.rendering.nui.layers.ingame.inventory.GetItemTooltip;
+import org.terasology.module.inventory.ui.GetItemTooltip;
 import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
 import org.terasology.worldlyTooltipAPI.events.GetTooltipIconEvent;
