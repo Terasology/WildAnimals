@@ -24,6 +24,7 @@ import org.terasology.engine.world.block.BlockManager;
 import org.terasology.engine.world.chunks.Chunks;
 import org.terasology.engine.world.chunks.event.OnChunkGenerated;
 import org.terasology.wildAnimals.AnimalSpawnConfig;
+import org.terasology.wildAnimals.event.AnimalSpawnEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -178,7 +179,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         float randomAngle = (float) (random.nextFloat() * Math.PI * 2);
         Quaternionf rotation = new Quaternionf(new AxisAngle4f(randomAngle, yAxis));
         // TODO Turn deer spawning back on when done with debugging - this and the SPAWN_CHANCE_IN_PERCENT constant.
-        entityManager.create(animalPrefab, floatVectorLocation, rotation);
+        entityManager.create(animalPrefab, floatVectorLocation, rotation).send(new AnimalSpawnEvent());
     }
 
 }
