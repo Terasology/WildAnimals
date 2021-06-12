@@ -179,7 +179,8 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
         float randomAngle = (float) (random.nextFloat() * Math.PI * 2);
         Quaternionf rotation = new Quaternionf(new AxisAngle4f(randomAngle, yAxis));
         // TODO Turn deer spawning back on when done with debugging - this and the SPAWN_CHANCE_IN_PERCENT constant.
-        entityManager.create(animalPrefab, floatVectorLocation, rotation).send(new AnimalSpawnEvent());
+        EntityRef animal = entityManager.create(animalPrefab, floatVectorLocation, rotation);
+        animal.send(new AnimalSpawnEvent());
     }
 
 }
