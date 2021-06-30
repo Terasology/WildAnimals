@@ -1,4 +1,5 @@
 {
+ "parent": "WildAnimals:sheepBase",
   "skeletalMesh": {
     "mesh": "sheep",
     "heightOffset": -0.8,
@@ -6,97 +7,10 @@
     "animation": "sheep#idle",
     "loop": true
   },
-  "Behavior": {
-    "tree": "Behaviors:critter"
-  },
-  "FleeOnHit": {
-    "minDistance": 5
-  },
   "DropGrammar": {
     "blockDrops": [],
     "itemDrops": [
       "2*WildAnimals:wool"
-    ]
-  },
-  "Stand": {
-    "animationPool": [
-      "sheep#Idle",
-      "sheep#Idle",
-      "sheep#Idle",
-      "sheep#Bite_InPlace",
-      "sheep#Yes",
-      "sheep#No"
-    ]
-  },
-  "Walk": {
-    "animationPool": [
-      "sheep#Walk"
-    ]
-  },
-  "Die": {
-    "animationPool": [
-      "sheep#Death"
-    ]
-  },
-  "persisted": true,
-  "location": {},
-  "Character": {},
-  "AliveCharacter": {},
-  "WildAnimal": {
-    "name": "Sheep",
-    "icon": "WildAnimals:icons#Sheep"
-  },
-  "NPCMovement": {},
-  "CreatureNameGenerator": {
-    "genderRatio": 0,
-    "nobility": 0,
-    "theme": "ANIMAL"
-  },
-  "CharacterMovement": {
-    "groundFriction": 16,
-    "speedMultiplier": 0.3,
-    "distanceBetweenFootsteps": 0.2,
-    "distanceBetweenSwimStrokes": 2.5,
-    "height": 1.6,
-    "radius": 0.3,
-    "jumpSpeed": 12
-  },
-  "CharacterSound": {
-    "footstepSounds": [
-      "FootGrass1",
-      "FootGrass2",
-      "FootGrass3",
-      "FootGrass4",
-      "FootGrass5"
-    ],
-    "footstepVolume": 0.03,
-    "damageSounds": [
-      "SheepHit1",
-      "SheepHit2"
-    ]
-  },
-  "Network": {},
-  "MinionMove": {},
-  "Health": {
-    "destroyEntityOnNoHealth": true,
-    "currentHealth": 25,
-    "maxHealth": 25
-  },
-  "BaseRegen": {
-    "regenRate": 2,
-    "waitBeforeRegen": 10
-  },
-  "BoxShape": {
-    "extents": [
-      1.5,
-      1.5,
-      1.5
-    ]
-  },
-  "Trigger": {
-    "detectGroups": [
-      "engine:debris",
-      "engine:sensor"
     ]
   }
 }
