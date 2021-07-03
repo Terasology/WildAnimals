@@ -1,0 +1,10 @@
+{
+  "parent": "WildAnimals:sheepBase",
+  "skeletalMesh": {
+    "mesh": "shearedSheep",
+    "heightOffset": -0.8,
+    "material": "shearedSheepSkin",
+    "animation": "sheep#idle",
+    "loop": true
+  }
+}
