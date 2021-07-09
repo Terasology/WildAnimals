@@ -1,17 +1,17 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.component;
 
-import org.terasology.engine.entitySystem.Component;
 import org.terasology.engine.network.FieldReplicateType;
 import org.terasology.engine.network.Replicate;
 import org.terasology.engine.rendering.assets.texture.TextureRegionAsset;
+import org.terasology.gestalt.entitysystem.component.Component;
 
 /**
  * All WildAnimal entities have the WildAnimal components.
  * Helps the DeathSystem receive selected BeforeDestroyEvent
  */
-public class WildAnimalComponent implements Component {
+public class WildAnimalComponent implements Component<WildAnimalComponent> {
     /**
      * Name of the icon this WildAnimal has
      */
