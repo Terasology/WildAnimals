@@ -15,4 +15,10 @@ public class DieComponent implements Component<DieComponent> {
      */
     public List<MeshAnimation> animationPool = Lists.newArrayList();
     public List<String> itemsDropped = Lists.newArrayList();
+
+    @Override
+    public void copy(DieComponent other) {
+        this.animationPool = Lists.newArrayList(other.animationPool);
+        this.itemsDropped = Lists.newArrayList(other.itemsDropped);
+    }
 }

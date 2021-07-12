@@ -21,4 +21,10 @@ public class WildAnimalComponent implements Component<WildAnimalComponent> {
      */
     @Replicate(value = FieldReplicateType.SERVER_TO_CLIENT, initialOnly = true)
     public TextureRegionAsset<?> icon;
+
+    @Override
+    public void copy(WildAnimalComponent other) {
+        this.name = other.name;
+        this.icon = other.icon;
+    }
 }

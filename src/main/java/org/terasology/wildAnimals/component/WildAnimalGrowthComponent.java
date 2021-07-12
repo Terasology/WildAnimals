@@ -22,4 +22,11 @@ public class WildAnimalGrowthComponent implements Component<WildAnimalGrowthComp
      * The prefab for the next stage the animal will grow into.
      */
     public String nextStagePrefab;
+
+    @Override
+    public void copy(WildAnimalGrowthComponent other) {
+        this.minGrowthTime = other.minGrowthTime;
+        this.maxGrowthTime = other.maxGrowthTime;
+        this.nextStagePrefab = other.nextStagePrefab;
+    }
 }

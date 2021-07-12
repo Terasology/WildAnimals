@@ -44,4 +44,13 @@ public class DestroyAtAnimationEndComponent implements Component<DestroyAtAnimat
     public Prefab getDamageType() {
         return damageType;
     }
+
+    @Override
+    public void copy(DestroyAtAnimationEndComponent other) {
+        this.lifespan = other.lifespan;
+        this.deathTime = other.deathTime;
+        this.instigator = other.instigator;
+        this.directCause = other.directCause;
+        this.damageType = other.damageType;
+    }
 }
