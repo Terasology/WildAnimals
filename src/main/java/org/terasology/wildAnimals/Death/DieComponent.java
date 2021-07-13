@@ -18,7 +18,9 @@ public class DieComponent implements Component<DieComponent> {
 
     @Override
     public void copy(DieComponent other) {
-        this.animationPool = Lists.newArrayList(other.animationPool);
-        this.itemsDropped = Lists.newArrayList(other.itemsDropped);
+        this.animationPool.clear();
+        this.animationPool.addAll(other.animationPool);
+        this.itemsDropped.clear();
+        this.itemsDropped.addAll(other.itemsDropped);
     }
 }
