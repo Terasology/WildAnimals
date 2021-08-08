@@ -58,7 +58,7 @@
     ],
     "footstepVolume": 0.03
   },
-  "DamageSoundComponent": {
+  "DamageSound": {
     "sounds": [
       "SheepHit1",
       "SheepHit2"
