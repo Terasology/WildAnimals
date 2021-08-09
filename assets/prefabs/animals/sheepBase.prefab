@@ -87,5 +87,11 @@
       "engine:debris",
       "engine:sensor"
     ]
+  },
+  "Behavior": {
+    "tree": "WildAnimals:lure"
+  },
+  "FindNearbyPlayers": {
+    "searchRadius": 8
   }
 }
