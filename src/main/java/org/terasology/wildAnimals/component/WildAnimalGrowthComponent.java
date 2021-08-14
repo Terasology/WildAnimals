@@ -24,7 +24,7 @@ public class WildAnimalGrowthComponent implements Component<WildAnimalGrowthComp
     public String nextStagePrefab;
 
     @Override
-    public void copy(WildAnimalGrowthComponent other) {
+    public void copyFrom(WildAnimalGrowthComponent other) {
         this.minGrowthTime = other.minGrowthTime;
         this.maxGrowthTime = other.maxGrowthTime;
         this.nextStagePrefab = other.nextStagePrefab;

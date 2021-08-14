@@ -46,7 +46,7 @@ public class DestroyAtAnimationEndComponent implements Component<DestroyAtAnimat
     }
 
     @Override
-    public void copy(DestroyAtAnimationEndComponent other) {
+    public void copyFrom(DestroyAtAnimationEndComponent other) {
         this.lifespan = other.lifespan;
         this.deathTime = other.deathTime;
         this.instigator = other.instigator;

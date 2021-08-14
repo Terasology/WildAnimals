@@ -23,7 +23,7 @@ public class WildAnimalComponent implements Component<WildAnimalComponent> {
     public TextureRegionAsset<?> icon;
 
     @Override
-    public void copy(WildAnimalComponent other) {
+    public void copyFrom(WildAnimalComponent other) {
         this.name = other.name;
         this.icon = other.icon;
     }
