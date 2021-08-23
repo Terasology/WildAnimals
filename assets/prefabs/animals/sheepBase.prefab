@@ -92,6 +92,6 @@
     "tree": "WildAnimals:lure"
   },
   "FindNearbyPlayers": {
-    "searchRadius": 8
+    "searchRadius": 12
   }
 }
