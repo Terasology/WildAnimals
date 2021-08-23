@@ -21,7 +21,7 @@ import org.terasology.engine.world.block.items.BlockItemComponent;
 @BehaviorAction(name = "check_luring_item_in_use")
 public class CheckLuringItemInUseAction extends BaseAction {
 
-    public static final String LURING_ITEM = "CoreAssets:Grass";
+    public static final String[] LURING_ITEMS = {"CoreAssets:Grass"};
 
     @Override
     public BehaviorState modify(Actor actor, BehaviorState behaviorState) {
@@ -30,8 +30,10 @@ public class CheckLuringItemInUseAction extends BaseAction {
         CharacterHeldItemComponent characterHeldItemComponent = player.getComponent(CharacterHeldItemComponent.class);
         EntityRef heldItem = characterHeldItemComponent.selectedItem;
         BlockItemComponent blockItemComponent = heldItem.getComponent(BlockItemComponent.class);
-        if (blockItemComponent != null && blockItemComponent.blockFamily.getURI().equals(new BlockUri(LURING_ITEM))) {
-            return BehaviorState.SUCCESS;
+        for (String item : LURING_ITEMS) {
+            if (blockItemComponent != null && blockItemComponent.blockFamily.getURI().equals(new BlockUri(item))) {
+                return BehaviorState.SUCCESS;
+            }
         }
         return BehaviorState.FAILURE;
     }
