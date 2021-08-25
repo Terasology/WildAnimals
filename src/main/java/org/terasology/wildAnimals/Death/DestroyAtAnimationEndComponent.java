@@ -1,13 +1,13 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2021 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.Death;
 
-import org.terasology.engine.entitySystem.Component;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.prefab.Prefab;
 import org.terasology.engine.network.Replicate;
+import org.terasology.gestalt.entitysystem.component.Component;
 
-public class DestroyAtAnimationEndComponent implements Component {
+public class DestroyAtAnimationEndComponent implements Component<DestroyAtAnimationEndComponent> {
 
     // Lifespan in seconds
     @Replicate
@@ -43,5 +43,14 @@ public class DestroyAtAnimationEndComponent implements Component {
 
     public Prefab getDamageType() {
         return damageType;
+    }
+
+    @Override
+    public void copyFrom(DestroyAtAnimationEndComponent other) {
+        this.lifespan = other.lifespan;
+        this.deathTime = other.deathTime;
+        this.instigator = other.instigator;
+        this.directCause = other.directCause;
+        this.damageType = other.damageType;
     }
 }
