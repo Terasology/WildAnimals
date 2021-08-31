@@ -21,7 +21,13 @@ import org.terasology.engine.world.block.items.BlockItemComponent;
 @BehaviorAction(name = "check_luring_item_in_use")
 public class CheckLuringItemInUseAction extends BaseAction {
 
-    public static final String[] LURING_ITEMS = {"CoreAssets:TallGrass1","CoreAssets:TallGrass2","CoreAssets:TallGrass3","CoreAssets:Lavender","CoreAssets:Dandelion","CoreAssets:Dandelion"};
+    static final String[] LURING_ITEMS = {
+            "CoreAssets:TallGrass1",
+            "CoreAssets:TallGrass2",
+            "CoreAssets:TallGrass3",
+            "CoreAssets:Lavender",
+            "CoreAssets:Dandelion"
+    };
 
     @Override
     public BehaviorState modify(Actor actor, BehaviorState behaviorState) {
