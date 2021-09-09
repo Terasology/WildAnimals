@@ -10,7 +10,6 @@ import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.entity.lifecycleEvents.OnAddedComponent;
 import org.terasology.engine.entitySystem.event.EventPriority;
 import org.terasology.engine.entitySystem.event.Priority;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
@@ -22,6 +21,7 @@ import org.terasology.engine.logic.health.DoDestroyEvent;
 import org.terasology.engine.registry.In;
 import org.terasology.engine.rendering.assets.animation.MeshAnimation;
 import org.terasology.engine.rendering.logic.SkeletalMeshComponent;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
