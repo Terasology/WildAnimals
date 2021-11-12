@@ -10,6 +10,10 @@
       "minVersion": "1.0.0"
     },
     {
+      "id": "PathfindingBehaviors",
+      "minVersion": "1.0.0"
+    },
+    {
       "id": "CoreAssets",
       "minVersion": "2.0.1"
     },

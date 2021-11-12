@@ -2,12 +2,12 @@
     dynamic: [
         {
             guard:{
-                componentPresent: "Behaviors:flee",
+                componentPresent: "PathfindingBehaviors:flee",
 
                 child:{
                     sequence:[
                         check_flee_stop,
-                        {lookup: {tree: "Behaviors:flee"}}
+                        {lookup: {tree: "PathfindingBehaviors:flee"}}
                     ]
                 }
             }
@@ -24,33 +24,33 @@
 
                 {
                     condition:{
-                        componentPresent: "Behaviors:findNearbyPlayers",
+                        componentPresent: "PathfindingBehaviors:findNearbyPlayers",
                         values:["N charactersWithinRange nonEmpty"]
                     }
                 },
 
                 followCharacter,
 
-                {lookup:{tree:"Behaviors:attackFollowedEntity"}}
+                {lookup:{tree:"PathfindingBehaviors:attackFollowedEntity"}}
             ]
         },
 
         {
             guard:{
-                componentPresent: "Behaviors:findNearbyPlayers",
+                componentPresent: "PathfindingBehaviors:findNearbyPlayers",
                 values: ["N charactersWithinRange nonEmpty"],
 
                 child:{
                     sequence:[
                         followCharacter,
-                        {lookup: {tree:"Behaviors:follow"}}
+                        {lookup: {tree:"PathfindingBehaviors:follow"}}
                     ]
                 }
             }
         },
 
         {
-            lookup: {tree:"Behaviors:stray"}
+            lookup: {tree:"PathfindingBehaviors:stray"}
         }
     ]
 }

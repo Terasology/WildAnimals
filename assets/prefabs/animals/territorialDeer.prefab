@@ -14,7 +14,7 @@
     ]
   },
   "Behavior": {
-    "tree": "Behaviors:territorialCritter"
+    "tree": "PathfindingBehaviors:territorialCritter"
   },
   "FindNearbyPlayers": {
     "searchRadius": 5

@@ -8,6 +8,6 @@
     "loop": true
   },
   "Behavior": {
-    "tree": "Behaviors:critter"
+    "tree": "PathfindingBehaviors:critter"
   }
 }

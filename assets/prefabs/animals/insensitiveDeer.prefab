@@ -7,7 +7,7 @@
     "loop": true
   },
   "Behavior": {
-    "tree": "Behaviors:stray"
+    "tree": "PathfindingBehaviors:stray"
   },
   "DropGrammar": {
     "blockDrops": [],

@@ -12,7 +12,7 @@
     ]
   },
   "Behavior": {
-    "tree": "Behaviors:critter"
+    "tree": "PathfindingBehaviors:critter"
   },
   "FleeOnHit": {
     "minDistance": 5

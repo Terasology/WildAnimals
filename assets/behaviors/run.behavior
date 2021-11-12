@@ -13,7 +13,7 @@
 
   },
   {
-    lookup: { tree: "Behaviors:doRandomMove" }
+    lookup: { tree: "PathfindingBehaviors:doRandomMove" }
   }
   ]
 }

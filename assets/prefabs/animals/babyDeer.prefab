@@ -12,7 +12,7 @@
     ]
   },
   "Behavior": {
-    "tree": "Behaviors:stray"
+    "tree": "PathfindingBehaviors:stray"
   },
   "FleeOnHit": {
     "minDistance": 5,

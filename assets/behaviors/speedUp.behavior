@@ -2,12 +2,12 @@
     dynamic:[
         {
             guard:{
-                componentPresent: "Behaviors:flee",
+                componentPresent: "PathfindingBehaviors:flee",
 
                 child:{
                     sequence:[
                         check_flee_stop,
-                        {lookup: {tree: "Behaviors:flee"}}
+                        {lookup: {tree: "PathfindingBehaviors:flee"}}
                     ]
                 }
             }
@@ -24,7 +24,7 @@
         		    }
                 },
         		{
-        		    lookup: {tree: "Behaviors:doRandomMove"}
+        		    lookup: {tree: "PathfindingBehaviors:doRandomMove"}
         		},
 
         	    {

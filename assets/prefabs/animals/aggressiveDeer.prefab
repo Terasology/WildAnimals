@@ -7,7 +7,7 @@
     "loop": true
   },
   "Behavior": {
-    "tree": "Behaviors:aggressiveCritter"
+    "tree": "PathfindingBehaviors:aggressiveCritter"
   },
   "AttackOnHit": {
     "maxDistance": 15,

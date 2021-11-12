@@ -2,21 +2,21 @@
   dynamic: [
       {
         guard: {
-          componentPresent: "Behaviors:FindNearbyPlayers",
+          componentPresent: "PathfindingBehaviors:FindNearbyPlayers",
           values: ["N charactersWithinRange nonEmpty"],
           child: {
           sequence: [
             { sleep: {time: 0.1f }},
             check_luring_item_in_use,
             followCharacter,
-            { lookup: {tree: "Behaviors:follow" }}
+            { lookup: {tree: "PathfindingBehaviors:follow" }}
            ]
           }
         }
       },
       {
         lookup: {
-          tree: "Behaviors:stray"
+          tree: "PathfindingBehaviors:stray"
         }
       }
   ]
