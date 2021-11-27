@@ -12,6 +12,14 @@
   "AttackInProximity": {
     "speedMultiplier": 1.2
   },
+  "AttackOnHit": {
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
+  "FleeOnHit": {
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
   "FindNearbyPlayers": {
     "searchRadius": 10
   },

@@ -9,6 +9,10 @@
   "Behavior": {
     "tree": "Behaviors:friendlyCritter"
   },
+  "FleeOnHit": {
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
   "FindNearbyPlayers": {
     "searchRadius": 8
   },

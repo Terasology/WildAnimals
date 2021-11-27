@@ -20,8 +20,9 @@
     "searchRadius": 5
   },
   "AttackOnHit": {
-    "minDistance": 5
-  },
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },  
   "DropGrammar": {
     "blockDrops": [],
     "itemDrops": [
