@@ -9,6 +9,10 @@
   "Behavior": {
     "tree": "Behaviors:friendlyCritter"
   },
+  "FleeOnHit": {
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
   "FindNearbyPlayers": {
     "searchRadius": 8
   },
@@ -55,11 +59,9 @@
     "nobility": 0,
     "theme": "ANIMAL"
   },
-  "CharacterMovement": {
-    "groundFriction": 16,
+  "CharacterMovement": {    
     "speedMultiplier": 0.3,
-    "distanceBetweenFootsteps": 0.2,
-    "distanceBetweenSwimStrokes": 2.5,
+    "distanceBetweenFootsteps": 0.2,    
     "height": 1.6,
     "radius": 0.3,
     "jumpSpeed": 12
