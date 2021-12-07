@@ -9,7 +9,7 @@ import org.terasology.engine.entitySystem.entity.EntityManager;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.entity.lifecycleEvents.OnAddedComponent;
 import org.terasology.engine.entitySystem.event.EventPriority;
-import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.event.Priority;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
@@ -21,6 +21,7 @@ import org.terasology.engine.logic.health.DoDestroyEvent;
 import org.terasology.engine.registry.In;
 import org.terasology.engine.rendering.assets.animation.MeshAnimation;
 import org.terasology.engine.rendering.logic.SkeletalMeshComponent;
+import org.terasology.gestalt.entitysystem.event.ReceiveEvent;
 import org.terasology.wildAnimals.component.WildAnimalComponent;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
@@ -65,7 +66,8 @@ public class DeathSystem extends BaseComponentSystem implements UpdateSubscriber
      * Removes extra components from the animal entity and updates skeletalMesh to play dying animation
      * Triggers the entity to self destruct after animation ends by attaching DestroyAtAnimationEndComponent
      */
-    @ReceiveEvent(priority = EventPriority.PRIORITY_HIGH, components = {WildAnimalComponent.class, DieComponent.class})
+    @Priority(EventPriority.PRIORITY_HIGH)
+    @ReceiveEvent(components = {WildAnimalComponent.class, DieComponent.class})
     public void onDeath(BeforeDestroyEvent event, EntityRef entity, DieComponent dieComponent) {
         event.consume();
         entity.removeComponent(BehaviorComponent.class);
