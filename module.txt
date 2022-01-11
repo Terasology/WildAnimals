@@ -30,10 +30,6 @@
       "minVersion": "1.0.0"
     },
     {
-      "id": "Pathfinding",
-      "minVersion": "1.0.0"
-    },
-    {
       "id": "WorldlyTooltipAPI",
       "minVersion": "1.0.0"
     }
