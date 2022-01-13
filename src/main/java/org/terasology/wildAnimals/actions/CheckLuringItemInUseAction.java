@@ -4,7 +4,7 @@
 package org.terasology.wildAnimals.actions;
 
 
-import org.terasology.behaviors.components.FindNearbyPlayersComponent;
+import org.terasology.module.behaviors.components.FindNearbyPlayersComponent;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.logic.behavior.BehaviorAction;
 import org.terasology.engine.logic.behavior.core.Actor;
