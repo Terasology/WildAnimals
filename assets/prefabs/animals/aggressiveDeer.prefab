@@ -13,9 +13,6 @@
     "maxDistance": 15,
     "speedMultiplier": 1.2
   },
-  "StrayIfIdle": {
-    "defaultSpeedMultiplier": 0.3
-  },
   "DropGrammar": {
     "blockDrops": [],
     "itemDrops": [
