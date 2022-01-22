@@ -76,7 +76,9 @@
     ]
   },
   "Network": {},
-  "MinionMove": {},
+  "MinionMove": {
+    "movementTypes": ["walking", "leaping"]
+  },
   "Health": {
     "destroyEntityOnNoHealth": true,
     "currentHealth": 50,
