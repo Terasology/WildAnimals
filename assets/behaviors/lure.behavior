@@ -1,24 +1,20 @@
 {
   dynamic: [
-      {
-        guard: {
-          componentPresent: "Behaviors:FindNearbyPlayers",
-          values: ["N charactersWithinRange nonEmpty"],
-          child: {
+    {
+      guard: {
+        componentPresent: "Behaviors:FindNearbyPlayers",
+        values: ["N charactersWithinRange nonEmpty"],
+        child: {
           sequence: [
-            { sleep: {time: 0.1f }},
+            { sleep: { time: 0.1f } },
             check_luring_item_in_use,
             followCharacter,
-            { lookup: {tree: "Behaviors:follow" }}
-           ]
-          }
-        }
-      },
-      {
-        lookup: {
-          tree: "Behaviors:stray"
+            { lookup: { tree: "Behaviors:follow" } }
+          ]
         }
       }
+    },
+    { lookup: { tree: "Behaviors:stray" } }
   ]
 }
 
