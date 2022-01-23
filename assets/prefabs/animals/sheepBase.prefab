@@ -1,10 +1,77 @@
 {
+  // -- Properties ---
+  "persisted": true,
+  // -- Components ---
+  "AliveCharacter": {},
+  "BaseRegen": {
+    "regenRate": 2,
+    "waitBeforeRegen": 10
+  },
   "Behavior": {
-    "tree": "Behaviors:critter"
+    "tree": "WildAnimals:lure"
+  },
+  "BoxShape": {
+    "extents": [
+      1.5,
+      1.5,
+      1.5
+    ]
+  },
+  "Character": {},
+  "CharacterMovement": {
+    "speedMultiplier": 0.3,
+    "distanceBetweenFootsteps": 0.2,
+    "height": 1.6,
+    "radius": 0.3,
+    "jumpSpeed": 12
+  },
+  "CharacterSound": {
+    "footstepSounds": [
+      "engine:FootGrass1",
+      "engine:FootGrass2",
+      "engine:FootGrass3",
+      "engine:FootGrass4",
+      "engine:FootGrass5"
+    ],
+    "footstepVolume": 0.03
+  },
+  "CreatureNameGenerator": {
+    "genderRatio": 0,
+    "nobility": 0,
+    "theme": "ANIMAL"
+  },
+  "DamageSound": {
+    "sounds": [
+      "SheepHit1",
+      "SheepHit2"
+    ]
+  },
+  "Die": {
+    "animationPool": [
+      "sheep#Death"
+    ]
+  },
+  "FindNearbyPlayers": {
+    "searchRadius": 12
   },
   "FleeOnHit": {
     "minDistance": 5,
     "speedMultiplier": 1.2
+  },
+  "Health": {
+    "destroyEntityOnNoHealth": true,
+    "currentHealth": 25,
+    "maxHealth": 25
+  },
+  "Location": {},
+  "MinionMove": {},
+  "Network": {},
+  "NPCMovement": {},
+  "Trigger": {
+    "detectGroups": [
+      "engine:debris",
+      "engine:sensor"
+    ]
   },
   "Stand": {
     "animationPool": [
@@ -21,76 +88,8 @@
       "sheep#Walk"
     ]
   },
-  "Die": {
-    "animationPool": [
-      "sheep#Death"
-    ]
-  },
-  "persisted": true,
-  "location": {},
-  "Character": {},
-  "AliveCharacter": {},
   "WildAnimal": {
     "name": "Sheep",
     "icon": "WildAnimals:icons#Sheep"
-  },
-  "NPCMovement": {},
-  "CreatureNameGenerator": {
-    "genderRatio": 0,
-    "nobility": 0,
-    "theme": "ANIMAL"
-  },
-  "CharacterMovement": {    
-    "speedMultiplier": 0.3,
-    "distanceBetweenFootsteps": 0.2,    
-    "height": 1.6,
-    "radius": 0.3,
-    "jumpSpeed": 12
-  },
-  "CharacterSound": {
-    "footstepSounds": [
-      "engine:FootGrass1",
-      "engine:FootGrass2",
-      "engine:FootGrass3",
-      "engine:FootGrass4",
-      "engine:FootGrass5"
-    ],
-    "footstepVolume": 0.03
-  },
-  "DamageSound": {
-    "sounds": [
-      "SheepHit1",
-      "SheepHit2"
-    ]
-  },
-  "Network": {},
-  "MinionMove": {},
-  "Health": {
-    "destroyEntityOnNoHealth": true,
-    "currentHealth": 25,
-    "maxHealth": 25
-  },
-  "BaseRegen": {
-    "regenRate": 2,
-    "waitBeforeRegen": 10
-  },
-  "BoxShape": {
-    "extents": [
-      1.5,
-      1.5,
-      1.5
-    ]
-  },
-  "Trigger": {
-    "detectGroups": [
-      "engine:debris",
-      "engine:sensor"
-    ]
-  },
-  "Behavior": {
-    "tree": "WildAnimals:lure"
-  },
-  "FindNearbyPlayers": {
-    "searchRadius": 12
   }
 }
