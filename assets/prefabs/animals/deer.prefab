@@ -1,60 +1,26 @@
 {
-  "skeletalmesh" : {
-    "mesh" : "deer",
-    "heightOffset" : -0.8,
-    "material" : "deerSkin",
-    "animation" : "deer#Idle",
-    "loop" : true
+  // -- Properties ----------------------------------------
+  "persisted": true,
+  // -- Components ----------------------------------------
+  "AliveCharacter": {},
+  "BaseRegen": {
+    "regenRate": 2,
+    "waitBeforeRegen": 10
   },
   "Behavior": {
     "tree": "Behaviors:critter"
   },
-  "FleeOnHit": {
-    "minDistance": 5,
-    "speedMultiplier": 1.2
-  },
-  "DropGrammar": {
-    "blockDrops": [],
-    "itemDrops": [
-      "0.7|WildAnimals:meat",
-      "0.3|WildAnimals:deerHide"
+  "BoxShape": {
+    "extents": [
+      1.5,
+      1.5,
+      1.5
     ]
   },
-  "Stand": {
-    "animationPool": [
-      "deer#Idle",
-      "deer#Idle",
-      "deer#Idle",
-      "deer#Bite_InPlace",
-      "deer#Yes",
-      "deer#No"
-      ]
-  },
-  "Walk" :{
-    "animationPool": ["deer#Walk"]
-  },
-  "Die": {
-    "animationPool": [
-      "deer#Death"
-    ]
-  },
-  "persisted": true,
-  "location": {},
   "Character": {},
-  "AliveCharacter": {},
-  "WildAnimal": {
-    "name": "Deer",
-    "icon": "WildAnimals:icons#Deer"
-  },
-  "NPCMovement": {},
-  "CreatureNameGenerator": {
-    "genderRatio": 0,
-    "nobility": 0,
-    "theme": "ANIMAL"
-  },
-  "CharacterMovement": {    
+  "CharacterMovement": {
     "speedMultiplier": 0.3,
-    "distanceBetweenFootsteps": 0.2,    
+    "distanceBetweenFootsteps": 0.2,
     "height": 1.6,
     "radius": 0.3,
     "jumpSpeed": 12
@@ -69,30 +35,59 @@
     ],
     "footstepVolume": 0.03
   },
+  "CreatureNameGenerator": {
+    "genderRatio": 0,
+    "nobility": 0,
+    "theme": "ANIMAL"
+  },
   "DamageSound": {
     "sounds": [
       "DeerHit1",
       "DeerHit2"
     ]
   },
-  "Network": {},
-  "MinionMove": {
-    "movementTypes": ["walking", "leaping", "falling"]
+  "Die": {
+    "animationPool": [
+      "deer#Death"
+    ]
+  },
+  "DropGrammar": {
+    "blockDrops": [],
+    "itemDrops": [
+      "0.7|WildAnimals:meat",
+      "0.3|WildAnimals:deerHide"
+    ]
+  },
+  "FleeOnHit": {
+    "minDistance": 5,
+    "speedMultiplier": 1.2
   },
   "Health": {
     "destroyEntityOnNoHealth": true,
     "currentHealth": 50,
     "maxHealth": 50
   },
-  "BaseRegen": {
-    "regenRate": 2,
-    "waitBeforeRegen": 10
+  "Location": {},
+  "MinionMove": {
+    "movementTypes": ["walking", "leaping", "falling"]
   },
-  "BoxShape": {
-    "extents": [
-      1.5,
-      1.5,
-      1.5
+  "Network": {},
+  "NPCMovement": {},
+  "SkeletalMesh" : {
+    "mesh" : "deer",
+    "heightOffset" : -0.8,
+    "material" : "deerSkin",
+    "animation" : "deer#Idle",
+    "loop" : true
+  },
+  "Stand": {
+    "animationPool": [
+      "deer#Idle",
+      "deer#Idle",
+      "deer#Idle",
+      "deer#Bite_InPlace",
+      "deer#Yes",
+      "deer#No"
     ]
   },
   "Trigger": {
@@ -100,5 +95,12 @@
       "engine:debris",
       "engine:sensor"
     ]
+  },
+  "Walk" :{
+    "animationPool": ["deer#Walk"]
+  },
+  "WildAnimal": {
+    "name": "Deer",
+    "icon": "WildAnimals:icons#Deer"
   }
 }

@@ -64,15 +64,11 @@
     "maxHealth": 25
   },
   "Location": {},
-  "MinionMove": {},
+  "MinionMove": {
+    "movementTypes": ["walking", "leaping", "falling"]
+  },
   "Network": {},
   "NPCMovement": {},
-  "Trigger": {
-    "detectGroups": [
-      "engine:debris",
-      "engine:sensor"
-    ]
-  },
   "Stand": {
     "animationPool": [
       "sheep#Idle",
@@ -81,6 +77,12 @@
       "sheep#Bite_InPlace",
       "sheep#Yes",
       "sheep#No"
+    ]
+  },
+  "Trigger": {
+    "detectGroups": [
+      "engine:debris",
+      "engine:sensor"
     ]
   },
   "Walk": {
