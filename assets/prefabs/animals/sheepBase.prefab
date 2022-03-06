@@ -1,48 +1,26 @@
 {
-  "Behavior": {
-    "tree": "Behaviors:critter"
-  },
-  "FleeOnHit": {
-    "minDistance": 5,
-    "speedMultiplier": 1.2
-  },
-  "Stand": {
-    "animationPool": [
-      "sheep#Idle",
-      "sheep#Idle",
-      "sheep#Idle",
-      "sheep#Bite_InPlace",
-      "sheep#Yes",
-      "sheep#No"
-    ]
-  },
-  "Walk": {
-    "animationPool": [
-      "sheep#Walk"
-    ]
-  },
-  "Die": {
-    "animationPool": [
-      "sheep#Death"
-    ]
-  },
+  // -- Properties ---
   "persisted": true,
-  "location": {},
-  "Character": {},
+  // -- Components ---
   "AliveCharacter": {},
-  "WildAnimal": {
-    "name": "Sheep",
-    "icon": "WildAnimals:icons#Sheep"
+  "BaseRegen": {
+    "regenRate": 2,
+    "waitBeforeRegen": 10
   },
-  "NPCMovement": {},
-  "CreatureNameGenerator": {
-    "genderRatio": 0,
-    "nobility": 0,
-    "theme": "ANIMAL"
+  "Behavior": {
+    "tree": "WildAnimals:lure"
   },
-  "CharacterMovement": {    
+  "BoxShape": {
+    "extents": [
+      1.5,
+      1.5,
+      1.5
+    ]
+  },
+  "Character": {},
+  "CharacterMovement": {
     "speedMultiplier": 0.3,
-    "distanceBetweenFootsteps": 0.2,    
+    "distanceBetweenFootsteps": 0.2,
     "height": 1.6,
     "radius": 0.3,
     "jumpSpeed": 12
@@ -57,28 +35,48 @@
     ],
     "footstepVolume": 0.03
   },
+  "CreatureNameGenerator": {
+    "genderRatio": 0,
+    "nobility": 0,
+    "theme": "ANIMAL"
+  },
   "DamageSound": {
     "sounds": [
       "SheepHit1",
       "SheepHit2"
     ]
   },
-  "Network": {},
-  "MinionMove": {},
+  "Die": {
+    "animationPool": [
+      "sheep#Death"
+    ]
+  },
+  "FindNearbyPlayers": {
+    "searchRadius": 12
+  },
+  "FleeOnHit": {
+    "minDistance": 5,
+    "speedMultiplier": 1.2
+  },
   "Health": {
     "destroyEntityOnNoHealth": true,
     "currentHealth": 25,
     "maxHealth": 25
   },
-  "BaseRegen": {
-    "regenRate": 2,
-    "waitBeforeRegen": 10
+  "Location": {},
+  "MinionMove": {
+    "movementTypes": ["walking", "leaping", "falling"]
   },
-  "BoxShape": {
-    "extents": [
-      1.5,
-      1.5,
-      1.5
+  "Network": {},
+  "NPCMovement": {},
+  "Stand": {
+    "animationPool": [
+      "sheep#Idle",
+      "sheep#Idle",
+      "sheep#Idle",
+      "sheep#Bite_InPlace",
+      "sheep#Yes",
+      "sheep#No"
     ]
   },
   "Trigger": {
@@ -87,10 +85,13 @@
       "engine:sensor"
     ]
   },
-  "Behavior": {
-    "tree": "WildAnimals:lure"
+  "Walk": {
+    "animationPool": [
+      "sheep#Walk"
+    ]
   },
-  "FindNearbyPlayers": {
-    "searchRadius": 12
+  "WildAnimal": {
+    "name": "Sheep",
+    "icon": "WildAnimals:icons#Sheep"
   }
 }
