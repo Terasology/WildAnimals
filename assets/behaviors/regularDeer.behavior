@@ -6,7 +6,7 @@
 
                 child:{
                     sequence:[
-                        check_flee_stop,
+                        check_flee_continue,
                         {lookup: {tree: "Behaviors:flee"}}
                     ]
                 }
