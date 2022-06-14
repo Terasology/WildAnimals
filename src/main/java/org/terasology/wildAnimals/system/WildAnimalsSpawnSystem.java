@@ -1,4 +1,4 @@
-// Copyright 2020 The Terasology Foundation
+// Copyright 2022 The Terasology Foundation
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.wildAnimals.system;
 
@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
-@Share(value = WildAnimalsSpawnSystem.class)
+@Share(WildAnimalsSpawnSystem.class)
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class WildAnimalsSpawnSystem extends BaseComponentSystem {
     private AnimalSpawnConfig config;
@@ -123,7 +123,7 @@ public class WildAnimalsSpawnSystem extends BaseComponentSystem {
      *
      * @param chunkPos The chunk which the game will try to spawn deers on
      */
-    private void tryFlockAnimalSpawn(Prefab animalPrefab, Vector3ic chunkPos) {
+    void tryFlockAnimalSpawn(Prefab animalPrefab, Vector3ic chunkPos) {
         List<Vector3i> foundPositions = findFlockAnimalSpawnPositions(chunkPos);
 
         if (foundPositions.size() < config.minFlockSize * config.minGroundPerFlockAnimal) {
