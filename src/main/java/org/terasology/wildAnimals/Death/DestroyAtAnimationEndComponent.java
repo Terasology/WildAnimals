@@ -15,9 +15,9 @@ public class DestroyAtAnimationEndComponent implements Component<DestroyAtAnimat
     @Replicate
     public long deathTime;
 
-    private EntityRef instigator;
-    private EntityRef directCause;
-    private Prefab damageType;
+    public EntityRef instigator;
+    public EntityRef directCause;
+    public Prefab damageType;
 
     public DestroyAtAnimationEndComponent() {
     }
