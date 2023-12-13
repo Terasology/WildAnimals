@@ -13,6 +13,7 @@ import org.terasology.engine.logic.behavior.core.BehaviorState;
 import org.terasology.engine.logic.characters.CharacterHeldItemComponent;
 import org.terasology.engine.world.block.BlockUri;
 import org.terasology.engine.world.block.items.BlockItemComponent;
+import org.terasology.module.behaviors.components.LuringComponent;
 
 /**
  * Behavior node that checks if the current held item can be used to lure
@@ -21,22 +22,17 @@ import org.terasology.engine.world.block.items.BlockItemComponent;
 @BehaviorAction(name = "check_luring_item_in_use")
 public class CheckLuringItemInUseAction extends BaseAction {
 
-    static final String[] LURING_ITEMS = {
-            "CoreAssets:TallGrass1",
-            "CoreAssets:TallGrass2",
-            "CoreAssets:TallGrass3",
-            "CoreAssets:Lavender",
-            "CoreAssets:Dandelion"
-    };
-
     @Override
     public BehaviorState modify(Actor actor, BehaviorState behaviorState) {
         FindNearbyPlayersComponent component = actor.getComponent(FindNearbyPlayersComponent.class);
+        LuringComponent lure = actor.getComponent(LuringComponent.class);
+
         EntityRef player = component.closestCharacter;
+
         CharacterHeldItemComponent characterHeldItemComponent = player.getComponent(CharacterHeldItemComponent.class);
         EntityRef heldItem = characterHeldItemComponent.selectedItem;
         BlockItemComponent blockItemComponent = heldItem.getComponent(BlockItemComponent.class);
-        for (String item : LURING_ITEMS) {
+        for (String item : lure.luringItems) {
             if (blockItemComponent != null && blockItemComponent.blockFamily.getURI().equals(new BlockUri(item))) {
                 return BehaviorState.SUCCESS;
             }
