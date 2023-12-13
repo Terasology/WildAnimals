@@ -1,8 +1,8 @@
 
 {
-    "shader" : "engine:genericMeshMaterial",
+    "shader" : "engine:skinnedGenericMeshMaterial",
     "params" : {
-        "diffuse" : "blackDeerTexture",
+        "diffuse" : "WildAnimals:blackDeerTexture",
         "colorOffset" : [1.0, 1.0, 1.0],
         "textured" : true
     }

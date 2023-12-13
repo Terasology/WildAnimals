@@ -1,7 +1,7 @@
 {
-  "shader": "engine:genericMeshMaterial",
+  "shader": "engine:skinnedGenericMeshMaterial",
   "params": {
-    "diffuse": "sheepTexture",
+    "diffuse": "WildAnimals:sheepTexture",
     "colorOffset": [
       1.0,
       1.0,
