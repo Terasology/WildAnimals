@@ -1,4 +1,13 @@
 {
+    // -- Properties ---
+    "persisted": true,
+  // -- Components ---
+  "AliveCharacter": {},
+  "BaseRegen": {
+    "regenRate": 2,
+    "waitBeforeRegen": 10
+  },
+
   "skeletalMesh": {
     "mesh": "deer",
     "heightOffset": -0.8,
@@ -13,11 +22,13 @@
   },
   "Behavior": {
         "tree": "Behaviors:combinedCritter"
-        "territory": [],
-        "territoryDistance": [
-            "distanceSquared"
-        ]
+    },
+
+  "Territory": {
+        "maxDistance": 25f,
+        "radius": 20f
   },
+
   "FindNearbyPlayers": {
         "searchRadius": 5
   },
@@ -49,10 +60,9 @@
             "deer#Death"
         ]
   },
-  "persisted": true,
-  "location": {},
+  "Location": {},
   "Character": {},
-  "AliveCharacter": {},
+
   "WildAnimal": {
         "name": "Deer",
         "icon": "WildAnimals:icons#Deer"
@@ -95,7 +105,7 @@
         "extents": [
             1.5,
             1.5,
-            1.5
+            1.5git
         ]
   },
   "Trigger": {
