@@ -25,8 +25,8 @@
     },
 
   "Territory": {
-        "maxDistance": 25f,
-        "radius": 20f
+        "maxDistance": 50,
+        "radius": 40
   },
 
   "FindNearbyPlayers": {
@@ -105,7 +105,7 @@
         "extents": [
             1.5,
             1.5,
-            1.5git
+            1.5
         ]
   },
   "Trigger": {
