@@ -1,6 +1,6 @@
 
 {
-    "shader" : "engine:genericMeshMaterial",
+    "shader" : "engine:skinnedGenericMeshMaterial",
     "params" : {
         "diffuse" : "roboDeerTexture",
         "colorOffset" : [1.0, 1.0, 1.0],
